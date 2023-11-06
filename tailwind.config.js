@@ -17,6 +17,9 @@ module.exports = {
         'primary-blue' : '#0C21C1',
         'placeholder-blue' : '#000842',
         'grey-custom': '#ABABAB'
+      },
+      boxShadow: {
+        'auth-button-shadow': '0 0px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)'
       }
       
     },
