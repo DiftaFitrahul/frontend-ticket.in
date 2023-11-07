@@ -22,11 +22,11 @@ export default function Login() {
   return (
     <main>
       <div className=" flex flex-row justify-center items-center h-screen w-screen bg-neutral-100">
-        <div className="flex flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px]">
-          <h1 className="self-start pl-[120px] font-medium text-[30px] text-black">
+        <div className="flex flex-col justify-center items-center h-[calc(100vh-20px)] w-screen sm:w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px]">
+          <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[30px] text-black">
             Login
           </h1>
-          <p className="self-start pl-[120px] mt-[25px] mb-1 font-normal text-[16px] text-black">
+          <p className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[25px] mb-1 font-normal text-[16px] text-black">
             If you don’t have an account register <br></br> You can
             <Link
               href=""
@@ -36,7 +36,10 @@ export default function Login() {
             </Link>
           </p>
 
-          <form onSubmit={handleSubmit} className="self-start pl-[120px]">
+          <form
+            onSubmit={handleSubmit}
+            className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px]"
+          >
             <p className="text-grey-custom text-[13px] mt-[40px]">Email</p>
             <div className="relative w-[200px]">
               <span className="absolute inset-y-0 left-0 flex items-center ">
@@ -49,7 +52,7 @@ export default function Login() {
               </span>
               <input
                 type="email"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                 placeholder="Enter your email address"
               />
             </div>
@@ -66,7 +69,7 @@ export default function Login() {
               </span>
               <input
                 type={showPassword ? "text" : "password"}
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
+                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
                 placeholder="Enter your password"
               />
               <button type="button" onClick={togglePassword}>
@@ -104,16 +107,18 @@ export default function Login() {
                 </Link>
               </div>
             </div>
-            <button
-              type="submit"
-              className="text-white w-[calc(25vw-50px)] mt-[50px] bg-primary-blue py-2  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
-            >
-              Login
-            </button>
+            <div className="flex justify-center items-center w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px]">
+              <button
+                type="submit"
+                className="text-white w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] mt-[50px] bg-primary-blue py-2  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
+              >
+                Login
+              </button>
+            </div>
           </form>
 
-          <div className="self-start ml-[120px] w-[calc(25vw-50px)] ">
-            <p className=" flex justify-center text-black text-[16px] my-[30px] text-[#B5B5B5]">
+          <div className="sm:self-start xl:ml-[120px] md:ml-[70px] sm:ml-[40px] w-[calc(25vw-50px)] min-w-[270px]">
+            <p className="flex justify-center  text-black text-[16px] my-[30px] text-[#B5B5B5]">
               or continue with
             </p>
             <div className="flex flex-row justify-center">
@@ -139,7 +144,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] ">
+        <div className="flex flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block ">
           <Image
             src="/logo.png"
             alt="Picture of the author"
@@ -149,18 +154,15 @@ export default function Login() {
             className="absolute top-3 right-5" // just an example
           />
 
-          <Image
+          <img
             src="/auth_image.png"
             alt="Picture of the author"
-            width={600}
-            height={600}
-            unoptimized
-            className="mb-20" // just an example
+            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[850px] lg:w-[650px]  xl:h-[650px] lg:h-[500px]" // just an example
           />
-          <h1 className="self-start pl-[120px] font-semibold text-[40px]">
+          <h1 className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
             Sign in to TICKET.IN
           </h1>
-          <p className="self-start pl-[120px] mb-[100px] font-light text-[20px]">
+          <p className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mb-[100px] pr-[20px] font-light xl:text-[20px] md:text-[15px]">
             Welcome back! Please enter your credentials to access your Ticket.in
             account.
           </p>
