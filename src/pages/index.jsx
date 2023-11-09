@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/../public/logo.png";
 import { BsSearch } from "react-icons/bs";
+import { FiMenu } from "react-icons/fi";
 
 export default function Home() {
   return (
@@ -15,15 +16,16 @@ export default function Home() {
           />
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.9]"></div>
 
-          <nav className="flex w-full flex-row  items-center justify-between fixed top-0 px-10">
+          <nav className="flex w-full flex-row  items-center justify-between fixed top-[23px] min-[700px]:top-0 px-10">
             <Image
               src={Logo}
               alt="Picture of the author"
               unoptimized
-              className="w-[180px]"
+              className="w-[180px] hidden min-[700px]:block"
               // just an example
             />
-            <div className="flex flex-growth w-1/2 h-[60px] bg-white max-w-[800px] rounded-full min-w-[400px] relative flex justify-center items-center">
+
+            <div className="flex flex-growth w-full xl:w-1/2 h-[60px] bg-white max-w-[800px] rounded-full min-w-[350px] relative justify-center items-center">
               <input
                 type="text"
                 className="m-5 w-full text-black py-2 px-10 bg-transparent text-left outline-none border-none"
@@ -33,6 +35,13 @@ export default function Home() {
                 onClick={() => alert("search kang")}
               />
             </div>
+            <div className="block xl:hidden ml-10 items-center justify-center flex">
+              <FiMenu
+                className="text-black absolute text-[32px] right-[20px] text-white"
+                onClick={() => alert("search kang")}
+              />
+            </div>
+
             <div className="flex flex-shrink-0 gap-5 items-center justify-center hidden xl:block">
               <Link href="" className=" text-white py-10 px-5">
                 Schedule
@@ -56,7 +65,7 @@ export default function Home() {
           </nav>
 
           <div className="text-black relative z-[2] flex  justify-center items-center">
-            <img src="/home/poster.png" alt="coba" className="w-[600px]" />
+            <img src="/home/poster.png" alt="coba" className="w-[700px]" />
             <div className="w-[500px] bg-red-500/20">
               <h1 className="text-[30px] text-white">Petualangan Sherina 2</h1>
             </div>
