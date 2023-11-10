@@ -1,11 +1,16 @@
-"use client";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
+import { AiOutlinePhone } from "react-icons/ai";
 
-export default function Login() {
+export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -21,8 +26,23 @@ export default function Login() {
     setRememberMe(!rememberMe);
   };
 
+  // TODO: BEAUTIFY ERR AND SUCCESS LOG
   async function handleSubmit(e) {
     e.preventDefault();
+
+    axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/register", {
+      email: email,
+      name: username,
+      password: password,
+      phoneNumber: phoneNumber,
+    })
+    .then((res) => {
+      alert("Register Success");
+      window.location.href = "/auth/login";
+    })
+    .catch((err) => {
+      alert(err.response.data.message);
+    })
   }
 
   return (
@@ -46,7 +66,7 @@ export default function Login() {
             If you already have an account <br></br> You can
             <Link
               href="/auth/login"
-              className="self-start pl-[10px] mb-[100px] text-[16px] text-black text-primary-blue font-semibold "
+              className="self-start pl-[10px] mb-[100px] text-[16px] text-primary-blue font-semibold "
             >
               Login here !
             </Link>
@@ -68,8 +88,10 @@ export default function Login() {
               </span>
               <input
                 type="email"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                 placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -85,8 +107,24 @@ export default function Login() {
               </span>
               <input
                 type="text"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                 placeholder="Enter your username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+
+            <p className="text-grey-custom text-[13px] mt-[40px]">Phone Number</p>
+            <div className="relative w-[200px]">
+              <span className="absolute inset-y-0 left-0 flex items-center ">
+                <AiOutlinePhone />
+              </span>
+              <input
+                type="text"
+                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                placeholder="Enter your username"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
 
@@ -102,8 +140,10 @@ export default function Login() {
               </span>
               <input
                 type={showPassword ? "text" : "password"}
-                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
+                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
                 placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button type="button" onClick={togglePassword}>
                 <span className="absolute inset-y-0 right-0 flex items-center ">
@@ -133,7 +173,7 @@ export default function Login() {
               </span>
               <input
                 type={showConfirmPassword ? "text" : "password"}
-                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
+                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
                 placeholder="Enter your password"
               />
               <button type="button" onClick={toogleConfirmPassword}>
@@ -184,7 +224,7 @@ export default function Login() {
           </form>
 
           <div className="sm:self-start xl:ml-[120px] md:ml-[70px] sm:ml-[40px] w-[calc(25vw-50px)] min-w-[270px]">
-            <p className="flex justify-center  text-black text-[16px] my-[30px] text-[#B5B5B5]">
+            <p className="flex justify-center  text-black text-[16px] my-[30px]">
               or continue with
             </p>
             <div className="flex flex-row justify-center">
@@ -210,7 +250,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block ">
+        <div className="flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block ">
           <Image
             src="/logo.png"
             alt="Picture of the author"

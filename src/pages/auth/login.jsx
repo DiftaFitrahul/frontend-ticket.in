@@ -2,10 +2,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
@@ -15,8 +18,23 @@ export default function Login() {
     setRememberMe(!rememberMe);
   };
 
+  // TODO: BEAUTIFY ERR AND SUCCESS
   async function handleSubmit(e) {
     e.preventDefault();
+
+    axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/login", {
+      email,
+      password,
+    })
+    .then((res) => {
+      alert("Login Success");
+      console.log(res);
+      // window.location.href = "/";
+    })
+    .catch((err) => {
+      alert("Login Failed");
+      console.log(err);
+    });
   }
 
   return (
@@ -64,6 +82,8 @@ export default function Login() {
                 type="email"
                 className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                 placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -81,6 +101,8 @@ export default function Login() {
                 type={showPassword ? "text" : "password"}
                 className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
                 placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button type="button" onClick={togglePassword}>
                 <span className="absolute inset-y-0 right-0 flex items-center ">
