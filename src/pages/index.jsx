@@ -4,11 +4,25 @@ import Logo from "@/../public/logo.png";
 import { BsSearch } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
 import { IoIosArrowForward } from "react-icons/io";
+import FilterButton from "@/components/home/filter_button";
+import CardEvent from "@/components/home/card_event";
+import { useState } from "react";
 
 export default function Home() {
+  const [showMoreUpcoming, setShowMoreUpcoming] = useState(false);
+
+  const [showMorePersonalized, setShowMorePersonalized] = useState(false);
+
+  const toggleShowMoreUpcoming = () => {
+    setShowMoreUpcoming(!showMoreUpcoming);
+  };
+  const toggleShowMorePersonalized = () => {
+    setShowMorePersonalized(!showMorePersonalized);
+  };
+
   return (
     <main>
-      <div className="flex flex-col justify-start items-start bg-neutral-100">
+      <div className="flex flex-col justify-center items-center bg-neutral-100">
         <div className="relative flex justify-center items-center w-full min-h-screen ">
           <img
             src="/home/bg_image.png"
@@ -50,7 +64,7 @@ export default function Home() {
               <Link href="" className="text-white py-10 px-5">
                 Ticket
               </Link>
-              <Link href="\about" className="text-white py-10 px-5">
+              <Link href="/about" className="text-white py-10 px-5">
                 About
               </Link>
               <Link href="" className="text-white py-10 px-5">
@@ -103,8 +117,60 @@ export default function Home() {
             <IoIosArrowForward className="text-[#3D37F1] text-[60px] right-[20px] text-white " />
           </div>
         </div>
-
-        <div className=""></div>
+        <div className="flex justify-between w-4/6   mt-[100px] mb-[100px] justify-center items-center">
+          <div className="text-[#242565] text-[40px]">Upcoming Events</div>
+          <div className="flex">
+            <FilterButton title="Weekdays" />
+            <FilterButton title="Event Type" />
+            <FilterButton title="Any Category" />
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-7">
+          {Array.from({ length: showMoreUpcoming ? 9 : 6 }, (_, index) => (
+            <CardEvent
+              month="JUN"
+              date="20"
+              title="Akurat Festival"
+              subtitle="We’ll get you directly seated and inside for you to enjoy the show. Lest join with us"
+              imagePath="/home/event_image.png"
+            />
+          ))}
+        </div>
+        <div className="flex justify-center items-center mt-10 mb-10">
+          <button
+            onClick={toggleShowMoreUpcoming}
+            className=" h-[50px] w-[160px] text-[#3D37F1] border border-2 border-[#3D37F1] font-medium rounded-full text-[18px] mr-5"
+          >
+            {showMoreUpcoming ? "Show Less" : "Show More"}
+          </button>
+        </div>
+        <div className="flex justify-between w-4/6   mt-[100px] mb-[100px] justify-center items-center">
+          <div className="text-[#242565] text-[40px]">Personalized For You</div>
+          <div className="flex">
+            <FilterButton title="Weekdays" />
+            <FilterButton title="Event Type" />
+            <FilterButton title="Any Category" />
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-7">
+          {Array.from({ length: showMorePersonalized ? 9 : 6 }, (_, index) => (
+            <CardEvent
+              month="APR"
+              date="14"
+              title="Wonder Girls 2010 Wonder Girls World Tour San Francisco"
+              subtitle="We’ll get you directly seated and inside for you to enjoy the show."
+              imagePath="/home/event_image2.png"
+            />
+          ))}
+        </div>
+        <div className="flex justify-center items-center mt-10 mb-10">
+          <button
+            onClick={toggleShowMorePersonalized}
+            className=" h-[50px] w-[160px] text-[#3D37F1] border border-2 border-[#3D37F1] font-medium rounded-full text-[18px] mr-5"
+          >
+            {showMorePersonalized ? "Show Less" : "Show More"}
+          </button>
+        </div>
       </div>
     </main>
   );
