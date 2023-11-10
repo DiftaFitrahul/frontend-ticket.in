@@ -50,18 +50,24 @@ export default function Home() {
               <Link href="" className="text-white py-10 px-5">
                 Ticket
               </Link>
-              <Link href="" className="text-white py-10 px-5">
+              <Link href="\about" className="text-white py-10 px-5">
                 About
               </Link>
               <Link href="" className="text-white py-10 px-5">
                 Contact
               </Link>
-              <button className="border border-white py-2 px-9 rounded-full mr-5">
+              <Link
+                href="/auth/login"
+                className="border border-white py-2 px-9 rounded-full mr-5"
+              >
                 Login
-              </button>
-              <button className="py-2 px-9 bg-[#3032B1] rounded-full">
-                Login
-              </button>
+              </Link>
+              <Link
+                href="/auth/register"
+                className="py-2 px-9 bg-[#3032B1] rounded-full"
+              >
+                Register
+              </Link>
             </div>
           </nav>
 
@@ -99,15 +105,6 @@ export default function Home() {
         </div>
 
         <div className=""></div>
-        <div className="">makan nasi kecombrang</div>
-        <div className="">makan nasi kecombrang</div>
-        <div className="">makan nasi kecombrang</div>
-        <div className="">makan nasi kecombrang</div>
-        <div className="">makan nasi kecombrang</div>
-        <div className="">makan nasi kecombrang</div>
-        <div className="">makan nasi kecombrang</div>
-        <div className="">makan nasi kecombrang</div>
-        <div className="">makan nasi kecombrang</div>
       </div>
     </main>
   );

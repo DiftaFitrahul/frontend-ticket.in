@@ -46,33 +46,37 @@ export default function About() {
               <Link href="" className="text-white py-10 px-5">
                 Contact
               </Link>
-              <button className="border border-white py-2 px-9 rounded-full mr-5">
+              <Link
+                href="/auth/login"
+                className="border border-white py-2 px-9 rounded-full mr-5"
+              >
                 Login
-              </button>
-              <button className="py-2 px-9 bg-[#3032B1] rounded-full">
-                Login
-              </button>
+              </Link>
+              <Link
+                href="/auth/register"
+                className="py-2 px-9 bg-[#3032B1] rounded-full"
+              >
+                Register
+              </Link>
             </div>
           </nav>
 
           <div className="text-black relative z-[2] flex flex-col justify-center items-center">
-          <h2 className="text-[35px] mb-20 text-white">About TICKET.IN</h2>
+            <h2 className="text-[35px] mb-20 text-white">About TICKET.IN</h2>
             <div className="w-[700px] bg-red-500/20">
-            
-            <h4 className="text-[25px] text-white">
- Kami adalah platform pemesanan tiket film terkemuka di Indonesia.
- Dengan koleksi film terbaru dan pemesanan yang mudah, kami hadir untuk memastikan pengalaman menonton Anda menjadi lebih menyenangkan.
- Dengan beragam pilihan acara dan bioskop top, TICKET.IN memudahkan Anda menikmati film favorit tanpa repot.
- Mari kita ciptakan momen tak terlupakan di layar lebar bersama-sama.
- </h4>
+              <h4 className="text-[25px] text-white">
+                Kami adalah platform pemesanan tiket film terkemuka di
+                Indonesia. Dengan koleksi film terbaru dan pemesanan yang mudah,
+                kami hadir untuk memastikan pengalaman menonton Anda menjadi
+                lebih menyenangkan. Dengan beragam pilihan acara dan bioskop
+                top, TICKET.IN memudahkan Anda menikmati film favorit tanpa
+                repot. Mari kita ciptakan momen tak terlupakan di layar lebar
+                bersama-sama.
+              </h4>
             </div>
           </div>
         </div>
-
-        
       </div>
     </main>
   );
 }
-
-
