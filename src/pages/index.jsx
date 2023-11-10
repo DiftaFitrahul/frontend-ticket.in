@@ -171,6 +171,46 @@ export default function Home() {
             {showMorePersonalized ? "Show Less" : "Show More"}
           </button>
         </div>
+        <div className="flex relative justify-center bg-[#FFF1E1] w-full mb-[100px] py-12 mt-[150px]">
+          <img
+            src="/home/person.png"
+            alt="coba"
+            className="w-[400px] h-[500px] object-fill absolute left-[200px] bottom-[-120px] "
+          />
+
+          <div className="flex flex-col ">
+            <h1 className="text-black font-bold text-[34px]">
+              Make your own Event
+            </h1>
+            <p className="text-black text-[18px] my-4 w-[360px] font-normal">
+              Craft memories with a click. Create your event now
+            </p>
+            <button className="bg-[#F5167E] py-4 w-[300px] rounded-full shadow-lg font-medium">
+              Create Events
+            </button>
+          </div>
+        </div>
+        <footer className="bg-[#242565] h-[500px] w-full flex justify-between items-start">
+          <div className="flex flex-col bg-red-300">
+            <Image
+              src={Logo}
+              alt="Picture of the author"
+              unoptimized
+              className="w-[180px] hidden min-[700px]:block mr-5"
+              // just an example
+            />
+            <p>
+              Ticket.in is a global self-service ticketing platform for live
+              experiences that allows anyone to create, share, find and attend
+              events that fuel their passions and enrich their lives.
+            </p>
+            <div className="flex w-[40px] h-[40px] bg-green-300">
+              <img src="/Facebook.png" alt="facebook" />
+              <img src="/home/twitter-icon.png" alt="twitter" />
+              <img src="/home/linkedin-icon.png" alt="linkedin" />
+            </div>
+          </div>
+        </footer>
       </div>
     </main>
   );
