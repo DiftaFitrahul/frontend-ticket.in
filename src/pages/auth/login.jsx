@@ -58,7 +58,7 @@ export default function Login() {
             If you don’t have an account <br></br> You can
             <Link
               href="/auth/register"
-              className="self-start pl-[10px] mb-[100px] text-[16px] text-black text-primary-blue font-semibold "
+              className="self-start pl-[10px] mb-[100px] text-[16px] text-primary-blue font-semibold "
             >
               Register here !
             </Link>
@@ -80,7 +80,7 @@ export default function Login() {
               </span>
               <input
                 type="email"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -99,7 +99,7 @@ export default function Login() {
               </span>
               <input
                 type={showPassword ? "text" : "password"}
-                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-b border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
+                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -150,7 +150,7 @@ export default function Login() {
           </form>
 
           <div className="sm:self-start xl:ml-[120px] md:ml-[70px] sm:ml-[40px] w-[calc(25vw-50px)] min-w-[270px]">
-            <p className="flex justify-center  text-black text-[16px] my-[30px] text-[#B5B5B5]">
+            <p className="flex justify-center  text-black text-[16px] my-[30px]">
               or continue with
             </p>
             <div className="flex flex-row justify-center">
@@ -176,7 +176,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block ">
+        <div className="flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block ">
           <Image
             src="/logo.png"
             alt="Picture of the author"
@@ -191,10 +191,10 @@ export default function Login() {
             alt="Picture of the author"
             className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[850px] lg:w-[650px]  xl:h-[650px] lg:h-[500px]" // just an example
           />
-          <h1 className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
+          <h1 className="self-start text-white xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
             Sign in to TICKET.IN
           </h1>
-          <p className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mb-[100px] pr-[20px] font-light xl:text-[20px] md:text-[15px]">
+          <p className="self-start text-white xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mb-[100px] pr-[20px] font-light xl:text-[20px] md:text-[15px]">
             Welcome back! Please enter your credentials to access your Ticket.in
             account.
           </p>
