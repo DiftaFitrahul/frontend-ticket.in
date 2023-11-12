@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/../public/logo.png";
@@ -6,11 +7,10 @@ import { FiMenu } from "react-icons/fi";
 import { IoIosArrowForward } from "react-icons/io";
 import FilterButton from "@/components/home/filter_button";
 import CardEvent from "@/components/home/card_event";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [showMoreUpcoming, setShowMoreUpcoming] = useState(false);
-
   const [showMorePersonalized, setShowMorePersonalized] = useState(false);
 
   const toggleShowMoreUpcoming = () => {
@@ -19,6 +19,52 @@ export default function Home() {
   const toggleShowMorePersonalized = () => {
     setShowMorePersonalized(!showMorePersonalized);
   };
+
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    // only execute all the code below in client side
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  function getUpcomingEventCardHide() {
+    if (windowSize.width <= 800) {
+      return 2;
+    } else if (windowSize.width <= 1280) {
+      return 4;
+    } else {
+      return 6;
+    }
+  }
+
+  function getUpcomingEventCardShow() {
+    if (windowSize.width <= 800) {
+      return 4;
+    } else if (windowSize.width <= 1280) {
+      return 6;
+    } else {
+      return 9;
+    }
+  }
 
   return (
     <main>
@@ -31,13 +77,12 @@ export default function Home() {
           />
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.9]"></div>
 
-          <nav className="flex w-full flex-row  items-center justify-between fixed top-[23px] min-[700px]:top-0 px-10 z-10">
+          <nav className="flex w-full flex-row items-center justify-between fixed top-[23px] min-[700px]:top-0 px-10 z-10">
             <Image
               src={Logo}
               alt="Picture of the author"
               unoptimized
               className="w-[180px] hidden min-[700px]:block mr-5"
-              // just an example
             />
 
             <div className="flex flex-growth w-full xl:w-1/2 h-[60px] bg-white max-w-[800px] rounded-full min-w-[350px] relative justify-center items-center">
@@ -117,24 +162,31 @@ export default function Home() {
             <IoIosArrowForward className="text-[#3D37F1] text-[60px] right-[20px] text-white " />
           </div>
         </div>
-        <div className="flex justify-between w-4/6   mt-[100px] mb-[100px] justify-center items-center">
+        <div className="flex flex-col min-[1350px]:flex-row  justify-between w-4/6   mt-[100px] mb-[100px] justify-center items-center">
           <div className="text-[#242565] text-[40px]">Upcoming Events</div>
-          <div className="flex">
+          <div className="flex flex-wrap mt-5 xl:mt-0  justify-center items-center h-[150px]">
             <FilterButton title="Weekdays" />
-            <FilterButton title="Event Type" />
+            <FilterButton title="Event Type" className="my-5 sm:my-0" />
             <FilterButton title="Any Category" />
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-7">
-          {Array.from({ length: showMoreUpcoming ? 9 : 6 }, (_, index) => (
-            <CardEvent
-              month="JUN"
-              date="20"
-              title="Akurat Festival"
-              subtitle="We’ll get you directly seated and inside for you to enjoy the show. Lest join with us"
-              imagePath="/home/event_image.png"
-            />
-          ))}
+        <div className="grid grid-cols-1 min-[800px]:grid-cols-2 xl:grid-cols-3 gap-7">
+          {Array.from(
+            {
+              length: showMoreUpcoming
+                ? getUpcomingEventCardShow()
+                : getUpcomingEventCardHide(),
+            },
+            (_, index) => (
+              <CardEvent
+                month="JUN"
+                date="20"
+                title="Akurat Festival"
+                subtitle="We’ll get you directly seated and inside for you to enjoy the show. Lest join with us"
+                imagePath="/home/event_image.png"
+              />
+            )
+          )}
         </div>
         <div className="flex justify-center items-center mt-10 mb-10">
           <button
@@ -146,11 +198,6 @@ export default function Home() {
         </div>
         <div className="flex justify-between w-4/6   mt-[100px] mb-[100px] justify-center items-center">
           <div className="text-[#242565] text-[40px]">Personalized For You</div>
-          <div className="flex">
-            <FilterButton title="Weekdays" />
-            <FilterButton title="Event Type" />
-            <FilterButton title="Any Category" />
-          </div>
         </div>
         <div className="grid grid-cols-3 gap-7">
           {Array.from({ length: showMorePersonalized ? 9 : 6 }, (_, index) => (
