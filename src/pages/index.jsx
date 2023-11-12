@@ -199,16 +199,23 @@ export default function Home() {
         <div className="flex justify-between w-4/6   mt-[100px] mb-[100px] justify-center items-center">
           <div className="text-[#242565] text-[40px]">Personalized For You</div>
         </div>
-        <div className="grid grid-cols-3 gap-7">
-          {Array.from({ length: showMorePersonalized ? 9 : 6 }, (_, index) => (
-            <CardEvent
-              month="APR"
-              date="14"
-              title="Wonder Girls 2010 Wonder Girls World Tour San Francisco"
-              subtitle="We’ll get you directly seated and inside for you to enjoy the show."
-              imagePath="/home/event_image2.png"
-            />
-          ))}
+        <div className="grid grid-cols-1 min-[800px]:grid-cols-2 xl:grid-cols-3 gap-7">
+          {Array.from(
+            {
+              length: showMoreUpcoming
+                ? getUpcomingEventCardShow()
+                : getUpcomingEventCardHide(),
+            },
+            (_, index) => (
+              <CardEvent
+                month="APR"
+                date="14"
+                title="Wonder Girls 2010 Wonder Girls World Tour San Francisco"
+                subtitle="We’ll get you directly seated and inside for you to enjoy the show."
+                imagePath="/home/event_image2.png"
+              />
+            )
+          )}
         </div>
         <div className="flex justify-center items-center mt-10 mb-10">
           <button
