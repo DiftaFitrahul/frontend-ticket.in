@@ -1,7 +1,4 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import Logo from "@/../public/logo.png";
 
 import { IoIosArrowForward } from "react-icons/io";
 import FilterButton from "@/components/home/filter_button";
