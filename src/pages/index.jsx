@@ -225,11 +225,11 @@ export default function Home() {
             {showMorePersonalized ? "Show Less" : "Show More"}
           </button>
         </div>
-        <div className="flex relative justify-center bg-[#FFF1E1] w-full mb-[100px] py-12 mt-[150px]">
+        <div className="flex flex-col min-[800px]:flex-row items-center relative justify-center bg-[#FFF1E1] w-full mb-[100px] py-12 mt-[150px]">
           <img
             src="/home/person.png"
             alt="coba"
-            className="w-[400px] h-[500px] object-fill absolute left-[200px] bottom-[-120px] "
+            className="w-[400px] h-[500px]  min-[800px]:absolute  min-[800px]:left-[-20px] xl:left-[100px] 2xl:left-[200px] bottom-[-120px] "
           />
 
           <div className="flex flex-col ">
