@@ -1,19 +1,54 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import MakeEvent from "@/components/event/make_event";
 import FooterComp from "@/components/footer_comp";
 import HeaderComp from "@/components/header_comp";
 
 export default function UploadPayment() {
-  const [isChecked, setChecked] = useState(false);
+  const [imagePath, setImagePath] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [uploadedFilename, setUploadedFilename] = useState(null);
 
-  const handleCheckboxChange = () => {
-    setChecked(!isChecked);
+  const fileInputRef = useRef(null);
+
+  const getImage = () => {
+    fileInputRef.current.click();
   };
 
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("Payment Success");
   }
+
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      const selectedImage = e.target.files[0];
+      setImagePath(selectedImage);
+
+      // Display the filename on top of the icon
+      const filenameWithPrefix = `Bukti_Pembayaran.${selectedImage.name
+        .split(".")
+        .pop()}`;
+      setUploadedFilename(filenameWithPrefix);
+    }
+  };
+
+  const handleDownload = () => {
+    if (imagePath) {
+      const imageUrl = URL.createObjectURL(imagePath);
+
+      // Create a temporary link and trigger a click to start the download
+      const downloadLink = document.createElement("a");
+      downloadLink.href = imageUrl;
+      downloadLink.download = uploadedFilename || "image"; // Use uploaded filename if available, or a default name
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      // Revoke the object URL to free up resources
+      URL.revokeObjectURL(imageUrl);
+    }
+  };
+
   return (
     <div className="flex flex-col justify-center items-center bg-neutral-100">
       <HeaderComp />
@@ -47,7 +82,20 @@ export default function UploadPayment() {
             </p>
           </div>
 
-          <button className="self-center my-7">
+          <button
+            onClick={handleDownload}
+            className="text-black mt-5 text-[20px] hover:underline"
+          >
+            {uploadedFilename && <p>{uploadedFilename}</p>}
+          </button>
+          <input
+            type="file"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            onChange={handleChange}
+            accept="image/*"
+          />
+          <button onClick={getImage} className="self-center my-7">
             <img src="\upload_payment_icon.png" alt="payment upload" />
           </button>
 
