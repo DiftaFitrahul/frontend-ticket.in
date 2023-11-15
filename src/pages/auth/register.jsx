@@ -30,19 +30,20 @@ export default function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/register", {
-      email: email,
-      name: username,
-      password: password,
-      phoneNumber: phoneNumber,
-    })
-    .then((res) => {
-      alert("Register Success");
-      window.location.href = "/auth/login";
-    })
-    .catch((err) => {
-      alert(err.response.data.message);
-    })
+    axios
+      .post(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/register", {
+        email: email,
+        name: username,
+        password: password,
+        phoneNumber: phoneNumber,
+      })
+      .then((res) => {
+        alert("Register Success");
+        window.location.href = "/auth/login";
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+      });
   }
 
   return (
@@ -114,7 +115,9 @@ export default function Register() {
               />
             </div>
 
-            <p className="text-grey-custom text-[13px] mt-[40px]">Phone Number</p>
+            <p className="text-grey-custom text-[13px] mt-[40px]">
+              Phone Number
+            </p>
             <div className="relative w-[200px]">
               <span className="absolute inset-y-0 left-0 flex items-center ">
                 <AiOutlinePhone />
@@ -257,13 +260,13 @@ export default function Register() {
             width={100}
             height={100}
             unoptimized
-            className="absolute top-3 right-5" // just an example
+            className="absolute top-3 right-5"
           />
 
           <img
             src="/auth_image.png"
             alt="Picture of the author"
-            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[850px] lg:w-[650px]  xl:h-[650px] lg:h-[500px]" // just an example
+            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[850px] lg:w-[650px]  xl:h-[650px] lg:h-[500px]"
           />
           <h1 className="self-start text-white xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
             Sign up to TICKET.IN

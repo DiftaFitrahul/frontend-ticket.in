@@ -3,12 +3,18 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { MdEventAvailable, MdMyLocation } from "react-icons/md";
+import { PiTextTBold } from "react-icons/pi";
 
 export default function Login() {
+  const [startDate, setStartDate] = useState(new Date());
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [value, onChange] = useState(new Date());
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
@@ -17,26 +23,6 @@ export default function Login() {
   const handleCheckboxChange = () => {
     setRememberMe(!rememberMe);
   };
-
-  // TODO: BEAUTIFY ERR AND SUCCESS
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    axios
-      .post(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/login", {
-        email,
-        password,
-      })
-      .then((res) => {
-        alert("Login Success");
-        console.log(res);
-        // window.location.href = "/";
-      })
-      .catch((err) => {
-        alert("Login Failed");
-        console.log(err);
-      });
-  }
 
   return (
     <main>
@@ -53,93 +39,73 @@ export default function Login() {
             />
           </div>
           <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[30px] text-black">
-            Login
+            Create Event
           </h1>
           <p className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[25px] mb-1 font-normal text-[16px] text-black">
-            If you don’t have an account <br></br> You can
-            <Link
-              href="/auth/register"
-              className="self-start pl-[10px] mb-[100px] text-[16px] text-primary-blue font-semibold "
-            >
-              Register here !
-            </Link>
+            Make your own event right now.<br></br> Reach out to millions of
+            people and make your event come true
           </p>
 
-          <form
-            onSubmit={handleSubmit}
-            className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px]"
-          >
-            <p className="text-grey-custom text-[13px] mt-[40px]">Email</p>
+          <form className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px]">
+            <p className="text-grey-custom text-[13px] mt-[40px]">Event Name</p>
             <div className="relative w-[200px]">
               <span className="absolute inset-y-0 left-0 flex items-center ">
-                <Image
-                  src="/email_icon.png"
-                  alt="email"
-                  width={20}
-                  height={20}
-                />
+                <MdEventAvailable className="text-black " size={22} />
               </span>
               <input
-                type="email"
+                type="text"
                 className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
-                placeholder="Enter your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your event name"
               />
             </div>
 
-            <p className="text-grey-custom text-[13px] mt-[40px]">Password</p>
-            <div className="relative ">
+            <p className="text-grey-custom text-[13px] mt-[40px]">
+              Description
+            </p>
+            <div className="relative w-[200px]">
               <span className="absolute inset-y-0 left-0 flex items-center ">
-                <Image
-                  src="/lock_icon.png"
-                  alt="email"
-                  width={20}
-                  height={20}
-                />
+                <PiTextTBold className="text-black " size={22} />
               </span>
               <input
-                type={showPassword ? "text" : "password"}
-                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="text"
+                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                placeholder="Enter your event description"
               />
-              <button type="button" onClick={togglePassword}>
-                <span className="absolute inset-y-0 right-0 flex items-center ">
-                  <Image
-                    src={
-                      showPassword ? "/eye_visible.png" : "/eye_invisible.png"
-                    }
-                    alt="email"
-                    width={20}
-                    height={20}
-                  />
-                </span>
-              </button>
             </div>
 
-            <div className="relative mt-[10px]">
-              <label>
-                <input
-                  type="checkbox"
-                  name="rememberMe"
-                  checked={rememberMe}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="absolute inset-y-0 left-5 mt-[2.5px] flex text-black text-[12px]">
-                  Remember me
-                </span>
-              </label>
-              <div>
-                <Link
-                  href=""
-                  className="absolute inset-y-0 right-0 flex items-center "
-                >
-                  <p className="text-black text-[12px]">Forgot password ?</p>
-                </Link>
-              </div>
+            <p className="text-grey-custom text-[13px] mt-[40px] mb-3">
+              Event Location
+            </p>
+            <div className="w-full">
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                minDate={new Date()}
+                showIcon={true}
+                showTimeInput={true}
+                onKeyDown={(e) => {
+                  e.preventDefault();
+                }}
+                dateFormat="yyyy-MM-dd HH:mm"
+                placeholderText="Choose a date"
+                className="text-center border-l-4 border-r-4  border-red-500  w-full p-3 rounded text-sm    focus:ring-0  text-black"
+              />
             </div>
+
+            <p className="text-grey-custom text-[13px] mt-[40px]">
+              Event Location
+            </p>
+            <div className="relative w-[200px]">
+              <span className="absolute inset-y-0 left-0 flex items-center ">
+                <MdMyLocation className="text-black " size={22} />
+              </span>
+              <input
+                type="text"
+                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                placeholder="Enter your event location"
+              />
+            </div>
+
             <div className="flex justify-center items-center w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px]">
               <button
                 type="submit"
@@ -177,9 +143,9 @@ export default function Login() {
             </div>
           </div>
         </div>
-        <div className="flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block ">
+        <div className="flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-light-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block bg-opacity-25">
           <Image
-            src="/logo.png"
+            src="/black_logo.png"
             alt="Picture of the author"
             width={100}
             height={100}
@@ -192,12 +158,12 @@ export default function Login() {
             alt="Picture of the author"
             className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[850px] lg:w-[650px]  xl:h-[650px] lg:h-[500px]"
           />
-          <h1 className="self-start text-white xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
-            Sign in to TICKET.IN
+          <h1 className="self-start text-primary-blue xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
+            Your Event, Your Way!
           </h1>
-          <p className="self-start text-white xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mb-[100px] pr-[20px] font-light xl:text-[20px] md:text-[15px]">
-            Welcome back! Please enter your credentials to access your Ticket.in
-            account.
+          <p className="self-start text-primary-blue xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mb-[100px] pr-[20px]  xl:text-[20px] md:text-[15px]">
+            It's time to turn your vision into reality. Create your dream event
+            from scratch and watch it come to life. Let's get started.
           </p>
         </div>
       </div>

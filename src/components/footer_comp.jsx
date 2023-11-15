@@ -11,7 +11,6 @@ export default function FooterComp() {
             alt="Picture of the author"
             unoptimized
             className="w-[180px] mr-5 "
-            // just an example
           />
           <p>
             Ticket.in is a global self-service ticketing platform for live

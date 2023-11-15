@@ -21,7 +21,6 @@ export default function About() {
               alt="Picture of the author"
               unoptimized
               className="w-[180px]"
-              // just an example
             />
             <div className="flex flex-growth w-1/2 h-[60px] bg-white max-w-[800px] rounded-full min-w-[400px] relative flex justify-center items-center">
               <input
