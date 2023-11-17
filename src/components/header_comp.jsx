@@ -46,13 +46,13 @@ export default function HeaderComp() {
         </Link>
         <Link
           href="/auth/login"
-          className="border border-white py-2 px-9 rounded-full mr-5"
+          className="border text-white border-white py-2 px-9 rounded-full mr-5"
         >
           Login
         </Link>
         <Link
           href="/auth/register"
-          className="py-2 px-9 bg-[#3032B1] rounded-full"
+          className="py-2 px-9 text-white bg-[#3032B1] rounded-full"
         >
           Register
         </Link>
