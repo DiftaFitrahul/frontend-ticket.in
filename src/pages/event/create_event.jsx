@@ -11,7 +11,7 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 export default function Login() {
   const [startDate, setStartDate] = useState(new Date());
   const [isOpenCategory, setIsOpenCategory] = useState(false);
-
+  const [lastPageEvent, setLastPageEvent] = useState(false);
   const [category, setCategory] = useState("Choose category");
 
   const toggleCategory = () => {
@@ -110,15 +110,15 @@ export default function Login() {
               />
             </div>
 
-            <div className="flex justify-between items-center w-full">
+            <div className="flex justify-between items-center w-full ">
               <p className="text-grey-custom text-[13px] mt-[40px] mb-3">
                 Event Location
               </p>
-              <p className="text-grey-custom text-[13px] mt-[40px] mb-3">
+              <p className="text-grey-custom text-[13px] mt-[40px] mb-3 mr-5 xl:mr-0">
                 Event Type
               </p>
             </div>
-            <div className="w-full flex justify-between">
+            <div className="w-full flex justify-between ">
               <DatePicker
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
@@ -130,14 +130,14 @@ export default function Login() {
                 }}
                 dateFormat="yyyy-MM-dd HH:mm"
                 placeholderText="Choose a date"
-                className="text-center border-l-4 border-r-4  border-red-500  w-full p-3 rounded text-sm    focus:ring-0  text-black"
+                className="text-center border-l-4 border-r-4  border-red-500 w-[160px] 2xl:w-full p-3 rounded text-sm    focus:ring-0  text-black"
               />
-              <div className="relative flex flex-col w-5/12">
+              <div className="relative flex flex-col w-1/2 sm:w-5/12 ">
                 <button
                   onClick={toggleCategory}
                   className="flex border  justify-between pr-2 pl-4 items-center border-[#B8BBC2] rounded-lg w-full h-[30px] "
                 >
-                  <p className="text-black text-sm">{category}</p>
+                  <p className="text-black text-sm leading-3">{category}</p>
                   {isOpenCategory ? (
                     <IoIosArrowUp className="text-black " size={15} />
                   ) : (
