@@ -4,15 +4,21 @@ import Image from "next/image";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { MdEventAvailable, MdMyLocation } from "react-icons/md";
-import { PiTextTBold } from "react-icons/pi";
-import { RiArrowDropDownLine } from "react-icons/ri";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { PiTextTBold, PiMoneyFill } from "react-icons/pi";
+import { IoTicketOutline } from "react-icons/io5";
+import { IoIosArrowUp, IoIosArrowDown, IoIosContact } from "react-icons/io";
 
 export default function Login() {
   const [startDate, setStartDate] = useState(new Date());
   const [isOpenCategory, setIsOpenCategory] = useState(false);
   const [lastPageEvent, setLastPageEvent] = useState(false);
   const [category, setCategory] = useState("Choose category");
+  const [selectedFileName, setSelectedFileName] = useState("");
+
+  const handleFileChange = (e) => {
+    const fileName = e.target.files[0]?.name;
+    setSelectedFileName(fileName);
+  };
 
   const toggleCategory = () => {
     setIsOpenCategory(!isOpenCategory);
@@ -21,6 +27,10 @@ export default function Login() {
   const handleCategory = (value) => {
     setCategory(value);
     toggleCategory();
+  };
+
+  const handleLastPageEvent = () => {
+    setLastPageEvent(!lastPageEvent);
   };
 
   const listCategory = [
@@ -75,7 +85,7 @@ export default function Login() {
           <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[30px] text-black">
             Create Event
           </h1>
-          <p className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] px-20 mt-[25px] mb-1 font-normal text-[16px] text-black">
+          <p className="sm:self-start  xl:pl-[120px] md:pl-[70px] sm:pl-[40px] px-20 mt-[25px] mb-1 font-normal text-[16px] text-black">
             Make your own event right now.<br></br> Reach out to millions of
             people and make your event come true
           </p>
@@ -84,107 +94,183 @@ export default function Login() {
             onSubmit={submitForm}
             className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px]"
           >
-            <p className="text-grey-custom text-[13px] mt-[40px]">Event Name</p>
-            <div className="relative w-[200px]">
-              <span className="absolute inset-y-0 left-0 flex items-center ">
-                <MdEventAvailable className="text-black " size={22} />
-              </span>
-              <input
-                type="text"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
-                placeholder="Enter your event name"
-              />
-            </div>
+            {lastPageEvent ? (
+              <div>
+                <p className="text-grey-custom text-[13px] mt-[40px]">
+                  Event fee (in IDR)
+                </p>
+                <div className="relative w-[200px]">
+                  <span className="absolute inset-y-0 left-0 flex items-center ">
+                    <PiMoneyFill className="text-black " size={22} />
+                  </span>
+                  <input
+                    type="text"
+                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    placeholder="Fill with 0 if the event is free"
+                  />
+                </div>
 
-            <p className="text-grey-custom text-[13px] mt-[40px]">
-              Description
-            </p>
-            <div className="relative w-[200px]">
-              <span className="absolute inset-y-0 left-0 flex items-center ">
-                <PiTextTBold className="text-black " size={22} />
-              </span>
-              <input
-                type="text"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
-                placeholder="Enter your event description"
-              />
-            </div>
+                <p className="text-grey-custom text-[13px] mt-[40px]">
+                  Enter the max amount of ticket
+                </p>
+                <div className="relative w-[200px]">
+                  <span className="absolute inset-y-0 left-0 flex items-center ">
+                    <IoTicketOutline className="text-black " size={22} />
+                  </span>
+                  <input
+                    type="number"
+                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    placeholder="Enter max amount ticket"
+                  />
+                </div>
 
-            <div className="flex justify-between items-center w-full ">
-              <p className="text-grey-custom text-[13px] mt-[40px] mb-3">
-                Event Location
-              </p>
-              <p className="text-grey-custom text-[13px] mt-[40px] mb-3 mr-5 xl:mr-0">
-                Event Type
-              </p>
-            </div>
-            <div className="w-full flex justify-between ">
-              <DatePicker
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                minDate={new Date()}
-                showIcon={true}
-                showTimeInput={true}
-                onKeyDown={(e) => {
-                  e.preventDefault();
-                }}
-                dateFormat="yyyy-MM-dd HH:mm"
-                placeholderText="Choose a date"
-                className="text-center border-l-4 border-r-4  border-red-500 w-[160px] 2xl:w-full p-3 rounded text-sm    focus:ring-0  text-black"
-              />
-              <div className="relative flex flex-col w-1/2 sm:w-5/12 ">
-                <button
-                  onClick={toggleCategory}
-                  className="flex border  justify-between pr-2 pl-4 items-center border-[#B8BBC2] rounded-lg w-full h-[30px] "
-                >
-                  <p className="text-black text-sm leading-3">{category}</p>
-                  {isOpenCategory ? (
-                    <IoIosArrowUp className="text-black " size={15} />
-                  ) : (
-                    <IoIosArrowDown className="text-black " size={15} />
-                  )}
-                </button>
-                {isOpenCategory ? (
-                  <div className="absolute bg-white z-[2] w-full mt-[35px] flex flex-col border text-black border-[#B8BBC2] rounded-lg">
-                    {listCategory.map((item, i) => (
-                      <button
-                        onClick={() => handleCategory(item.name)}
-                        key={i}
-                        className="w-full flex"
-                      >
-                        <p className="text-[13px] py-2 hover:bg-primary-blue text-start hover:text-white w-full pl-4">
-                          {item.name}
-                        </p>
-                      </button>
-                    ))}
-                  </div>
-                ) : (
-                  <div></div>
-                )}
+                <p className="text-grey-custom text-[13px] mt-[40px]">
+                  Upload Event photo
+                </p>
+                <div className="relative w-[200px]">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handleFileChange(e)}
+                    className=" pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    placeholder="Enter your event location"
+                  />
+                </div>
+
+                <p className="text-grey-custom text-[13px] mt-[40px]">
+                  Contact Person
+                </p>
+                <div className="relative w-[200px]">
+                  <span className="absolute inset-y-0 left-0 flex items-center ">
+                    <IoIosContact className="text-black " size={22} />
+                  </span>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                    maxlength="12"
+                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    placeholder="Enter your event location"
+                  />
+                </div>
               </div>
-            </div>
+            ) : (
+              <div>
+                <p className="text-grey-custom text-[13px] mt-[40px]">
+                  Event Name
+                </p>
+                <div className="relative w-[200px]">
+                  <span className="absolute inset-y-0 left-0 flex items-center ">
+                    <MdEventAvailable className="text-black " size={22} />
+                  </span>
+                  <input
+                    type="text"
+                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    placeholder="Enter your event name"
+                  />
+                </div>
 
-            <p className="text-grey-custom text-[13px] mt-[40px]">
-              Event Location
-            </p>
-            <div className="relative w-[200px]">
-              <span className="absolute inset-y-0 left-0 flex items-center ">
-                <MdMyLocation className="text-black " size={22} />
-              </span>
-              <input
-                type="text"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
-                placeholder="Enter your event location"
-              />
-            </div>
+                <p className="text-grey-custom text-[13px] mt-[40px]">
+                  Description
+                </p>
+                <div className="relative w-[200px]">
+                  <span className="absolute inset-y-0 left-0 flex items-center ">
+                    <PiTextTBold className="text-black " size={22} />
+                  </span>
+                  <input
+                    type="text"
+                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    placeholder="Enter your event description"
+                  />
+                </div>
 
+                <div className="flex justify-between items-center w-full ">
+                  <p className="text-grey-custom text-[13px] mt-[40px] mb-3">
+                    Event Location
+                  </p>
+                  <p className="text-grey-custom text-[13px] mt-[40px] mb-3 mr-5 xl:mr-0">
+                    Event Type
+                  </p>
+                </div>
+                <div className="w-full flex justify-between ">
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    minDate={new Date()}
+                    showIcon={true}
+                    showTimeInput={true}
+                    onKeyDown={(e) => {
+                      e.preventDefault();
+                    }}
+                    dateFormat="yyyy-MM-dd HH:mm"
+                    placeholderText="Choose a date"
+                    className="text-center border-l-4 border-r-4  border-red-500 w-[160px] 2xl:w-full p-3 rounded text-sm    focus:ring-0  text-black"
+                  />
+                  <div className="relative flex flex-col w-1/2 sm:w-5/12 ">
+                    <button
+                      onClick={toggleCategory}
+                      className="flex border  justify-between pr-2 pl-4 items-center border-[#B8BBC2] rounded-lg w-full h-[30px] "
+                    >
+                      <p className="text-black text-sm leading-3">{category}</p>
+                      {isOpenCategory ? (
+                        <IoIosArrowUp className="text-black " size={15} />
+                      ) : (
+                        <IoIosArrowDown className="text-black " size={15} />
+                      )}
+                    </button>
+                    {isOpenCategory ? (
+                      <div className="absolute bg-white z-[2] w-full mt-[35px] flex flex-col border text-black border-[#B8BBC2] rounded-lg">
+                        {listCategory.map((item, i) => (
+                          <button
+                            onClick={() => handleCategory(item.name)}
+                            key={i}
+                            className="w-full flex"
+                          >
+                            <p className="text-[13px] py-2 hover:bg-primary-blue text-start hover:text-white w-full pl-4">
+                              {item.name}
+                            </p>
+                          </button>
+                        ))}
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
+                  </div>
+                </div>
+
+                <p className="text-grey-custom text-[13px] mt-[40px]">
+                  Event Location
+                </p>
+                <div className="relative w-[200px]">
+                  <span className="absolute inset-y-0 left-0 flex items-center ">
+                    <MdMyLocation className="text-black " size={22} />
+                  </span>
+                  <input
+                    type="text"
+                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    placeholder="Enter your event location"
+                  />
+                </div>
+              </div>
+            )}
             <div className="flex justify-start items-center w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px]">
               <button
-                type="submit"
+                onClick={handleLastPageEvent}
                 className="text-white w-[120px]  mt-[50px] bg-[#F5167E] py-3  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
               >
-                Next
+                {lastPageEvent ? "Previous" : "Next"}
               </button>
+              {lastPageEvent ? (
+                <button
+                  type="submit"
+                  className="text-white w-[120px] ml-2 mt-[50px] bg-[#F5167E] py-3  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
+                >
+                  Submit
+                </button>
+              ) : (
+                <div></div>
+              )}
             </div>
           </form>
         </div>
