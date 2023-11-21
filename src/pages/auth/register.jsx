@@ -226,7 +226,7 @@ export default function Register() {
             </div>
           </form>
 
-          <div className="sm:self-start xl:ml-[120px] md:ml-[70px] sm:ml-[40px] w-[calc(25vw-50px)] min-w-[270px]">
+          {/* <div className="sm:self-start xl:ml-[120px] md:ml-[70px] sm:ml-[40px] w-[calc(25vw-50px)] min-w-[270px]">
             <p className="flex justify-center  text-black text-[16px] my-[30px]">
               or continue with
             </p>
@@ -251,7 +251,7 @@ export default function Register() {
                 />
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block ">
           <Image

@@ -28,7 +28,7 @@ export default function UploadPayment() {
       const filenameWithPrefix = `Bukti_Pembayaran.${selectedImage.name
         .split(".")
         .pop()}`;
-      setUploadedFilename(filenameWithPrefix);
+      setUploadedFilename(filenameWithPrefix); 
     }
   };
 
