@@ -1,5 +1,3 @@
-"use client";
-
 import { IoIosArrowForward } from "react-icons/io";
 import FilterButton from "@/components/home/filter_button";
 import CardEvent from "@/components/home/card_event";
@@ -7,10 +5,12 @@ import { useState, useEffect } from "react";
 import HeaderComp from "@/components/header_comp";
 import FooterComp from "@/components/footer_comp";
 import MakeEvent from "@/components/event/make_event";
+import axios from "axios";
 
 export default function Home() {
   const [showMoreUpcoming, setShowMoreUpcoming] = useState(false);
   const [showMorePersonalized, setShowMorePersonalized] = useState(false);
+  const [eventsArray, setEventsArray] = useState([]);
 
   const toggleShowMoreUpcoming = () => {
     setShowMoreUpcoming(!showMoreUpcoming);
@@ -41,6 +41,8 @@ export default function Home() {
     // Call handler right away so state gets updated with initial window size
     handleResize();
 
+    fetchEventData();
+
     // Remove event listener on cleanup
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -63,6 +65,18 @@ export default function Home() {
     } else {
       return 9;
     }
+  }
+
+  function fetchEventData() {
+    axios
+      .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/events")
+      .then((res) => {
+        setEventsArray(res.data.events);
+        console.log(res.data.events);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -117,22 +131,26 @@ export default function Home() {
           </div>
         </div>
         <div className="grid grid-cols-1 min-[800px]:grid-cols-2 xl:grid-cols-3 gap-7">
-          {Array.from(
+          {/* {Array.from(
             {
               length: showMoreUpcoming
                 ? getUpcomingEventCardShow()
                 : getUpcomingEventCardHide(),
             },
-            (_, index) => (
-              <CardEvent
-                month="JUN"
-                date="20"
-                title="Akurat Festival"
-                subtitle="We’ll get you directly seated and inside for you to enjoy the show. Lest join with us"
-                imagePath="/home/event_image.png"
-              />
-            )
-          )}
+            (_, index) => ( */}
+              <div>
+                {eventsArray.map((event) => (
+                  <CardEvent
+                    price= {event.eventPrice}
+                    quota= {event.eventQuota}
+                    title= {event.eventName}
+                    subtitle= {event.eventDescription}
+                    imagePath="/home/event_image.png"
+                  />
+                ))}
+              </div>
+            {/* )
+          )} */}
         </div>
         <div className="flex justify-center items-center mt-10 mb-10">
           <button
@@ -154,8 +172,8 @@ export default function Home() {
             },
             (_, index) => (
               <CardEvent
-                month="APR"
-                date="14"
+                price="APR"
+                quota="14"
                 title="Wonder Girls 2010 Wonder Girls World Tour San Francisco"
                 subtitle="We’ll get you directly seated and inside for you to enjoy the show."
                 imagePath="/home/event_image2.png"

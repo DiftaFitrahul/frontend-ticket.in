@@ -1,4 +1,4 @@
-export default function CardEvent({ title, subtitle, imagePath, month, date }) {
+export default function CardEvent({ title, subtitle, imagePath, quota, price }) {
   return (
     <div className="flex flex-col w-[410px] h-[400px]  bg-white rounded-3xl">
       <img
@@ -8,8 +8,8 @@ export default function CardEvent({ title, subtitle, imagePath, month, date }) {
       />
       <div className="flex items-start justify-start  mt-4 mx-6">
         <div className="flex flex-col items-center mr-5">
-          <p className="text-[#3D37F1] font-bold text-[15px] mt-1">{month}</p>
-          <p className="text-black font-bold text-[35px]">{date}</p>
+          <p className="text-[#3D37F1] text-center font-bold text-[15px] mt-1">{quota} Tickets</p>
+          <p className="text-black font-bold text-[35px]">{price}K</p>
         </div>
         <div className="flex flex-col ">
           <h1 className="text-black font-bold text-[21px]">{title}</h1>

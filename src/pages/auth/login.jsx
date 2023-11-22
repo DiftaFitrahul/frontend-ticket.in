@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,7 +31,8 @@ export default function Login() {
       .then((res) => {
         alert("Login Success");
         console.log(res);
-        // window.location.href = "/";
+        Cookies.set("Auth", res.data.token, { expires: 1 });
+        window.location.href = "/";
       })
       .catch((err) => {
         alert("Login Failed");
