@@ -1,7 +1,7 @@
 import { useState } from "react";
-import HeaderComp from "@/components/header_comp";
-import FooterComp from "@/components/footer_comp";
-import MakeEvent from "@/components/event/make_event";
+import HeaderComp from "@/components/HeaderComp";
+import FooterComp from "@/components/FooterComp";
+import MakeEvent from "@/components/event/MakeEvent";
 
 export default function FillIdentityPayment() {
   const [selectedGender, setSelectedGender] = useState("Choose");

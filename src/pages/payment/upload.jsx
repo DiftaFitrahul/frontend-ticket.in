@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import MakeEvent from "@/components/event/make_event";
-import FooterComp from "@/components/footer_comp";
-import HeaderComp from "@/components/header_comp";
+import MakeEvent from "@/components/event/MakeEvent";
+import FooterComp from "@/components/FooterComp";
+import HeaderComp from "@/components/HeaderComp";
 
 export default function UploadPayment() {
   const [imagePath, setImagePath] = useState(false);

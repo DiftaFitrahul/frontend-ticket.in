@@ -1,10 +1,10 @@
 import { IoIosArrowForward } from "react-icons/io";
-import FilterButton from "@/components/home/filter_button";
-import CardEvent from "@/components/home/card_event";
+import FilterButton from "@/components/home/FilterButton";
+import CardEvent from "@/components/home/CardEvent";
 import { useState, useEffect } from "react";
-import HeaderComp from "@/components/header_comp";
-import FooterComp from "@/components/footer_comp";
-import MakeEvent from "@/components/event/make_event";
+import HeaderComp from "@/components/HeaderComp";
+import FooterComp from "@/components/FooterComp";
+import MakeEvent from "@/components/event/MakeEvent";
 import axios from "axios";
 
 export default function Home() {
