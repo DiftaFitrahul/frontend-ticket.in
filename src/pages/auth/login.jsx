@@ -5,6 +5,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/authSlice';
+import { useContext } from "react";
+import { LoadingContext } from "@/context/LoadingContext";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,6 +14,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
@@ -24,6 +27,7 @@ export default function Login() {
   // TODO: BEAUTIFY ERR AND SUCCESS
   async function handleSubmit(e) {
     e.preventDefault();
+    setIsLoading(true);
 
     axios
       .post(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/login", {
@@ -35,10 +39,12 @@ export default function Login() {
         console.log(res);
         Cookies.set("Auth", res.data.token, { expires: 1 });
         dispatch(login());
+        setIsLoading(false);
         window.location.href = "/";
       })
       .catch((err) => {
         alert("Login Failed");
+        setIsLoading(false);
         console.log(err);
       });
   }
