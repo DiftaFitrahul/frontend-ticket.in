@@ -1,15 +1,17 @@
-"use client";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/authSlice';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
@@ -32,6 +34,7 @@ export default function Login() {
         alert("Login Success");
         console.log(res);
         Cookies.set("Auth", res.data.token, { expires: 1 });
+        dispatch(login());
         window.location.href = "/";
       })
       .catch((err) => {

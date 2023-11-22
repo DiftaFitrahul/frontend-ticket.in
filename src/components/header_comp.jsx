@@ -3,8 +3,13 @@ import Link from "next/link";
 import Logo from "@/../public/logo.png";
 import { BsSearch } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
+import { useSelector } from 'react-redux';
 
 export default function HeaderComp() {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  console.log(isLoggedIn);
+
   return (
     <nav className="flex w-full bg-[#242565] flex-row items-center justify-between fixed top-0 px-14 z-10 py-[22px] min-[700px]:py-0">
       <Image
@@ -44,12 +49,21 @@ export default function HeaderComp() {
         <Link href="" className="text-white py-10 px-5">
           Contact
         </Link>
+        {isLoggedIn ? (
+           <Link
+           href="/"
+           className="border text-white border-white py-2 px-9 rounded-full mr-5"
+         >
+         Dashboard
+         </Link>
+        ) : (
         <Link
           href="/auth/login"
           className="border text-white border-white py-2 px-9 rounded-full mr-5"
         >
-          Login
+        Login
         </Link>
+        )}
         <Link
           href="/auth/register"
           className="py-2 px-9 text-white bg-[#3032B1] rounded-full"
