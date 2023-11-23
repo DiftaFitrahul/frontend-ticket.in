@@ -8,6 +8,7 @@ import MakeEvent from "@/components/event/MakeEvent";
 import axios from "axios";
 import { useContext } from "react";
 import { LoadingContext } from "@/context/LoadingContext";
+import Head from "next/head";
 
 export default function Home() {
   const [eventsArray, setEventsArray] = useState([]);
@@ -33,6 +34,12 @@ export default function Home() {
   }
 
   return (
+    <>
+    <Head>
+			<title>Home | ticket.in</title>
+			<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+		</Head>
+
     <main>
       <div className="flex flex-col justify-center items-center bg-neutral-100">
         <div className="relative flex justify-center items-center w-full min-h-screen ">
@@ -98,5 +105,6 @@ export default function Home() {
         <FooterComp />
       </div>
     </main>
+    </>
   );
 }
