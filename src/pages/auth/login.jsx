@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../redux/authSlice';
 import { useContext } from "react";
 import { LoadingContext } from "@/context/LoadingContext";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,7 +25,6 @@ export default function Login() {
     setRememberMe(!rememberMe);
   };
 
-  // TODO: BEAUTIFY ERR AND SUCCESS
   async function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -35,17 +35,21 @@ export default function Login() {
         password,
       })
       .then((res) => {
-        alert("Login Success");
-        console.log(res);
         Cookies.set("Auth", res.data.token, { expires: 1 });
         dispatch(login());
         setIsLoading(false);
-        window.location.href = "/";
+        toast.success("Login Berhasil!"), {
+          zIndex: 9999,
+        };
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
       })
       .catch((err) => {
-        alert("Login Failed");
         setIsLoading(false);
-        console.log(err);
+        toast.error("Login Gagal!"), {
+          zIndex: 9999,
+        };
       });
   }
 

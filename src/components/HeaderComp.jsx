@@ -7,16 +7,20 @@ import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 import { logout } from '@/redux/authSlice';
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 export default function HeaderComp() {
 	const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 	const dispatch = useDispatch();
 
 	console.log(isLoggedIn);
-	
+
 	const handleLogout = () => {
     dispatch(logout());
 		Cookies.remove("Auth");
+		toast.success("Logout Berhasil!"), {
+			zIndex: 9999,
+		};
   };
 
 	return (
