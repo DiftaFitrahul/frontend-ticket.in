@@ -6,76 +6,29 @@ import HeaderComp from "@/components/HeaderComp";
 import FooterComp from "@/components/FooterComp";
 import MakeEvent from "@/components/event/MakeEvent";
 import axios from "axios";
+import { useContext } from "react";
+import { LoadingContext } from "@/context/LoadingContext";
 
 export default function Home() {
-  const [showMoreUpcoming, setShowMoreUpcoming] = useState(false);
-  const [showMorePersonalized, setShowMorePersonalized] = useState(false);
   const [eventsArray, setEventsArray] = useState([]);
-
-  const toggleShowMoreUpcoming = () => {
-    setShowMoreUpcoming(!showMoreUpcoming);
-  };
-  const toggleShowMorePersonalized = () => {
-    setShowMorePersonalized(!showMorePersonalized);
-  };
-
-  const [windowSize, setWindowSize] = useState({
-    width: undefined,
-    height: undefined,
-  });
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
 
   useEffect(() => {
-    // only execute all the code below in client side
-    // Handler to call on window resize
-    function handleResize() {
-      // Set window width/height to state
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Call handler right away so state gets updated with initial window size
-    handleResize();
-
     fetchEventData();
-
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  function getUpcomingEventCardHide() {
-    if (windowSize.width <= 800) {
-      return 2;
-    } else if (windowSize.width <= 1280) {
-      return 4;
-    } else {
-      return 6;
-    }
-  }
-
-  function getUpcomingEventCardShow() {
-    if (windowSize.width <= 800) {
-      return 4;
-    } else if (windowSize.width <= 1280) {
-      return 6;
-    } else {
-      return 9;
-    }
-  }
-
   function fetchEventData() {
+    setIsLoading(true);
+
     axios
       .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/events")
       .then((res) => {
         setEventsArray(res.data.events);
-        console.log(res.data.events);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsLoading(false);
       });
   }
 
@@ -122,7 +75,7 @@ export default function Home() {
             <IoIosArrowForward className="text-[#3D37F1] text-[60px] right-[20px] text-white " />
           </div>
         </div>
-        <div className="flex flex-col min-[1350px]:flex-row  justify-between w-4/6   mt-[100px] mb-[100px] justify-center items-center">
+        <div className="flex flex-col min-[1350px]:flex-row  justify-between w-4/6 mt-[100px] mb-[100px] justify-center items-center">
           <div className="text-[#242565] text-[40px]">Upcoming Events</div>
           <div className="flex flex-wrap mt-5 xl:mt-0  justify-center items-center h-[150px]">
             <FilterButton title="Weekdays" />
@@ -131,63 +84,15 @@ export default function Home() {
           </div>
         </div>
         <div className="grid grid-cols-1 min-[800px]:grid-cols-2 xl:grid-cols-3 gap-7">
-          {/* {Array.from(
-            {
-              length: showMoreUpcoming
-                ? getUpcomingEventCardShow()
-                : getUpcomingEventCardHide(),
-            },
-            (_, index) => ( */}
-              <div>
-                {eventsArray.map((event) => (
-                  <CardEvent
-                    price= {event.eventPrice}
-                    quota= {event.eventQuota}
-                    title= {event.eventName}
-                    subtitle= {event.eventDescription}
-                    imagePath="/home/event_image.png"
-                  />
-                ))}
-              </div>
-            {/* )
-          )} */}
-        </div>
-        <div className="flex justify-center items-center mt-10 mb-10">
-          <button
-            onClick={toggleShowMoreUpcoming}
-            className=" h-[50px] w-[160px] text-[#3D37F1] border border-2 border-[#3D37F1] font-medium rounded-full text-[18px] mr-5"
-          >
-            {showMoreUpcoming ? "Show Less" : "Show More"}
-          </button>
-        </div>
-        <div className="flex justify-between w-4/6   mt-[100px] mb-[100px] justify-center items-center">
-          <div className="text-[#242565] text-[40px]">Personalized For You</div>
-        </div>
-        <div className="grid grid-cols-1 min-[800px]:grid-cols-2 xl:grid-cols-3 gap-7">
-          {Array.from(
-            {
-              length: showMoreUpcoming
-                ? getUpcomingEventCardShow()
-                : getUpcomingEventCardHide(),
-            },
-            (_, index) => (
+            {eventsArray.map((event) => (
               <CardEvent
-                price="APR"
-                quota="14"
-                title="Wonder Girls 2010 Wonder Girls World Tour San Francisco"
-                subtitle="We’ll get you directly seated and inside for you to enjoy the show."
-                imagePath="/home/event_image2.png"
+                price= {event.eventPrice}
+                quota= {event.eventQuota}
+                title= {event.eventName}
+                subtitle= {event.eventDescription}
+                imagePath="/home/event_image.png"
               />
-            )
-          )}
-        </div>
-        <div className="flex justify-center items-center mt-10 mb-10">
-          <button
-            onClick={toggleShowMorePersonalized}
-            className=" h-[50px] w-[160px] text-[#3D37F1] border border-2 border-[#3D37F1] font-medium rounded-full text-[18px] mr-5"
-          >
-            {showMorePersonalized ? "Show Less" : "Show More"}
-          </button>
+              ))}
         </div>
         <MakeEvent />
         <FooterComp />
