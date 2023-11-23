@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 import { AiOutlinePhone } from "react-icons/ai";
+import { useContext } from "react";
+import { LoadingContext } from "@/context/LoadingContext";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,8 +14,7 @@ export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-
-  const [rememberMe, setRememberMe] = useState(false);
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
@@ -22,13 +24,9 @@ export default function Register() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const handleCheckboxChange = () => {
-    setRememberMe(!rememberMe);
-  };
-
-  // TODO: BEAUTIFY ERR AND SUCCESS LOG
   async function handleSubmit(e) {
     e.preventDefault();
+    setIsLoading(true);
 
     axios
       .post(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/register", {
@@ -38,11 +36,19 @@ export default function Register() {
         phoneNumber: phoneNumber,
       })
       .then((res) => {
-        alert("Register Success");
-        window.location.href = "/auth/login";
+        setIsLoading(false);
+        toast.success("Register Berhasil! Silahkan Cek Email Anda!"), {
+          zIndex: 9999,
+        };
+        setTimeout(() => {
+          window.location.href = "/auth/login";
+        }, 1000);
       })
       .catch((err) => {
-        alert(err.response.data.message);
+        setIsLoading(false);
+        toast.error("Register Gagal!"), {
+          zIndex: 9999,
+        };
       });
   }
 
@@ -196,7 +202,7 @@ export default function Register() {
             </div>
 
             <div className="relative mt-[10px]">
-              <label>
+              {/* <label>
                 <input
                   type="checkbox"
                   name="rememberMe"
@@ -206,7 +212,7 @@ export default function Register() {
                 <span className="absolute inset-y-0 left-5 mt-[2.5px] flex text-black text-[12px]">
                   Remember me
                 </span>
-              </label>
+              </label> */}
               <div>
                 <Link
                   href=""

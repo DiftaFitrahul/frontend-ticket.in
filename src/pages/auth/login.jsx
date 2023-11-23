@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -19,10 +18,6 @@ export default function Login() {
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
-  };
-
-  const handleCheckboxChange = () => {
-    setRememberMe(!rememberMe);
   };
 
   async function handleSubmit(e) {
@@ -135,17 +130,6 @@ export default function Login() {
             </div>
 
             <div className="relative mt-[10px]">
-              <label>
-                <input
-                  type="checkbox"
-                  name="rememberMe"
-                  checked={rememberMe}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="absolute inset-y-0 left-5 mt-[2.5px] flex text-black text-[12px]">
-                  Remember me
-                </span>
-              </label>
               <div>
                 <Link
                   href=""
