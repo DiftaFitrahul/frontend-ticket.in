@@ -2,11 +2,15 @@ import { useState, useRef } from "react";
 import MakeEvent from "@/components/event/MakeEvent";
 import FooterComp from "@/components/FooterComp";
 import HeaderComp from "@/components/HeaderComp";
+import axios from "axios";
 
+// TODO: SEND PAYMENT DATA TO BACKEND
 export default function UploadPayment() {
   const [imagePath, setImagePath] = useState(false);
   const [progress, setProgress] = useState(0);
   const [uploadedFilename, setUploadedFilename] = useState(null);
+  const orderId = JSON.parse(localStorage.getItem("eventData")).code;
+  const totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
 
   const fileInputRef = useRef(null);
 
@@ -16,6 +20,7 @@ export default function UploadPayment() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     console.log("Payment Success");
   }
 
@@ -24,7 +29,6 @@ export default function UploadPayment() {
       const selectedImage = e.target.files[0];
       setImagePath(selectedImage);
 
-      // Display the filename on top of the icon
       const filenameWithPrefix = `Bukti_Pembayaran.${selectedImage.name
         .split(".")
         .pop()}`;
@@ -36,15 +40,13 @@ export default function UploadPayment() {
     if (imagePath) {
       const imageUrl = URL.createObjectURL(imagePath);
 
-      // Create a temporary link and trigger a click to start the download
       const downloadLink = document.createElement("a");
       downloadLink.href = imageUrl;
-      downloadLink.download = uploadedFilename || "image"; // Use uploaded filename if available, or a default name
+      downloadLink.download = uploadedFilename || "image";
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
 
-      // Revoke the object URL to free up resources
       URL.revokeObjectURL(imageUrl);
     }
   };
@@ -54,7 +56,7 @@ export default function UploadPayment() {
       <HeaderComp />
       <div className="flex flex-col items-start p-10 lg:p-20 bg-white mt-[200px] w-[calc(70vw)]  mb-[50px] rounded-xl shadow-[0_25px_50px_-12px_rgba(56,57,157,0.3)]">
         <h1 className="text-[#242565] font-extrabold text-[40px]">
-          Pay with BRI Virtual Account
+          Pay with Bank Transfer
         </h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col w-full mt-10 ">
@@ -63,19 +65,26 @@ export default function UploadPayment() {
               Order ID
             </label>
             <p className="text-black font-medium text-[20px]  sm:text-[30px]">
-              39168-D568A-329
+              {orderId}
             </p>
             <label className="text-[#242565] text-[20px] sm:text-[25px] mt-6">
               Total
             </label>
             <p className="text-black font-medium text-[20px] sm:text-[30px]">
-              muhibnu2000@gmail.com
+              {totalPrice && totalPrice.toLocaleString("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              })
+              }
             </p>
             <label className="text-[#242565] text-[20px] sm:text-[25px] mt-6">
-              BRI Virtual Account
+              Account Number
             </label>
-            <p className="text-black font-medium text-[20px]  sm:text-[30px]">
-              8878803200028943
+            <p className="text-black font-medium text-[20px] sm:text-[25px]">
+              BRI: 8878803200028943 <br />
+              BNI: 8878803200028943 <br />
+              BCA: 8878803200028943
+
             </p>
             <p className="text-[#242565] text-[20px] sm:text-[25px] mt-6 ">
               Upload payment receipt
