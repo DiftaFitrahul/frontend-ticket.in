@@ -28,7 +28,7 @@ export default function FooterComp() {
           </div>
         </div>
         <div className=" w-1/4 "></div>
-        <div className="flex flex-col md:flex-row justify-between w-[calc(100vh-250px)] my-2 xl:mt-0 ">
+        <div className="flex flex-col md:flex-row justify-between w-full my-2 xl:mt-0 ">
           <div className="flex flex-col items-start mt-8">
             <p className="text-[18px] font-bold mb-4">Ticket.In</p>
 
@@ -42,7 +42,7 @@ export default function FooterComp() {
             <button className="font-light font-[14px] mt-1">Terms</button>
           </div>
 
-          <div className="flex flex-col w-[400px] sm:w-[430px]  items-start mt-8">
+          <div className="sm:flex flex-col w-[400px] hidden sm:w-[430px]  items-start mt-8">
             <p className="text-[18px] font-bold mb-4">Stay In The Loop</p>
 
             <p className="font-light font-[14px] mt-1">
