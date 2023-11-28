@@ -55,7 +55,10 @@ export default function EventsRegistered() {
   return (
     <div className="flex flex-col justify-center items-center bg-neutral-100">
       <HeaderComp />
-      <div className="mt-[160px]"></div>
+      <div className="mt-[160px]">
+        <h1 className="text-black font-bold text-[36px]">Event Registered</h1>
+      </div>
+
       {listDataEventRegistered.map((dataEventRegistered, index) => {
         return (
           <EventsRegisteredComp

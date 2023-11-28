@@ -49,7 +49,13 @@ const Sidebar = () => {
           X
         </button>
       </div>
-      <div className="flex flex-col w-full h-[150px] px-3">
+      <div className="flex flex-col w-full h-[200px] px-3">
+        <Link
+          href="/event/registered"
+          className="text-white hover:text-[#242565] pl-3 pt-3   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
+        >
+          Event Registered
+        </Link>
         <Link
           href=""
           className="text-white hover:text-[#242565] pl-3 pt-3   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
@@ -72,7 +78,7 @@ const Sidebar = () => {
         </Link>
       </div>
       <div className="h-4/6 xl:h-3/4  flex flex-col">
-        <div className="mt-auto mb-10 ml-4">
+        <div className="mt-auto mb-20 ml-4">
           {isLoggedIn ? (
             <Link
               href="/"
