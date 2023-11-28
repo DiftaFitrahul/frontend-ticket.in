@@ -37,12 +37,14 @@ export default function HeaderComp() {
   return (
     <nav className="w-creen h-screen fixed left-0 z-10">
       <div className="flex w-full bg-[#242565] flex-row items-center justify-between fixed top-0 px-14 z-10 py-[22px] min-[700px]:py-0">
-        <Image
-          src={Logo}
-          alt="Picture of the author"
-          unoptimized
-          className="w-[180px] hidden min-[700px]:block mr-5"
-        />
+        <Link href="/">
+          <Image
+            src={Logo}
+            alt="Picture of the author"
+            unoptimized
+            className="w-[180px] hidden min-[700px]:block mr-5"
+          />
+        </Link>
 
         {/* <div className="flex flex-growth w-full xl:w-1/2 h-[60px] bg-white max-w-[800px] rounded-full min-w-[350px] relative justify-center items-center">
           <input

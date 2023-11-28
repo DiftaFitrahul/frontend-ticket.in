@@ -36,36 +36,42 @@ export default function ConfirmIdentity() {
       })
       .catch((err) => {
         setIsLoading(false);
-        toast.error("Gagal Mengambil Data!"), {
-          zIndex: 9999,
-        };
-      }
-    );
+        toast.error("Gagal Mengambil Data!"),
+          {
+            zIndex: 9999,
+          };
+      });
   };
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if(!isChecked) {
-      toast.error("Anda belum menyetujui syarat dan ketentuan!"), {
-        zIndex: 9999,
-      };
+    if (!isChecked) {
+      toast.error("Anda belum menyetujui syarat dan ketentuan!"),
+        {
+          zIndex: 9999,
+        };
       return;
     }
 
-    setIsLoading(true)
+    setIsLoading(true);
+    axios;
     axios
-      axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/register-event?eventId=${eventId}`, {    
-      }, {
+      .post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/register-event?eventId=${eventId}`,
+        {},
+        {
           headers: {
             Authorization: `Bearer ${Cookies.get("Auth")}`,
           },
-      })
+        }
+      )
       .then((res) => {
         setIsLoading(false);
-        toast.success("Berhasil Mendaftar Event!"), {
-          zIndex: 9999,
-        };
+        toast.success("Berhasil Mendaftar Event!"),
+          {
+            zIndex: 9999,
+          };
         console.log(res.data);
         localStorage.setItem("eventData", JSON.stringify(res.data.userEvent));
         setTimeout(() => {
@@ -74,9 +80,10 @@ export default function ConfirmIdentity() {
       })
       .catch((err) => {
         setIsLoading(false);
-        toast.error("Gagal Mendaftar Event!"), {
-          zIndex: 9999,
-        };
+        toast.error("Gagal Mendaftar Event!"),
+          {
+            zIndex: 9999,
+          };
         console.log(err);
       });
   }

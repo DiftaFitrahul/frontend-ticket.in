@@ -1,14 +1,19 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { toast } from "react-toastify";
 import MakeEvent from "@/components/event/MakeEvent";
 import FooterComp from "@/components/FooterComp";
 import HeaderComp from "@/components/HeaderComp";
+import { LoadingContext } from "@/context/LoadingContext";
+import Cookies from "js-cookie";
 import axios from "axios";
 
 // TODO: SEND PAYMENT DATA TO BACKEND
 export default function UploadPayment() {
   const [imagePath, setImagePath] = useState(false);
   const [progress, setProgress] = useState(0);
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
   const [uploadedFilename, setUploadedFilename] = useState(null);
+  const userEventId = JSON.parse(localStorage.getItem("eventData"))._id;
   const orderId = JSON.parse(localStorage.getItem("eventData")).code;
   const totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
 
@@ -18,21 +23,78 @@ export default function UploadPayment() {
     fileInputRef.current.click();
   };
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    console.log("Payment Success");
-  }
-
   const handleChange = (e) => {
+    e.preventDefault();
     if (e.target.files[0]) {
       const selectedImage = e.target.files[0];
+
       setImagePath(selectedImage);
 
       const filenameWithPrefix = `Bukti_Pembayaran.${selectedImage.name
         .split(".")
         .pop()}`;
-      setUploadedFilename(filenameWithPrefix); 
+      setUploadedFilename(filenameWithPrefix);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("halo banggggggg");
+    console.log(imagePath);
+    if (!imagePath) {
+      toast.error("Anda belum mengupload bukti pembayaran!"),
+        {
+          zIndex: 9999,
+        };
+      return;
+    }
+    try {
+      setIsLoading(true);
+      const formData = new FormData();
+      formData.append("paymentFile", imagePath);
+
+      axios
+        .post(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/upload-payment?id=${userEventId}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${Cookies.get("Auth")}`,
+            },
+          }
+        )
+        .then((res) => {
+          setIsLoading(false);
+          toast.success("Berhasil Mendaftar Event!"),
+            {
+              zIndex: 9999,
+            };
+          console.log(res.data);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+
+          if (err.response.data.message === "File too large") {
+            toast.error("Bukti pembayaran sudah diupload!"),
+              {
+                zIndex: 9999,
+              };
+          } else {
+            toast.error("Gagal Upload Bukti Pembayaran!"),
+              {
+                zIndex: 9999,
+              };
+          }
+        });
+
+      // Handle the response from the server
+    } catch (error) {
+      setIsLoading(false);
+      toast.error("Gagal Upload Bukti Pembayaran!"),
+        {
+          zIndex: 9999,
+        };
     }
   };
 
@@ -71,11 +133,11 @@ export default function UploadPayment() {
               Total
             </label>
             <p className="text-black font-medium text-[20px] sm:text-[30px]">
-              {totalPrice && totalPrice.toLocaleString("id-ID", {
-                style: "currency",
-                currency: "IDR",
-              })
-              }
+              {totalPrice &&
+                totalPrice.toLocaleString("id-ID", {
+                  style: "currency",
+                  currency: "IDR",
+                })}
             </p>
             <label className="text-[#242565] text-[20px] sm:text-[25px] mt-6">
               Account Number
@@ -84,7 +146,6 @@ export default function UploadPayment() {
               BRI: 8878803200028943 <br />
               BNI: 8878803200028943 <br />
               BCA: 8878803200028943
-
             </p>
             <p className="text-[#242565] text-[20px] sm:text-[25px] mt-6 ">
               Upload payment receipt
@@ -92,6 +153,7 @@ export default function UploadPayment() {
           </div>
 
           <button
+            type="button"
             onClick={handleDownload}
             className="text-black mt-5 text-[20px] hover:underline"
           >
@@ -104,7 +166,7 @@ export default function UploadPayment() {
             onChange={handleChange}
             accept="image/*"
           />
-          <button onClick={getImage} className="self-center my-7">
+          <button type="button" onClick={getImage} className="self-center my-7">
             <img src="\upload_payment_icon.png" alt="payment upload" />
           </button>
 
