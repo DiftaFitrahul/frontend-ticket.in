@@ -11,10 +11,12 @@ import { LoadingContext } from "@/context/LoadingContext";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Sidebar from "@/components/SidebarComp";
+import AboutUs from "@/components/home/AboutUs";
 
 export default function Home() {
   const [eventsArray, setEventsArray] = useState([]);
   const { isLoading, setIsLoading } = useContext(LoadingContext);
+  const [showAbout, setShowAbout] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -58,6 +60,9 @@ export default function Home() {
       </Head>
 
       <main>
+        {
+          showAbout && <AboutUs setShowAbout={setShowAbout} />
+        }
         <div className="flex flex-col justify-center items-center bg-neutral-100">
           <div className="relative flex justify-center items-center w-full min-h-screen ">
             <img
@@ -68,7 +73,7 @@ export default function Home() {
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.9]"></div>
             <HeaderComp />
 
-            <div className="text-black relative z-[2] flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center mx-[5%] sm:ml-10">
+            <div className="text-black relative z-[2] flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center mx-[5%] sm:ml-10 py-20">
               <img
                 src="/home/poster.png"
                 alt="coba"
@@ -84,12 +89,17 @@ export default function Home() {
                   kecil yang lama terpisah, bertemu kembali di Kalimantan untuk
                   pelepasliaran orang utan.
                 </p>
-                <div className="flex flex-col sm:flex-row mt-3">
+                <div className="flex flex-col sm:flex-row mt-3 gap-3">
                   <button className="bg-[#DF1875] h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
                     Get Ticket
                   </button>
                   <button className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
                     Learn More
+                  </button>
+                  <button className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]" onClick={() => {
+                    setShowAbout(true);
+                  }}>
+                    About Us
                   </button>
                 </div>
               </div>
