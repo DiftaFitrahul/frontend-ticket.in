@@ -9,12 +9,16 @@ import axios from "axios";
 import { useContext } from "react";
 import { LoadingContext } from "@/context/LoadingContext";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [eventsArray, setEventsArray] = useState([]);
   const { isLoading, setIsLoading } = useContext(LoadingContext);
+  const router = useRouter();
 
   useEffect(() => {
+    localStorage.removeItem('selectedEventData');
+
     fetchEventData();
   }, []);
 
@@ -32,6 +36,15 @@ export default function Home() {
         setIsLoading(false);
       });
   }
+
+  const handleCardEventClick = (index) => {
+    setIsLoading(true);
+    const selectedEventData = eventsArray[index];
+    localStorage.setItem('selectedEventData', JSON.stringify(selectedEventData));
+    console.log(selectedEventData);
+    router.push('/event/detail');
+    setIsLoading(false);
+  };
 
   return (
     <>
@@ -91,14 +104,16 @@ export default function Home() {
           </div>
         </div>
         <div className="grid grid-cols-1 min-[800px]:grid-cols-2 xl:grid-cols-3 gap-7">
-            {eventsArray.map((event) => (
-              <CardEvent
-                price= {event.eventPrice}
-                quota= {event.eventQuota}
-                title= {event.eventName}
-                subtitle= {event.eventDescription}
-                imagePath="/home/event_image.png"
-              />
+            {eventsArray.map((event, index) => (
+              <button onClick={() => handleCardEventClick(index)}>
+                <CardEvent key={index}
+                  price= {event.eventPrice}
+                  quota= {event.eventQuota}
+                  title= {event.eventName}
+                  subtitle= {event.eventDescription}
+                  imagePath="/home/event_image.png"
+                />
+              </button>
               ))}
         </div>
         <MakeEvent />
