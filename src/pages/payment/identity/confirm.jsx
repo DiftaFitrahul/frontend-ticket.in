@@ -14,6 +14,8 @@ export default function ConfirmIdentity() {
   const [userData, setUserData] = useState({});
   const { isLoading, setIsLoading } = useContext(LoadingContext);
   const router = useRouter();
+  const eventSelected = JSON.parse(localStorage.getItem("selectedEventData"));
+  const eventId = eventSelected._id;
 
   const handleCheckboxChange = () => {
     setChecked(!isChecked);
@@ -51,7 +53,32 @@ export default function ConfirmIdentity() {
       return;
     }
 
-    router.push("../upload");
+    setIsLoading(true)
+    axios
+      axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/register-event?eventId=${eventId}`, {    
+      }, {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("Auth")}`,
+          },
+      })
+      .then((res) => {
+        setIsLoading(false);
+        toast.success("Berhasil Mendaftar Event!"), {
+          zIndex: 9999,
+        };
+        console.log(res.data);
+        localStorage.setItem("eventData", JSON.stringify(res.data.userEvent));
+        setTimeout(() => {
+          router.push("../upload");
+        }, 1000);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        toast.error("Gagal Mendaftar Event!"), {
+          zIndex: 9999,
+        };
+        console.log(err);
+      });
   }
 
   useEffect(() => {
