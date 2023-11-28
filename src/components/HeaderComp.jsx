@@ -44,7 +44,7 @@ export default function HeaderComp() {
           className="w-[180px] hidden min-[700px]:block mr-5"
         />
 
-        <div className="flex flex-growth w-full xl:w-1/2 h-[60px] bg-white max-w-[800px] rounded-full min-w-[350px] relative justify-center items-center">
+        {/* <div className="flex flex-growth w-full xl:w-1/2 h-[60px] bg-white max-w-[800px] rounded-full min-w-[350px] relative justify-center items-center">
           <input
             type="text"
             className="m-5 w-full text-black py-2 px-10 bg-transparent text-left outline-none border-none"
@@ -53,22 +53,25 @@ export default function HeaderComp() {
             className="text-black absolute text-[32px] right-[20px]"
             onClick={() => alert("search kang")}
           />
-        </div>
+        </div> */}
 
         <button
           onClick={() => {
             setShowSidebar(!showSidebar);
           }}
-          className="block xl:hidden ml-10 items-center justify-center flex"
+          className="block xl:hidden ml-10 items-center justify-center flex h-[30px] min-[700px]:h-[0]"
         >
-          <FiMenu className="text-black absolute text-[32px] right-[20px] text-white" />
+          <FiMenu className="text-black absolute text-[32px] right-[20px] text-white " />
         </button>
 
         <div className="flex flex-shrink-0 gap-5 items-center justify-center hidden xl:block">
           <Link href="" className="text-white py-10 px-5">
             Ticket
           </Link>
-          <Link href="/about" className="text-white py-10 px-5">
+          <Link href="/event/registered" className="text-white py-10 px-5 ">
+            Registered Events
+          </Link>
+          <Link href="/about" className="text-white py-10 px-5 ">
             About
           </Link>
           <Link href="" className="text-white py-10 px-5">
