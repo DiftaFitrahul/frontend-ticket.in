@@ -68,15 +68,15 @@ export default function Home() {
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.9]"></div>
             <HeaderComp />
 
-            <div className="text-black relative z-[2] flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center ml-10">
+            <div className="text-black relative z-[2] flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center mx-[5%] sm:ml-10">
               <img
                 src="/home/poster.png"
                 alt="coba"
-                className="min-w-[500px] w-3/4 max-w-[800px]"
+                className="w-[90%] sm:min-w-[500px] sm:w-3/4 max-w-[800px]"
               />
-              <div className="w-[400px] sm:w-[550px]  xl:mr-10 mt-5 xl:mt-0">
+              <div className="w-fit sm:w-[550px]  xl:mr-10 mt-5 xl:mt-0">
                 <p className="text-[18px] font-bold text-white"> Movie Party</p>
-                <h1 className="text-[50px] font-bold text-white leading-[50px] mb-3">
+                <h1 className="text-[35px] sm:text-[50px] font-bold text-white leading-[50px] mb-3 w-full">
                   Petualangan Sherina 2
                 </h1>
                 <p className="text-[18px] font-light text-white">
@@ -84,11 +84,11 @@ export default function Home() {
                   kecil yang lama terpisah, bertemu kembali di Kalimantan untuk
                   pelepasliaran orang utan.
                 </p>
-                <div className="flex mt-3">
-                  <button className="bg-[#DF1875] h-[50px] w-[160px] text-white font-medium rounded-full text-[18px] mr-5">
+                <div className="flex flex-col sm:flex-row mt-3">
+                  <button className="bg-[#DF1875] h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
                     Get Ticket
                   </button>
-                  <button className="border border-white h-[50px] w-[160px] text-white font-medium rounded-full text-[18px]">
+                  <button className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
                     Learn More
                   </button>
                 </div>
@@ -96,7 +96,7 @@ export default function Home() {
 
               <IoIosArrowForward className="text-[#3D37F1] text-[60px] right-[20px] text-white hidden xl:block" />
             </div>
-            <div className="text-black relative block xl:hidden">
+            <div className="text-black relative block hidden md:block">
               <IoIosArrowForward className="text-[#3D37F1] text-[60px] right-[20px] text-white " />
             </div>
           </div>
