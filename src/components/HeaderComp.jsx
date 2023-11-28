@@ -73,7 +73,7 @@ export default function HeaderComp() {
           <Link href="/event/registered" className="text-white py-10 px-5 ">
             Event Registered
           </Link>
-          <Link href="/about" className="text-white py-10 px-5 ">
+          <Link href="#about" className="text-white py-10 px-5 ">
             About
           </Link>
           <Link href="" className="text-white py-10 px-5">
