@@ -63,12 +63,12 @@ const Sidebar = () => {
           Ticket
         </Link>
 
-        <Link
+        {/* <Link
           href="/about"
           className="text-white hover:text-[#242565] pl-3 pt-3 h-full px-full w-full font-semibold hover:bg-white rounded-xl font-semibold"
         >
           About
-        </Link>
+        </Link> */}
 
         <Link
           href=""
