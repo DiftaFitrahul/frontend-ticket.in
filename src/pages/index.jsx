@@ -110,9 +110,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 min-[800px]:grid-cols-2 xl:grid-cols-3 gap-7">
             {eventsArray.map((event, index) => (
-              <button onClick={() => handleCardEventClick(index)}>
+              <button key={event._id} onClick={() => handleCardEventClick(index)}>
                 <CardEvent
-                  key={index}
+                  key={event._id}
                   price={event.eventPrice}
                   quota={event.eventQuota}
                   title={event.eventName}
