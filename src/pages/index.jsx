@@ -11,10 +11,12 @@ import { LoadingContext } from "@/context/LoadingContext";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Sidebar from "@/components/SidebarComp";
+import AboutOverlay from "@/components/home/AboutOverlay";
 
 export default function Home() {
   const [eventsArray, setEventsArray] = useState([]);
   const { isLoading, setIsLoading } = useContext(LoadingContext);
+  const [showAbout, setShowAbout] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -67,6 +69,9 @@ export default function Home() {
             />
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.9]"></div>
             <HeaderComp />
+            {
+              showAbout ? <AboutOverlay setIsOpen={setShowAbout} /> : ""
+            }
 
             <div className="text-black relative z-[2] flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center ml-10">
               <img
@@ -84,12 +89,15 @@ export default function Home() {
                   kecil yang lama terpisah, bertemu kembali di Kalimantan untuk
                   pelepasliaran orang utan.
                 </p>
-                <div className="flex mt-3">
-                  <button className="bg-[#DF1875] h-[50px] w-[160px] text-white font-medium rounded-full text-[18px] mr-5">
+                <div className="flex mt-3 gap-5">
+                  <button className="bg-[#DF1875] h-[50px] w-[160px] text-white font-medium rounded-full text-[18px]">
                     Get Ticket
                   </button>
                   <button className="border border-white h-[50px] w-[160px] text-white font-medium rounded-full text-[18px]">
                     Learn More
+                  </button>
+                  <button id="about" className="border border-white h-[50px] w-[160px] text-white font-medium rounded-full text-[18px]" onClick={() => setShowAbout(true)}>
+                    About
                   </button>
                 </div>
               </div>
