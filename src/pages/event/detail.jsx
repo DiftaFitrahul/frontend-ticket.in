@@ -3,6 +3,7 @@ import MakeEvent from "@/components/event/MakeEvent";
 import FooterComp from "@/components/FooterComp";
 import HeaderComp from "@/components/HeaderComp";
 import { BsCalendarWeek } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 export default function EventDetail() {
   const eventSelected = localStorage.getItem("selectedEventData");
@@ -11,11 +12,17 @@ export default function EventDetail() {
   const [buyNow, setBuyNow] = useState(false);
   const [count, setCount] = useState(1);
   const [totalTicketPrice, setTotalTicketPrice] = useState(ticketPrice);
+  const router = useRouter();
   const IDR = new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
   });
 
+  const handleBuy = () => {
+    localStorage.setItem("totalPrice", totalTicketPrice);
+    router.push("/payment/identity/confirm");
+  };
+  
   const handleBuyNow = () => {
     setBuyNow(true);
   };
@@ -30,6 +37,10 @@ export default function EventDetail() {
     setCount(count + 1);
     setTotalTicketPrice(ticketPrice * (count + 1));
   };
+
+  useEffect(() => {
+    localStorage.removeItem("totalPrice");
+  }, []);
 
   return (
     <div className="flex flex-col justify-center items-center bg-neutral-100">
@@ -89,7 +100,10 @@ export default function EventDetail() {
                 <p className="text-[20px]">Total</p>
                 <p className="text-[20px]">{IDR.format(totalTicketPrice)}</p>
               </div>
-              <button className="bg-[#F5167E] w-1/2 self-center py-2 mt-5 rounded-full text-[17px] lg:text-[23px]">
+              <button 
+                className="bg-[#F5167E] w-1/2 self-center py-2 mt-5 rounded-full text-[17px] lg:text-[23px]"
+                onClick={handleBuy}
+                >
                 BUY TICKET
               </button>
             </div>

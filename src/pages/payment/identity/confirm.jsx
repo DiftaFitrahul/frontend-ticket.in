@@ -1,19 +1,63 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MakeEvent from "@/components/event/MakeEvent";
 import FooterComp from "@/components/FooterComp";
 import HeaderComp from "@/components/HeaderComp";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import { useContext } from "react";
+import { LoadingContext } from "@/context/LoadingContext";
+import { useRouter } from "next/router";
 
 export default function ConfirmIdentity() {
   const [isChecked, setChecked] = useState(false);
+  const [userData, setUserData] = useState({});
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
+  const router = useRouter();
 
   const handleCheckboxChange = () => {
     setChecked(!isChecked);
   };
 
+  const fetchUserData = () => {
+    setIsLoading(true);
+
+    axios
+      .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/user", {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("Auth")}`,
+        },
+      })
+      .then((res) => {
+        setUserData(res.data.user);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        toast.error("Gagal Mengambil Data!"), {
+          zIndex: 9999,
+        };
+      }
+    );
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("Payment Success");
+
+    if(!isChecked) {
+      toast.error("Anda belum menyetujui syarat dan ketentuan!"), {
+        zIndex: 9999,
+      };
+      return;
+    }
+
+    router.push("../upload");
   }
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   return (
     <div className="flex flex-col justify-center items-center bg-neutral-100">
       <HeaderComp />
@@ -28,16 +72,13 @@ export default function ConfirmIdentity() {
 
         <form onSubmit={handleSubmit} className="flex flex-col w-full mt-5 ">
           <p className="text-black font-medium text-[20px] mt-3 sm:text-[30px]">
-            Muhammad Ibnu Ramdhani
+            {userData.name}
           </p>
           <p className="text-black font-medium text-[20px] mt-3 sm:text-[30px]">
-            muhibnu2000@gmail.com
+            {userData.email}
           </p>
           <p className="text-black font-medium text-[20px] mt-3 sm:text-[30px]">
-            +628123456789
-          </p>
-          <p className="text-black font-medium text-[20px] mt-3 sm:text-[30px]">
-            Male
+            {userData.phoneNumber}
           </p>
 
           <label className="flex items-start w-3/4 mt-20 bg-red">
