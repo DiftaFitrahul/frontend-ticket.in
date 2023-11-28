@@ -36,13 +36,13 @@ export default function HeaderComp() {
 
   return (
     <nav className="w-creen h-screen fixed left-0 z-10">
-      <div className="flex w-full bg-[#242565] flex-row items-center justify-between fixed top-0 px-14 z-10 py-[22px] min-[700px]:py-0">
+      <div className="flex w-full bg-[#242565] flex-row items-center justify-between fixed top-0 px-2 sm:px-14 z-10 py-1 sm:py-[22px] min-[700px]:py-0">
         <Link href="/">
           <Image
             src={Logo}
             alt="Picture of the author"
             unoptimized
-            className="w-[180px] hidden min-[700px]:block mr-5"
+            className="w-[140px] sm:w-[180px] mr-5"
           />
         </Link>
 
@@ -73,9 +73,9 @@ export default function HeaderComp() {
           <Link href="/event/registered" className="text-white py-10 px-5 ">
             Event Registered
           </Link>
-          <Link href="/about" className="text-white py-10 px-5 ">
+          {/* <Link href="/about" className="text-white py-10 px-5 ">
             About
-          </Link>
+          </Link> */}
           <Link href="" className="text-white py-10 px-5">
             Contact
           </Link>
