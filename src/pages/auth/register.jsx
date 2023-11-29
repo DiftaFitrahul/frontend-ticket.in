@@ -56,8 +56,8 @@ export default function Register() {
 
   return (
     <main>
-      <div className=" flex flex-row justify-center items-center h-screen w-screen bg-neutral-100">
-        <div className="flex flex-col justify-center items-center h-[calc(100vh-20px)] w-screen sm:w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px]">
+      <div className=" flex flex-row justify-center items-center h-[900px] sm:h-screen w-screen bg-neutral-100">
+        <div className="flex flex-col justify-center items-center h-[900px] sm:h-[calc(100vh-20px)] w-screen sm:w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px]">
           <div className="block min-[640px]:hidden absolute top-5 left-5">
             <Image
               src="/black_logo.png"
