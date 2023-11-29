@@ -117,12 +117,12 @@ export default function UploadPayment() {
     <div className="flex flex-col justify-center items-center bg-neutral-100">
       <HeaderComp />
       <div className="flex flex-col items-start p-10 lg:p-20 bg-white mt-[200px] w-[calc(70vw)]  mb-[50px] rounded-xl shadow-[0_25px_50px_-12px_rgba(56,57,157,0.3)]">
-        <h1 className="text-[#242565] font-extrabold text-[40px]">
+        <h1 className="text-[#242565] font-extrabold text-[30px] sm:text-[40px]">
           Pay with Bank Transfer
         </h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col w-full mt-10 ">
-          <div className="flex flex-col w-full ml-10 mb-5">
+          <div className="flex flex-col w-full ml-0 sm:ml-10 mb-5">
             <label className="text-[#242565] text-[20px] sm:text-[25px]">
               Order ID
             </label>
@@ -142,7 +142,7 @@ export default function UploadPayment() {
             <label className="text-[#242565] text-[20px] sm:text-[25px] mt-6">
               Account Number
             </label>
-            <p className="text-black font-medium text-[20px] sm:text-[25px]">
+            <p className="text-black font-medium text-[15px] sm:text-[20px] sm:text-[25px]">
               BRI: 8878803200028943 <br />
               BNI: 8878803200028943 <br />
               BCA: 8878803200028943
@@ -155,7 +155,7 @@ export default function UploadPayment() {
           <button
             type="button"
             onClick={handleDownload}
-            className="text-black mt-5 text-[20px] hover:underline"
+            className="text-black mt-5 text-[12px] sm:text-[20px] hover:underline"
           >
             {uploadedFilename && <p>{uploadedFilename}</p>}
           </button>
@@ -172,7 +172,7 @@ export default function UploadPayment() {
 
           <button
             type="submit"
-            className="mt-[40px] self-center bg-[#F5167E] py-4 w-[300px] rounded-full shadow-xl font-medium"
+            className="mt-[40px] self-center bg-[#F5167E] py-4 w-[130px] min-[250px]:w-[160px] min-[400px]:w-[280px] rounded-full shadow-xl font-medium"
           >
             Pay
           </button>
