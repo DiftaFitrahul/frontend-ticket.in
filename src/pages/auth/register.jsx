@@ -37,18 +37,20 @@ export default function Register() {
       })
       .then((res) => {
         setIsLoading(false);
-        toast.success("Register Berhasil! Silahkan Cek Email Anda!"), {
-          zIndex: 9999,
-        };
+        toast.success("Register Berhasil! Silahkan Cek Email Anda!"),
+          {
+            zIndex: 9999,
+          };
         setTimeout(() => {
           window.location.href = "/auth/login";
         }, 1000);
       })
       .catch((err) => {
         setIsLoading(false);
-        toast.error("Register Gagal!"), {
-          zIndex: 9999,
-        };
+        toast.error("Register Gagal!"),
+          {
+            zIndex: 9999,
+          };
       });
   }
 
@@ -66,14 +68,14 @@ export default function Register() {
               className="p-0"
             />
           </div>
-          <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[30px] text-black">
+          <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mx-10 font-medium text-[22px] sm:text-[30px] text-black">
             Register
           </h1>
-          <p className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[25px] mb-1 font-normal text-[16px] text-black">
+          <p className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mx-10  mb-1 font-normal text-[13px] sm:text-[16px] text-black">
             If you already have an account <br></br> You can
             <Link
               href="/auth/login"
-              className="self-start pl-[10px] mb-[100px] text-[16px] text-primary-blue font-semibold "
+              className="self-start pl-[10px] mb-[100px] text-[13px] sm:text-[16px] text-primary-blue font-semibold "
             >
               Login here !
             </Link>
@@ -95,7 +97,7 @@ export default function Register() {
               </span>
               <input
                 type="email"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -114,7 +116,7 @@ export default function Register() {
               </span>
               <input
                 type="text"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                 placeholder="Enter your username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -130,7 +132,7 @@ export default function Register() {
               </span>
               <input
                 type="text"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                 placeholder="Enter your username"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
@@ -138,7 +140,7 @@ export default function Register() {
             </div>
 
             <p className="text-grey-custom text-[13px] mt-[40px]">Password</p>
-            <div className="relative ">
+            <div className="relative w-[calc(60vw)] sm:w-full">
               <span className="absolute inset-y-0 left-0 flex items-center ">
                 <Image
                   src="/lock_icon.png"
@@ -149,7 +151,7 @@ export default function Register() {
               </span>
               <input
                 type={showPassword ? "text" : "password"}
-                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
+                className="pl-7 pr-4 py-2  w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -171,7 +173,7 @@ export default function Register() {
             <p className="text-grey-custom text-[13px] mt-[40px]">
               Confirm Password
             </p>
-            <div className="relative ">
+            <div className="relative w-[calc(60vw)] sm:w-full">
               <span className="absolute inset-y-0 left-0 flex items-center ">
                 <Image
                   src="/lock_icon.png"
@@ -182,7 +184,7 @@ export default function Register() {
               </span>
               <input
                 type={showConfirmPassword ? "text" : "password"}
-                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
+                className="pl-7 pr-4 py-2  w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
                 placeholder="Enter your password"
               />
               <button type="button" onClick={toogleConfirmPassword}>
@@ -201,7 +203,7 @@ export default function Register() {
               </button>
             </div>
 
-            <div className="relative mt-[10px]">
+            <div className="relative mt-[10px] w-[calc(60vw)] sm:w-full">
               {/* <label>
                 <input
                   type="checkbox"
@@ -213,19 +215,18 @@ export default function Register() {
                   Remember me
                 </span>
               </label> */}
-              <div>
-                <Link
-                  href=""
-                  className="absolute inset-y-0 right-0 flex items-center "
-                >
-                  <p className="text-black text-[12px]">Forgot password ?</p>
-                </Link>
-              </div>
+
+              <Link
+                href=""
+                className="absolute inset-y-0 right-0 flex items-center "
+              >
+                <p className="text-black text-[12px]">Forgot password ?</p>
+              </Link>
             </div>
-            <div className="flex justify-center items-center w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px]">
+            <div className="flex justify-center items-center w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px]">
               <button
                 type="submit"
-                className="text-white w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] mt-[50px] bg-primary-blue py-2  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
+                className="text-white w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] mt-[50px] bg-primary-blue py-2  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
               >
                 Register
               </button>
