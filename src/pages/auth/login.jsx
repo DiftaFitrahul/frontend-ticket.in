@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useDispatch } from 'react-redux';
-import { login } from '../../redux/authSlice';
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/authSlice";
 import { useContext } from "react";
 import { LoadingContext } from "@/context/LoadingContext";
 import { toast } from "react-toastify";
@@ -33,18 +33,20 @@ export default function Login() {
         Cookies.set("Auth", res.data.token, { expires: 1 });
         dispatch(login());
         setIsLoading(false);
-        toast.success("Login Berhasil!"), {
-          zIndex: 9999,
-        };
+        toast.success("Login Berhasil!"),
+          {
+            zIndex: 9999,
+          };
         setTimeout(() => {
           window.location.href = "/";
         }, 1000);
       })
       .catch((err) => {
         setIsLoading(false);
-        toast.error("Login Gagal!"), {
-          zIndex: 9999,
-        };
+        toast.error("Login Gagal!"),
+          {
+            zIndex: 9999,
+          };
       });
   }
 
@@ -62,10 +64,10 @@ export default function Login() {
               className="p-0"
             />
           </div>
-          <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[30px] text-black">
+          <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mx-10 font-medium text-[30px] text-black">
             Login
           </h1>
-          <p className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[25px] mb-1 font-normal text-[16px] text-black">
+          <p className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[25px] mx-10 mb-1 font-normal text-[16px] text-black">
             If you don’t have an account <br></br> You can
             <Link
               href="/auth/register"
@@ -91,7 +93,7 @@ export default function Login() {
               </span>
               <input
                 type="email"
-                className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px]  border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -99,7 +101,7 @@ export default function Login() {
             </div>
 
             <p className="text-grey-custom text-[13px] mt-[40px]">Password</p>
-            <div className="relative ">
+            <div className="relative w-[calc(60vw)] sm:w-full">
               <span className="absolute inset-y-0 left-0 flex items-center ">
                 <Image
                   src="/lock_icon.png"
@@ -110,7 +112,7 @@ export default function Login() {
               </span>
               <input
                 type={showPassword ? "text" : "password"}
-                className="pl-7 pr-4 py-2  w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
+                className="pl-7 pr-4 py-2   w-[calc(60vw)] sm:w-[calc(25vw-50px)] sm:min-w-[270px]  border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue "
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -129,20 +131,18 @@ export default function Login() {
               </button>
             </div>
 
-            <div className="relative mt-[10px]">
-              <div>
-                <Link
-                  href=""
-                  className="absolute inset-y-0 right-0 flex items-center "
-                >
-                  <p className="text-black text-[12px]">Forgot password ?</p>
-                </Link>
-              </div>
+            <div className="relative mt-[10px] w-[calc(60vw)] sm:w-full">
+              <Link
+                href=""
+                className="absolute inset-y-0 right-0 flex items-center "
+              >
+                <p className="text-black text-[12px]">Forgot password ?</p>
+              </Link>
             </div>
-            <div className="flex justify-center items-center w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px]">
+            <div className="flex justify-center items-center w-[calc(60vw)] sm:w-[calc(25vw-50px)] sm:min-w-[270px] ">
               <button
                 type="submit"
-                className="text-white w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] mt-[50px] bg-primary-blue py-2  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
+                className="text-white w-[calc(60vw)] sm:w-[calc(25vw-50px)] sm:min-w-[270px]  mt-[50px] bg-primary-blue py-2  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
               >
                 Login
               </button>
