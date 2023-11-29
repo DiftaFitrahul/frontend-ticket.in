@@ -26,9 +26,9 @@ export default function CardEvent({
             {quota} Pcs
           </p>
         </div>
-        <div className="flex flex-col ">
+        <div className="flex flex-col items-start bg-red-500">
           <h1 className="text-black font-bold text-[21px]">{title}</h1>
-          <p className="text-[#6A6A6A] f">{subtitle}</p>
+          <p className="text-[#6A6A6A] text-start">{subtitle}</p>
         </div>
       </div>
     </div>
