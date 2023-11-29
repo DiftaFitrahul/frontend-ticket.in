@@ -60,7 +60,7 @@ export default function EventDetail() {
           <div className="flex flex-row ">
             <BsCalendarWeek className="text-[30px] text-blue-text font-normal mt-2 min-w-[27px] w-[27px] lg:w-[50px]" />
             <div className="flex flex-col">
-              <p className="text-[23px] lg:text-[30px] text-blue-text font-normal ml-2">
+              <p className="text-[17px] sm:text-[23px] lg:text-[30px] text-blue-text font-normal ml-2">
                 {parsedEvent.eventDate}
               </p>
             </div>
@@ -73,35 +73,37 @@ export default function EventDetail() {
           </p>
 
           {buyNow ? (
-            <div className="text-white self-center  w-1/2 flex flex-col min-w-[400px] bg-blue-text px-10 py-5 mt-10 rounded-xl shadow-[0_25px_50px_-12px_rgba(56,57,157,0.3)]">
+            <div className="text-white self-center flex flex-col w-[180px] min-[240px]:w-[240px] min-[310px]:w-[300px] min-[380px]:w-[350px] min-[550px]:w-[450px] sm:w-[630px] sm:w-[600px] bg-blue-text px-10 py-5 mt-10 rounded-xl shadow-[0_25px_50px_-12px_rgba(56,57,157,0.3)]">
               <h1 className="text-[#F5167E] text-[30px] font-bold">
                 Your Order
               </h1>
-              <p className="text-[20px]">
+              <p className="text-[15px] sm:text-[20px]">
                 {IDR.format(parsedEvent.eventPrice)}
               </p>
               <div className="flex justify-end items-center w-full mb-5 mt-10">
                 <button
                   onClick={decrement}
-                  className="bg-[#F5167E] w-10 h-10 rounded-full text-[23px]"
+                  className="bg-[#F5167E] w-7 h-7 sm:w-10 sm:h-10 rounded-full text-[15px] sm:text-[23px]"
                 >
                   -
                 </button>
-                <p className="text-[20px] mx-5">{count}</p>
+                <p className="text-[15px] sm:text-[20px] mx-5">{count}</p>
                 <button
                   onClick={increment}
-                  className="bg-[#F5167E] w-10 h-10 rounded-full text-[23px]"
+                  className="bg-[#F5167E] w-7 h-7 sm:w-10 sm:h-10 rounded-full text-[15px] sm:text-[23px]"
                 >
                   +
                 </button>
               </div>
               <div className="w-full h-[1px] bg-white mb-6 opacity-70"></div>
               <div className="flex justify-between">
-                <p className="text-[20px]">Total</p>
-                <p className="text-[20px]">{IDR.format(totalTicketPrice)}</p>
+                <p className="text-[15px] sm:text-[20px]">Total</p>
+                <p className="text-[15px] sm:text-[20px]">
+                  {IDR.format(totalTicketPrice)}
+                </p>
               </div>
               <button
-                className="bg-[#F5167E] w-1/2 self-center py-2 mt-5 rounded-full text-[17px] lg:text-[23px]"
+                className="bg-[#F5167E] w-1/2 min-w-[150px] font-semibold self-center py-2 mt-5 rounded-full text-[17px] sm:text-[23px]"
                 onClick={handleBuy}
               >
                 BUY TICKET
