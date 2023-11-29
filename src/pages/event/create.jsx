@@ -92,7 +92,7 @@ export default function Login() {
 
           <form
             onSubmit={submitForm}
-            className="self-start sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] ml-[70px] min-[350px]:ml-[80px] min-[450px]:ml-[90px] min-[550px]:ml-[100px] sm:ml-0"
+            className="self-start sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] ml-[30px] min-[350px]:ml-[45px] min-[450px]:ml-[90px] min-[550px]:ml-[100px] sm:ml-0"
           >
             {lastPageEvent ? (
               <div>
@@ -105,7 +105,7 @@ export default function Login() {
                   </span>
                   <input
                     type="text"
-                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Fill with 0 if the event is free"
                   />
                 </div>
@@ -119,7 +119,7 @@ export default function Login() {
                   </span>
                   <input
                     type="number"
-                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter max amount ticket"
                   />
                 </div>
@@ -132,7 +132,7 @@ export default function Login() {
                     type="file"
                     accept="image/*"
                     onChange={(e) => handleFileChange(e)}
-                    className=" pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className=" pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event location"
                   />
                 </div>
@@ -150,7 +150,7 @@ export default function Login() {
                     name="phone"
                     pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                     maxlength="12"
-                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event location"
                   />
                 </div>
@@ -166,7 +166,7 @@ export default function Login() {
                   </span>
                   <input
                     type="text"
-                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event name"
                   />
                 </div>
@@ -180,7 +180,7 @@ export default function Login() {
                   </span>
                   <input
                     type="text"
-                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event description"
                   />
                 </div>
@@ -251,7 +251,7 @@ export default function Login() {
                   </span>
                   <input
                     type="text"
-                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event location"
                   />
                 </div>

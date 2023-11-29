@@ -28,7 +28,9 @@ export default function CardEvent({
         </div>
         <div className="flex flex-col items-start">
           <h1 className="text-black font-bold text-[21px]">{title}</h1>
-          <p className="text-[#6A6A6A] text-start">{subtitle}</p>
+          <p className="text-[#6A6A6A] text-start text-[10px] sm:text-[13px]">
+            {subtitle}
+          </p>
         </div>
       </div>
     </div>
