@@ -22,7 +22,7 @@ export default function EventDetail() {
     localStorage.setItem("totalPrice", totalTicketPrice);
     router.push("/payment/identity/confirm");
   };
-  
+
   const handleBuyNow = () => {
     setBuyNow(true);
   };
@@ -46,11 +46,11 @@ export default function EventDetail() {
     <div className="flex flex-col justify-center items-center bg-neutral-100">
       <HeaderComp />
       <div className="flex flex-col w-full justify-center items-center">
-        <div className="flex flex-col items-center  bg-white mt-[200px] w-[450px] sm:w-[630px] lg:w-7/12   mb-[50px] rounded-xl shadow-[0_25px_50px_-12px_rgba(56,57,157,0.3)]">
+        <div className="flex flex-col items-center  bg-white mt-[200px] w-[230px] min-[380px]:w-[350px] min-[550px]:w-[450px] sm:w-[630px] lg:w-7/12   mb-[50px] rounded-xl shadow-[0_25px_50px_-12px_rgba(56,57,157,0.3)]">
           <img
             src="/home/event_image.png"
             alt="Picture of the author"
-            className="w-5/6 px-7 py-10"
+            className="w-5/6 min-[380px]:px-2 min-[550px]:px-7 py-10"
           />
         </div>
         <div className="flex flex-col items-start w-full px-[40px] sm:px-[100px] lg:px-[200px]">
@@ -100,10 +100,10 @@ export default function EventDetail() {
                 <p className="text-[20px]">Total</p>
                 <p className="text-[20px]">{IDR.format(totalTicketPrice)}</p>
               </div>
-              <button 
+              <button
                 className="bg-[#F5167E] w-1/2 self-center py-2 mt-5 rounded-full text-[17px] lg:text-[23px]"
                 onClick={handleBuy}
-                >
+              >
                 BUY TICKET
               </button>
             </div>
