@@ -52,8 +52,8 @@ export default function Login() {
 
   return (
     <main>
-      <div className=" flex flex-row justify-center items-center h-screen w-screen bg-neutral-100">
-        <div className="flex flex-col justify-center items-center h-[calc(100vh-20px)] w-screen sm:w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px]">
+      <div className=" flex flex-row justify-center items-center h-[900px]  w-screen bg-neutral-100 p-5">
+        <div className="flex flex-col justify-center items-center h-full  w-screen sm:w-1/2 relative bg-white    rounded-lg ml-[10px]">
           <div className="block min-[640px]:hidden absolute top-5 left-5">
             <Image
               src="/black_logo.png"
@@ -176,7 +176,7 @@ export default function Login() {
             </div>
           </div> */}
         </div>
-        <div className="flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block ">
+        <div className="flex-col justify-center items-center h-full w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block ">
           <Image
             src="/logo.png"
             alt="Picture of the author"
