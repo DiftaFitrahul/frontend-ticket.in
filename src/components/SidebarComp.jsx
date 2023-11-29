@@ -32,7 +32,7 @@ const Sidebar = () => {
   return (
     <div
       className={`bg-[#242565] text-white   h-screen   pb-5 pt-4 z-[10] fixed right-0 top-0 transition-all ${
-        showSidebar ? "w-64" : "w-0 "
+        showSidebar ? "w-[200px] sm:w-64" : "w-0 "
       }`}
     >
       <div className="flex justify-between items-center px-3 mb-4 w-full ">
@@ -40,25 +40,25 @@ const Sidebar = () => {
           src={Logo}
           alt="Picture of the author"
           unoptimized
-          className="w-[130px]  mr-5"
+          className="w-[100px] sm:w-[130px]  mr-5"
         />
         <button
           onClick={() => setShowSidebar(!showSidebar)}
-          className="text-white hover:text-[#242565] hover:bg-white font-bold w-[40px] h-[40px] mr-2 border border-white rounded-xl"
+          className="text-white hover:text-[#242565] hover:bg-white font-bold w-[30px] sm:w-[40px] h-[40px] mr-2 border border-white rounded-xl"
         >
           X
         </button>
       </div>
-      <div className="flex flex-col w-full h-[200px] px-3">
+      <div className="flex flex-col w-full h-[170px] px-3">
         <Link
           href="/event/registered"
-          className="text-white hover:text-[#242565] pl-3 pt-3   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
+          className="text-white  hover:text-[#242565] pl-3 pt-4   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
         >
           Event Registered
         </Link>
         <Link
           href=""
-          className="text-white hover:text-[#242565] pl-3 pt-3   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
+          className="text-white hover:text-[#242565] pl-3 pt-4   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
         >
           Ticket
         </Link>
@@ -72,7 +72,7 @@ const Sidebar = () => {
 
         <Link
           href=""
-          className="text-white hover:text-[#242565] h-full pl-3 pt-3 px-full w-full font-semibold hover:bg-white rounded-xl font-semibold"
+          className="text-white hover:text-[#242565] h-full pl-3 pt-4 px-full w-full font-semibold hover:bg-white rounded-xl font-semibold"
         >
           Contact
         </Link>
