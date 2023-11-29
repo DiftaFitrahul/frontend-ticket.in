@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function MakeEvent({}) {
   return (
     <div className="flex flex-col min-[800px]:flex-row items-center relative justify-center bg-[#FFF1E1] w-full mb-[100px] py-12 mt-[150px]">
@@ -14,9 +15,12 @@ export default function MakeEvent({}) {
         <p className="text-black text-[18px] my-4 w-fit sm:w-[360px] font-normal">
           Craft memories with a click. Create your event now
         </p>
-        <button className="bg-[#F5167E] py-4 px-5 rounded-full shadow-lg font-medium">
+        <Link
+          href="/event/create"
+          className="bg-[#F5167E] py-4 px-5 rounded-full text-center shadow-lg font-medium"
+        >
           Create Events
-        </button>
+        </Link>
       </div>
     </div>
   );

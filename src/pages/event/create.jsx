@@ -70,8 +70,8 @@ export default function Login() {
 
   return (
     <main>
-      <div className=" flex flex-row justify-center items-center h-screen w-screen bg-neutral-100">
-        <div className="flex flex-col justify-center items-center h-[calc(100vh-20px)] w-screen sm:w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px]">
+      <div className=" flex flex-row justify-center items-center h-[900px]  w-screen bg-neutral-100">
+        <div className="flex flex-col justify-center items-center  h-[900px]  w-full sm:w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px] ">
           <div className="block min-[640px]:hidden absolute top-5 left-5">
             <Image
               src="/black_logo.png"
@@ -82,17 +82,17 @@ export default function Login() {
               className="p-0"
             />
           </div>
-          <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[30px] text-black">
+          <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[22px] sm:text-[30px] text-black">
             Create Event
           </h1>
-          <p className="sm:self-start  xl:pl-[120px] md:pl-[70px] sm:pl-[40px] px-20 mt-[25px] mb-1 font-normal text-[16px] text-black">
+          <p className="self-start sm:self-start  xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mr-5 mb-1 font-normal text-[13px] sm:text-[16px] text-black ml-[70px] min-[350px]:ml-[80px] min-[450px]:ml-[90px] min-[550px]:ml-[100px] sm:ml-0">
             Make your own event right now.<br></br> Reach out to millions of
             people and make your event come true
           </p>
 
           <form
             onSubmit={submitForm}
-            className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px]"
+            className="self-start sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] ml-[70px] min-[350px]:ml-[80px] min-[450px]:ml-[90px] min-[550px]:ml-[100px] sm:ml-0"
           >
             {lastPageEvent ? (
               <div>
@@ -105,7 +105,7 @@ export default function Login() {
                   </span>
                   <input
                     type="text"
-                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Fill with 0 if the event is free"
                   />
                 </div>
@@ -119,7 +119,7 @@ export default function Login() {
                   </span>
                   <input
                     type="number"
-                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter max amount ticket"
                   />
                 </div>
@@ -132,7 +132,7 @@ export default function Login() {
                     type="file"
                     accept="image/*"
                     onChange={(e) => handleFileChange(e)}
-                    className=" pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className=" pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event location"
                   />
                 </div>
@@ -150,13 +150,13 @@ export default function Login() {
                     name="phone"
                     pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                     maxlength="12"
-                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event location"
                   />
                 </div>
               </div>
             ) : (
-              <div>
+              <div className="">
                 <p className="text-grey-custom text-[13px] mt-[40px]">
                   Event Name
                 </p>
@@ -166,7 +166,7 @@ export default function Login() {
                   </span>
                   <input
                     type="text"
-                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event name"
                   />
                 </div>
@@ -180,20 +180,20 @@ export default function Login() {
                   </span>
                   <input
                     type="text"
-                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event description"
                   />
                 </div>
 
                 <div className="flex justify-between items-center w-full ">
                   <p className="text-grey-custom text-[13px] mt-[40px] mb-3">
-                    Event Location
+                    Event Date
                   </p>
-                  <p className="text-grey-custom text-[13px] mt-[40px] mb-3 mr-5 xl:mr-0">
+                  <p className="text-grey-custom text-[13px] mt-[40px] mb-3 mr-5 xl:mr-0 hidden min-[550px]:block">
                     Event Type
                   </p>
                 </div>
-                <div className="w-full flex justify-between ">
+                <div className="w-full xl:w-[calc(25vw-50px)] flex flex-col min-[550px]:flex-row justify-between  ">
                   <DatePicker
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
@@ -207,7 +207,10 @@ export default function Login() {
                     placeholderText="Choose a date"
                     className="text-center border-l-4 border-r-4  border-red-500 w-[160px] 2xl:w-full p-3 rounded text-sm    focus:ring-0  text-black"
                   />
-                  <div className="relative flex flex-col w-1/2 sm:w-5/12 ">
+                  <div className="relative flex flex-col sm:w-5/12 w-7/12">
+                    <p className="text-grey-custom text-[13px] mt-[20px] mb-3 mr-5 xl:mr-0 block min-[550px]:hidden">
+                      Event Type
+                    </p>
                     <button
                       onClick={toggleCategory}
                       className="flex border  justify-between pr-2 pl-4 items-center border-[#B8BBC2] rounded-lg w-full h-[30px] "
@@ -248,13 +251,13 @@ export default function Login() {
                   </span>
                   <input
                     type="text"
-                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
+                    className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event location"
                   />
                 </div>
               </div>
             )}
-            <div className="flex justify-start items-center w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px]">
+            <div className="flex justify-start items-center sm:w-[calc(25vw-50px)]  w-[180px] min-[300px]:w-[200px] min-[400px]:w-[270px] ">
               <button
                 onClick={handleLastPageEvent}
                 className="text-white w-[120px]  mt-[50px] bg-[#F5167E] py-3  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
@@ -274,7 +277,7 @@ export default function Login() {
             </div>
           </form>
         </div>
-        <div className="flex-col justify-center items-center h-[calc(100vh-20px)] w-1/2 relative bg-light-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block bg-opacity-25">
+        <div className="flex-col justify-center items-center h-full  w-1/2 relative bg-light-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block bg-opacity-25">
           <Image
             src="/black_logo.png"
             alt="Picture of the author"
@@ -287,7 +290,7 @@ export default function Login() {
           <img
             src="/auth_image.png"
             alt="Picture of the author"
-            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[850px] lg:w-[650px]  xl:h-[650px] lg:h-[500px]"
+            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[750px] lg:w-[650px]  xl:h-[550px] lg:h-[500px]"
           />
           <h1 className="self-start text-primary-blue xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
             Your Event, Your Way!
