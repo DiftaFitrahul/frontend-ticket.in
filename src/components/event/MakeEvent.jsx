@@ -7,7 +7,7 @@ export default function MakeEvent({}) {
         className="w-fit sm:h-[500px]  min-[800px]:absolute  min-[800px]:left-[-20px] xl:left-[100px] 2xl:left-[200px] bottom-[-120px] "
       />
 
-      <div className="flex flex-col ">
+      <div className="flex flex-col mx-10">
         <h1 className="text-black font-bold text-[34px]">
           Make your own Event
         </h1>
