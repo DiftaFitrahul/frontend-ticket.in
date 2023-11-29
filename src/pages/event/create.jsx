@@ -70,8 +70,8 @@ export default function Login() {
 
   return (
     <main>
-      <div className=" flex flex-row justify-center items-center h-[900px]  w-screen bg-neutral-100">
-        <div className="flex flex-col justify-center items-center  h-[900px]  w-full sm:w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px] ">
+      <div className=" flex flex-row justify-center items-center h-[900px]  w-screen bg-neutral-100 p-5">
+        <div className="flex flex-col justify-center items-center  h-full  w-full sm:w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px] ">
           <div className="block min-[640px]:hidden absolute top-5 left-5">
             <Image
               src="/black_logo.png"
@@ -257,7 +257,7 @@ export default function Login() {
                 </div>
               </div>
             )}
-            <div className="flex justify-start items-center sm:w-[calc(25vw-50px)]  w-[180px] min-[300px]:w-[200px] min-[400px]:w-[270px] ">
+            <div className="flex justify-start items-center sm:w-[calc(29vw-50px)] lg:w-[270px]  w-[180px] min-[300px]:w-[200px] min-[400px]:w-[270px]  ">
               <button
                 onClick={handleLastPageEvent}
                 className="text-white w-[120px]  mt-[50px] bg-[#F5167E] py-3  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
