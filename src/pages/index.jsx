@@ -60,9 +60,7 @@ export default function Home() {
       </Head>
 
       <main>
-        {
-          showAbout && <AboutUs setShowAbout={setShowAbout} />
-        }
+        {showAbout && <AboutUs setShowAbout={setShowAbout} />}
         <div className="flex flex-col justify-center items-center bg-neutral-100">
           <div className="relative flex justify-center items-center w-full min-h-screen ">
             <img
@@ -96,9 +94,12 @@ export default function Home() {
                   <button className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
                     Learn More
                   </button>
-                  <button className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]" onClick={() => {
-                    setShowAbout(true);
-                  }}>
+                  <button
+                    className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]"
+                    onClick={() => {
+                      setShowAbout(true);
+                    }}
+                  >
                     About Us
                   </button>
                 </div>
@@ -110,17 +111,20 @@ export default function Home() {
               <IoIosArrowForward className="text-[#3D37F1] text-[60px] right-[20px] text-white " />
             </div>
           </div>
-          <div className="flex flex-col min-[1350px]:flex-row  justify-between w-4/6 mt-[100px] mb-[100px] justify-center items-center">
+          {/* <div className="flex flex-col min-[1350px]:flex-row  justify-between w-4/6 mt-[100px] mb-[100px] justify-center items-center">
             <div className="text-[#242565] text-[40px]">Upcoming Events</div>
             <div className="flex flex-wrap mt-5 xl:mt-0  justify-center items-center h-[150px]">
               <FilterButton title="Weekdays" />
               <FilterButton title="Event Type" className="my-5 sm:my-0" />
               <FilterButton title="Any Category" />
             </div>
-          </div>
-          <div className="grid grid-cols-1 min-[800px]:grid-cols-2 xl:grid-cols-3 gap-7">
+          </div> */}
+          <div className="grid grid-cols-1 min-[800px]:grid-cols-2 xl:grid-cols-3 gap-7 mt-[100px]">
             {eventsArray.map((event, index) => (
-              <button key={event._id} onClick={() => handleCardEventClick(index)}>
+              <button
+                key={event._id}
+                onClick={() => handleCardEventClick(index)}
+              >
                 <CardEvent
                   key={event._id}
                   price={event.eventPrice}
