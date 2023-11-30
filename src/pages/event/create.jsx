@@ -137,7 +137,7 @@ export default function Login() {
                   />
                 </div>
 
-                <p className="text-grey-custom text-[13px] mt-[40px]">
+                {/* <p className="text-grey-custom text-[13px] mt-[40px]">
                   Contact Person
                 </p>
                 <div className="relative w-[200px]">
@@ -153,7 +153,7 @@ export default function Login() {
                     className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event location"
                   />
-                </div>
+                </div> */}
               </div>
             ) : (
               <div className="">
@@ -189,9 +189,9 @@ export default function Login() {
                   <p className="text-grey-custom text-[13px] mt-[40px] mb-3">
                     Event Date
                   </p>
-                  <p className="text-grey-custom text-[13px] mt-[40px] mb-3 mr-5 xl:mr-0 hidden min-[550px]:block">
+                  {/* <p className="text-grey-custom text-[13px] mt-[40px] mb-3 mr-5 xl:mr-0 hidden min-[550px]:block">
                     Event Type
-                  </p>
+                  </p> */}
                 </div>
                 <div className="w-full xl:w-[calc(25vw-50px)] flex flex-col min-[550px]:flex-row justify-between  ">
                   <DatePicker
@@ -207,7 +207,7 @@ export default function Login() {
                     placeholderText="Choose a date"
                     className="text-center border-l-4 border-r-4  border-red-500 w-[160px] 2xl:w-full p-3 rounded text-sm    focus:ring-0  text-black"
                   />
-                  <div className="relative flex flex-col sm:w-5/12 w-7/12">
+                  {/* <div className="relative flex flex-col sm:w-5/12 w-7/12">
                     <p className="text-grey-custom text-[13px] mt-[20px] mb-3 mr-5 xl:mr-0 block min-[550px]:hidden">
                       Event Type
                     </p>
@@ -239,10 +239,10 @@ export default function Login() {
                     ) : (
                       <div></div>
                     )}
-                  </div>
+                  </div> */}
                 </div>
 
-                <p className="text-grey-custom text-[13px] mt-[40px]">
+                {/* <p className="text-grey-custom text-[13px] mt-[40px]">
                   Event Location
                 </p>
                 <div className="relative w-[200px]">
@@ -254,7 +254,7 @@ export default function Login() {
                     className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event location"
                   />
-                </div>
+                </div> */}
               </div>
             )}
             <div className="flex justify-start items-center sm:w-[calc(29vw-50px)] lg:w-[270px]  w-[180px] min-[300px]:w-[200px] min-[400px]:w-[270px]  ">
