@@ -82,14 +82,27 @@ export default function Login() {
               className="p-0"
             />
           </div>
+          <br /><br /><br />
+          
+            <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[30px] text-black">
+              Profile
+            </h1>
+            <p className="sm:self-start  xl:pl-[120px] md:pl-[70px] sm:pl-[40px] px-20 mt-[25px] mb-1 font-normal text-[16px] text-black">
+              Edit Prifole for:<br></br> Username
+            </p>
+            <div className="">
+              <Image
+                src="/profile.jpg"
+                alt="Profile Picture"
+                width={150}
+                height={150}
+                className="rounded-full"
+              />
+            </div>
 
-          <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[30px] text-black">
-            Profile
-          </h1>
-          <p className="sm:self-start  xl:pl-[120px] md:pl-[70px] sm:pl-[40px] px-20 mt-[25px] mb-1 font-normal text-[16px] text-black">
-            Edit Prifole for:<br></br> Username
-          </p>
-        
+            <div className="image-upload-container">
+              <button type="file" accept="image/*" class="mt-[30px] flex w-full justify-center rounded-[100px] bg-[#F5167E] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm">Upload</button>
+            </div>  
 
           <form
             onSubmit={submitForm}
@@ -110,6 +123,7 @@ export default function Login() {
                     placeholder="Fill with 0 if the event is free"
                   />
                 </div>
+
 
                 <p className="text-grey-custom text-[13px] mt-[40px]">
                   Enter the max amount of ticket
@@ -158,35 +172,37 @@ export default function Login() {
               </div>
             ) : (
               <div>
-                <p className="text-grey-custom text-[13px] mt-[40px]">
-                  Upload Event photo
-                </p>
-                <div className="">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => handleFileChange(e)}
-                    className=" pr-4 py-2 w-[calc(25vw-50px)]  sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
-                    placeholder="Enter your event location"
-                  />
-                </div>
 
                 <p className="text-grey-custom text-[13px] mt-[40px]">First Name</p>
                 <div className="relative w-[200px]">
-                  <span className="absolute inset-y-0 left-0 flex items-center "><MdEventAvailable className="text-black " size={22} /></span>
+                  <span className="absolute inset-y-0 left-0 flex items-center ">
+                    <Image
+                    src="/person_icon.png"
+                    alt="email"
+                    width={20}
+                    height={20}
+                    />
+                  </span>
                   <input type="text" className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue focus:outline-none text-placeholder-blue focus:placeholder-placeholder-blue" placeholder="Enter your first name"/>
                 </div>
 
                 <p className="text-grey-custom text-[13px] mt-[40px]">Last Name</p>
                 <div className="relative w-[200px]">
-                  <span className="absolute inset-y-0 left-0 flex items-center "><MdEventAvailable className="text-black " size={22} /></span>
+                  <span className="absolute inset-y-0 left-0 flex items-center ">
+                    <Image
+                    src="/person_icon.png"
+                    alt="email"
+                    width={20}
+                    height={20}
+                    />
+                  </span>
                   <input type="text" className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue focus:outline-none text-placeholder-blue focus:placeholder-placeholder-blue" placeholder="Enter your last name"/>
                 </div>
 
                 <p className="text-grey-custom text-[13px] mt-[40px]">Phone Number</p>
                 <div className="relative w-[200px]">
                   <span className="absolute inset-y-0 left-0 flex items-center "><MdEventAvailable className="text-black " size={22} /></span>
-                  <input type="text" className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue focus:outline-none text-placeholder-blue focus:placeholder-placeholder-blue" placeholder="Enter your ephone number"/>
+                  <input type="text" className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue focus:outline-none text-placeholder-blue focus:placeholder-placeholder-blue" placeholder="Enter your phone number"/>
                 </div>
 
                 <div className="flex justify-between items-center w-full ">
