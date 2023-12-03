@@ -71,7 +71,7 @@ export default function Home() {
           <div className="min-w-full xl:mt-[100px]">
             <Carousel>
               {sildes.map((event, index) => (
-                <div key={event?._id} className="min-w-full ">
+                <div className="min-w-full ">
                   <div className="absolute w-full h-full z-[10]">
                     <div className="text-black   flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center mx-[5%] sm:ml-10 py-20 ">
                       <img

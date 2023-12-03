@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "react-feather";
 export default function Carousel({
   children: slides,
   autoSlide = true,
-  autoSlideInterval = 4000,
+  autoSlideInterval = 3000,
 }) {
   const [curr, setCurr] = useState(0);
 
@@ -21,7 +21,7 @@ export default function Carousel({
   return (
     <div className=" relative min-w-full">
       <div
-        className="flex transition-transform ease-out duration-[1200ms] min-w-full"
+        className="flex transition-transform ease-out duration-500 min-w-full"
         style={{ transform: `translateX(-${curr * 100}%)` }}
       >
         {slides}
