@@ -20,14 +20,7 @@ export default function Home() {
   const { isLoading, setIsLoading } = useContext(LoadingContext);
   const [showAbout, setShowAbout] = useState(false);
   const router = useRouter();
-  const sildes = [
-    "/home/event_image.png",
-    "https://i.ibb.co/B3s7v4h/2.png",
-    "https://i.ibb.co/XXR8kzF/3.png",
-    "/home/event_image.png",
-    "https://i.ibb.co/yg7BSdM/4.png",
-    "/home/event_image.png",
-  ];
+
   useEffect(() => {
     localStorage.removeItem("selectedEventData");
 
@@ -52,7 +45,7 @@ export default function Home() {
 
   const handleCardEventClick = (index) => {
     setIsLoading(true);
-    const selectedEventData = eventsArray[index];
+    const selectedEventData = sildes[index];
     localStorage.setItem(
       "selectedEventData",
       JSON.stringify(selectedEventData)
@@ -61,6 +54,8 @@ export default function Home() {
     router.push("/event/detail");
     setIsLoading(false);
   };
+  const sildes = [eventsArray[1], eventsArray[2], eventsArray[3]];
+  console.log(sildes);
 
   return (
     <>
@@ -75,14 +70,14 @@ export default function Home() {
           <HeaderComp />
           <div className="min-w-full xl:mt-[100px]">
             <Carousel>
-              {sildes.map((data) => (
-                <div className="min-w-full ">
+              {sildes.map((event, index) => (
+                <div key={event?._id} className="min-w-full ">
                   <div className="absolute w-full h-full z-[10]">
                     <div className="text-black   flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center mx-[5%] sm:ml-10 py-20 ">
                       <img
-                        src={data}
+                        src={event?.eventPhoto ?? "/home/event_image.png"}
                         alt="coba"
-                        className=" w-[280px] h-[280px] min-[400px]:w-[350px] min-[400px]:h-[350px] sm:w-3/4 sm:w-[450px] sm:h-[450px] mr-0 sm:mr-10 rounded-2xl mt-20"
+                        className=" w-[280px] h-[280px] min-[400px]:w-[350px] min-[400px]:h-[350px] sm:w-3/4 sm:w-[450px] sm:h-[450px] mr-0 sm:mr-10 rounded-2xl mt-20 shadow-2xl"
                       />
                       <div className="w-fit sm:w-[550px]  xl:mr-10 mt-5 xl:mt-20">
                         <p className="text-[18px] font-bold text-white">
@@ -90,15 +85,19 @@ export default function Home() {
                           Movie Party
                         </p>
                         <h1 className="text-[35px] sm:text-[50px] font-bold text-white leading-[50px] mb-3 w-full">
-                          Petualangan Sherina 2
+                          {event?.eventName}
                         </h1>
                         <p className="text-[18px] font-light text-white">
                           SHERINA (Sherina Munaf) dan SADAM (Derby Romero), dua
                           teman kecil yang lama terpisah, bertemu kembali di
                           Kalimantan untuk pelepasliaran orang utan.
                         </p>
-                        <div className="flex flex-col sm:flex-row mt-3 gap-3">
-                          <button className="bg-[#DF1875] h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
+                        <div className="flex flex-col sm:flex-row mt-3 gap-3 z-[999]">
+                          <button
+                            key={event?._id}
+                            onClick={() => handleCardEventClick(index)}
+                            className="bg-[#DF1875] h-[50px] px-5 text-white font-medium rounded-full text-[18px] z-[999]"
+                          >
                             Get Ticket
                           </button>
                           {/* <button className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
@@ -116,9 +115,9 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className="absolute w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-90"></div>
+                  <div className="absolute w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.9]"></div>
                   <img
-                    src={data}
+                    src={event?.eventPhoto ?? "/home/event_image.png"}
                     className="min-w-full h-[1000px] xl:h-[900px]"
                   />
                 </div>
@@ -156,4 +155,18 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+function pickRandomItems(array, count) {
+  // Make a copy of the original array to avoid modifying it
+  const shuffledArray = array.slice();
+
+  // Shuffle the array using Fisher-Yates algorithm
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+
+  // Return the first 'count' elements from the shuffled array
+  return shuffledArray.slice(0, count);
 }
