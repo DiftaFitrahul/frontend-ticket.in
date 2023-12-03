@@ -73,7 +73,7 @@ export default function Home() {
         {showAbout && <AboutUs setShowAbout={setShowAbout} />}
         <div className="flex flex-col justify-center items-center bg-neutral-100">
           <HeaderComp />
-          <div className="min-w-full mt-[100px]">
+          <div className="min-w-full xl:mt-[100px]">
             <Carousel>
               {sildes.map((data) => (
                 <div className="min-w-full ">
@@ -117,7 +117,10 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="absolute w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-90"></div>
-                  <img src={data} className="min-w-full h-[900px]" />
+                  <img
+                    src={data}
+                    className="min-w-full h-[1000px] xl:h-[900px]"
+                  />
                 </div>
               ))}
             </Carousel>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 export default function CardEvent({
   title,
   subtitle,
@@ -12,7 +11,7 @@ export default function CardEvent({
   });
 
   return (
-    <div className="flex flex-col w-[200px] min-[330px]:w-[300px] min-[450px]:w-[410px] h-[400px] shadow-xl  bg-white rounded-3xl">
+    <div className="flex flex-col w-[240px] min-[370px]:w-[350px] md:w-[380px]  xl:w-[410px] h-[400px] shadow-xl  bg-white rounded-3xl">
       <img
         src={imagePath}
         alt="coba"
