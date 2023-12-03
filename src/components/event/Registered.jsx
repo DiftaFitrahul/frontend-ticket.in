@@ -1,11 +1,9 @@
-import { BsCalendarWeek } from "react-icons/bs";
-import Image from "next/image";
 export default function EventsRegisteredComp({
   title,
   description,
-  eventDate,
-  ticketTotal,
-  priceTotal,
+  code,
+  name,
+  email,
   imagePath,
 }) {
   return (
@@ -23,19 +21,18 @@ export default function EventsRegisteredComp({
             {title}
           </h1>
           <div className="flex flex-row ">
-            <BsCalendarWeek className="text-[30px] text-blue-text font-normal lg:mt-2 min-w-[20px] sm:min-w-[27px] w-[20px] sm:w-[27px] lg:w-[50px]" />
             <div className="flex flex-col">
               <p className="text-[18px] sm:text-[23px] lg:text-[30px] text-blue-text font-normal ml-2">
-                {eventDate}
+                Code: {code}
               </p>
             </div>
           </div>
           <p className="text-[#6A6A6A] mr-20 lg:mr-0">{description}</p>
           <p className="text-black font-semibold text-[11px] sm:text-[15px] mt-5">
-            Total ticket: {ticketTotal} Pcs
+            Buyer Name: {name}
           </p>
           <p className="text-[#3D37F1] text-center font-bold text-[11px] sm:text-[15px] ">
-            Total Harga: Rp {priceTotal}
+            Email: {email}
           </p>
         </div>
         <div></div>

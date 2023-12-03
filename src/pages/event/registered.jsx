@@ -2,55 +2,28 @@ import HeaderComp from "@/components/HeaderComp";
 import FooterComp from "@/components/FooterComp";
 import MakeEvent from "@/components/event/MakeEvent";
 import EventsRegisteredComp from "@/components/event/Registered";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function EventsRegistered() {
-  const listDataEventRegistered = [
-    {
-      imagePath: "/home/event_image.png",
-      title: "Denny Caknan",
-      description:
-        "Event ini menyajikan konser deny caknan yang sangat bagus dan event ini akan menampilkan guest star terbaru bersama dengan hal-hal yang sangat menarik lainnya tunggu apalagi ayo daftar",
-      eventDate: "12 Agustus 2021",
-      ticketTotal: "10",
-      priceTotal: "20000",
-    },
-    {
-      imagePath: "/home/event_image.png",
-      title: "Denny Caknan",
-      description:
-        "Event ini menyajikan konser deny caknan yang sangat bagus dan event ini akan menampilkan guest star terbaru bersama dengan hal-hal yang sangat menarik lainnya tunggu apalagi ayo daftar",
-      eventDate: "12 Agustus 2021",
-      ticketTotal: "10",
-      priceTotal: "20000",
-    },
-    {
-      imagePath: "/home/event_image.png",
-      title: "Denny Caknan",
-      description:
-        "Event ini menyajikan konser deny caknan yang sangat bagus dan event ini akan menampilkan guest star terbaru bersama dengan hal-hal yang sangat menarik lainnya tunggu apalagi ayo daftar",
-      eventDate: "12 Agustus 2021",
-      ticketTotal: "10",
-      priceTotal: "20000",
-    },
-    {
-      imagePath: "/home/event_image.png",
-      title: "Denny Caknan",
-      description:
-        "Event ini menyajikan konser deny caknan yang sangat bagus dan event ini akan menampilkan guest star terbaru bersama dengan hal-hal yang sangat menarik lainnya tunggu apalagi ayo daftar",
-      eventDate: "12 Agustus 2021",
-      ticketTotal: "10",
-      priceTotal: "20000",
-    },
-    {
-      imagePath: "/home/event_image.png",
-      title: "Denny Caknan",
-      description:
-        "Event ini menyajikan konser deny caknan yang sangat bagus dan event ini akan menampilkan guest star terbaru bersama dengan hal-hal yang sangat menarik lainnya tunggu apalagi ayo daftar",
-      eventDate: "12 Agustus 2021",
-      ticketTotal: "10",
-      priceTotal: "20000",
-    },
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/admin/events", {
+        headers: {
+          Authorization: "Bearer " + Cookies.get("Auth"),
+        },
+      })
+      .then((res) => {
+        setData(res.data.userEvents);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="flex flex-col justify-center items-center bg-neutral-100">
@@ -61,16 +34,16 @@ export default function EventsRegistered() {
         </h1>
       </div>
 
-      {listDataEventRegistered.map((dataEventRegistered, index) => {
+      {data.map((dataEventRegistered, index) => {
         return (
           <EventsRegisteredComp
             key={index}
-            title={dataEventRegistered.title}
-            description={dataEventRegistered.description}
-            eventDate={dataEventRegistered.eventDate}
-            ticketTotal={dataEventRegistered.ticketTotal}
-            priceTotal={dataEventRegistered.priceTotal}
-            imagePath={dataEventRegistered.imagePath}
+            title={dataEventRegistered.eventId.eventName}
+            description={dataEventRegistered.eventId.eventDescription}
+            code={dataEventRegistered.code}
+            name={dataEventRegistered.userId.name}
+            email={dataEventRegistered.userId.email}
+            imagePath={dataEventRegistered.paymentFile}
           />
         );
       })}
