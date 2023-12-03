@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 import MakeEvent from "@/components/event/MakeEvent";
 import FooterComp from "@/components/FooterComp";
 import HeaderComp from "@/components/HeaderComp";
@@ -19,8 +21,15 @@ export default function EventDetail() {
   });
 
   const handleBuy = () => {
-    localStorage.setItem("totalPrice", totalTicketPrice);
-    router.push("/payment/identity/confirm");
+    if (Cookies.get("Auth") === undefined) {
+      toast.error("Gagal Beli Tiket! Anda harus Login terlebih dahulu!"),
+        {
+          zIndex: 9999,
+        };
+    } else {
+      localStorage.setItem("totalPrice", totalTicketPrice);
+      router.push("/payment/identity/confirm");
+    }
   };
 
   const handleBuyNow = () => {
