@@ -1,6 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 export default function MakeEvent({}) {
+  const router = useRouter();
+  const handleCreateEvent = () => {
+    if (Cookies.get("Auth") === undefined) {
+      toast.error("Gagal! Anda harus Login terlebih dahulu!", {
+        zIndex: 9999,
+      });
+    } else {
+      router.push("/event/create");
+    }
+  };
   return (
     <div className="flex flex-col min-[800px]:flex-row items-center relative justify-center bg-[#FFF1E1] w-full mb-[100px] py-12 mt-[150px]">
       <img
@@ -16,12 +29,12 @@ export default function MakeEvent({}) {
         <p className="text-black text-[18px] my-4 w-fit sm:w-[360px] font-normal">
           Craft memories with a click. Create your event now
         </p>
-        <Link
-          href="/event/create"
+        <button
+          onClick={handleCreateEvent}
           className="bg-[#F5167E] py-4 px-5 rounded-full text-center shadow-lg font-medium"
         >
           Create Events
-        </Link>
+        </button>
       </div>
     </div>
   );
