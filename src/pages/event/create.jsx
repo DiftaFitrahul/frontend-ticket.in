@@ -296,9 +296,8 @@ export default function Login() {
             Your Event, Your Way!
           </h1>
           <p className="self-start text-primary-blue xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mb-[100px] pr-[20px]  xl:text-[20px] md:text-[15px]">
-            It&apos;s time to turn your vision into reality. Create your dream
-            event from scratch and watch it come to life. Let&apos;s get
-            started.
+            It's time to turn your vision into reality. Create your dream event
+            from scratch and watch it come to life. Let's get started.
           </p>
         </div>
       </div>

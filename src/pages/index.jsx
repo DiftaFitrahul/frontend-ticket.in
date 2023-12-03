@@ -12,6 +12,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Sidebar from "@/components/SidebarComp";
 import AboutUs from "@/components/home/AboutUs";
+import Image from "next/image";
 
 export default function Home() {
   const [eventsArray, setEventsArray] = useState([]);

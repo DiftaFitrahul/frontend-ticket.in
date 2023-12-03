@@ -1,5 +1,5 @@
 import { BsCalendarWeek } from "react-icons/bs";
-
+import Image from "next/image";
 export default function EventsRegisteredComp({
   title,
   description,
