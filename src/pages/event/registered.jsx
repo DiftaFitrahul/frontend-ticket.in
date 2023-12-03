@@ -2,27 +2,55 @@ import HeaderComp from "@/components/HeaderComp";
 import FooterComp from "@/components/FooterComp";
 import MakeEvent from "@/components/event/MakeEvent";
 import EventsRegisteredComp from "@/components/event/Registered";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { LoadingContext } from "@/context/LoadingContext";
+import { toast } from "react-toastify";
 
 export default function EventsRegistered() {
   const [data, setData] = useState([]);
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
 
   useEffect(() => {
-    axios
-      .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/admin/events", {
-        headers: {
-          Authorization: "Bearer " + Cookies.get("Auth"),
-        },
-      })
-      .then((res) => {
-        setData(res.data.userEvents);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    let isMounted = true;
+
+    const getDataEventRegistered = () => {
+      setIsLoading(true);
+      axios
+        .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/admin/events", {
+          headers: {
+            Authorization: "Bearer " + Cookies.get("Auth"),
+          },
+        })
+        .then((res) => {
+          if (isMounted) {
+            setData(res.data.userEvents);
+            toast.success("Sukses Mendapatkan Data!", {
+              zIndex: 9999,
+            });
+            console.log(res.data);
+          }
+        })
+        .catch((err) => {
+          toast.error("Gagal Mendapatkan Data!", {
+            zIndex: 9999,
+          });
+          console.log(err);
+        })
+        .finally(() => {
+          if (isMounted) {
+            setIsLoading(false);
+          }
+        });
+    };
+
+    getDataEventRegistered();
+
+    return () => {
+      // Clean up to set isMounted to false when the component is unmounted
+      isMounted = false;
+    };
   }, []);
 
   return (
