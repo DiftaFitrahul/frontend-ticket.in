@@ -34,6 +34,7 @@ export default function Home() {
       .then((res) => {
         setEventsArray(res.data.events);
         setIsLoading(false);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -132,7 +133,7 @@ export default function Home() {
                   quota={event.eventQuota}
                   title={event.eventName}
                   subtitle={event.eventDescription}
-                  imagePath="/home/event_image.png"
+                  imagePath={event.eventPhoto}
                 />
               </button>
             ))}
