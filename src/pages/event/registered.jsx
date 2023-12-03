@@ -89,11 +89,11 @@ export default function EventsRegistered() {
                 <div className="absolute w-full h-full z-[10]">
                   <div className="text-black   flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center mx-[5%] sm:ml-10 py-20 ">
                     <img
-                      src="/home/poster.png"
+                      src={data}
                       alt="coba"
-                      className="w-[90%] sm:min-w-[500px] sm:w-3/4 max-w-[800px]"
+                      className=" w-[280px] h-[280px] min-[400px]:w-[350px] min-[400px]:h-[350px] sm:w-3/4 sm:w-[450px] sm:h-[450px] mr-0 sm:mr-10 rounded-2xl mt-20"
                     />
-                    <div className="w-fit sm:w-[550px]  xl:mr-10 mt-5 xl:mt-0">
+                    <div className="w-fit sm:w-[550px]  xl:mr-10 mt-5 xl:mt-20">
                       <p className="text-[18px] font-bold text-white">
                         {" "}
                         Movie Party
@@ -110,17 +110,17 @@ export default function EventsRegistered() {
                         <button className="bg-[#DF1875] h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
                           Get Ticket
                         </button>
-                        <button className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
+                        {/* <button className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
                           Learn More
-                        </button>
-                        <button
+                        </button> */}
+                        {/* <button
                           className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]"
                           onClick={() => {
                             setShowAbout(true);
                           }}
                         >
                           About Us
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   </div>
