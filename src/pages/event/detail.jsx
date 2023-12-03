@@ -57,7 +57,7 @@ export default function EventDetail() {
       <div className="flex flex-col w-full justify-center items-center">
         <div className="flex flex-col items-center  bg-white mt-[200px] w-[180px] min-[240px]:w-[240px] min-[310px]:w-[300px] min-[380px]:w-[350px] min-[550px]:w-[450px] sm:w-[630px] lg:w-7/12   mb-[50px] rounded-xl shadow-[0_25px_50px_-12px_rgba(56,57,157,0.3)]">
           <img
-            src="/home/event_image.png"
+            src={parsedEvent.eventPhoto}
             alt="Picture of the author"
             className="w-5/6 min-[380px]:px-2 min-[550px]:px-7 py-10"
           />
@@ -70,7 +70,7 @@ export default function EventDetail() {
             <BsCalendarWeek className="text-[30px] text-blue-text font-normal mt-2 min-w-[27px] w-[27px] lg:w-[50px]" />
             <div className="flex flex-col">
               <p className="text-[17px] sm:text-[23px] lg:text-[30px] text-blue-text font-normal ml-2">
-                {parsedEvent.eventDate}
+                {parsedEvent.eventDate} WIB
               </p>
             </div>
           </div>
