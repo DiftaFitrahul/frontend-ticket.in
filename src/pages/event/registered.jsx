@@ -17,9 +17,9 @@ export default function EventsRegistered() {
     "/home/event_image.png",
     "https://i.ibb.co/B3s7v4h/2.png",
     "https://i.ibb.co/XXR8kzF/3.png",
+    "/home/event_image.png",
     "https://i.ibb.co/yg7BSdM/4.png",
-    "https://i.ibb.co/yg7BSdM/4.png",
-    "https://i.ibb.co/yg7BSdM/4.png",
+    "/home/event_image.png",
   ];
 
   // useEffect(() => {
@@ -82,10 +82,52 @@ export default function EventsRegistered() {
       </div>
 
       {data === undefined ? (
-        <div className="min-w-full bg-red-500">
+        <div className="min-w-full ">
           <Carousel>
             {sildes.map((data) => (
-              <img src={data} className="min-w-full h-[800px]" />
+              <div className="min-w-full ">
+                <div className="absolute w-full h-full z-[10]">
+                  <div className="text-black   flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center mx-[5%] sm:ml-10 py-20 ">
+                    <img
+                      src="/home/poster.png"
+                      alt="coba"
+                      className="w-[90%] sm:min-w-[500px] sm:w-3/4 max-w-[800px]"
+                    />
+                    <div className="w-fit sm:w-[550px]  xl:mr-10 mt-5 xl:mt-0">
+                      <p className="text-[18px] font-bold text-white">
+                        {" "}
+                        Movie Party
+                      </p>
+                      <h1 className="text-[35px] sm:text-[50px] font-bold text-white leading-[50px] mb-3 w-full">
+                        Petualangan Sherina 2
+                      </h1>
+                      <p className="text-[18px] font-light text-white">
+                        SHERINA (Sherina Munaf) dan SADAM (Derby Romero), dua
+                        teman kecil yang lama terpisah, bertemu kembali di
+                        Kalimantan untuk pelepasliaran orang utan.
+                      </p>
+                      <div className="flex flex-col sm:flex-row mt-3 gap-3">
+                        <button className="bg-[#DF1875] h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
+                          Get Ticket
+                        </button>
+                        <button className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
+                          Learn More
+                        </button>
+                        <button
+                          className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]"
+                          onClick={() => {
+                            setShowAbout(true);
+                          }}
+                        >
+                          About Us
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-90"></div>
+                <img src={data} className="min-w-full h-[800px]" />
+              </div>
             ))}
           </Carousel>
         </div>
