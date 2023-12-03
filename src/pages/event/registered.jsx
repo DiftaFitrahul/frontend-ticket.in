@@ -7,6 +7,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { LoadingContext } from "@/context/LoadingContext";
 import { toast } from "react-toastify";
+import NoDataFound from "@/components/event/NoDataFound";
 
 export default function EventsRegistered() {
   const [data, setData] = useState([]);
@@ -33,10 +34,19 @@ export default function EventsRegistered() {
           }
         })
         .catch((err) => {
-          toast.error("Gagal Mendapatkan Data!", {
-            zIndex: 9999,
-          });
-          console.log(err);
+          if (err.response.data.message === "No user events found!") {
+            if (isMounted) {
+              setData(undefined);
+              toast.error("Tidak Ada Data!", {
+                zIndex: 9999,
+              });
+            }
+          } else {
+            toast.error("Gagal Mendapatkan Data!", {
+              zIndex: 9999,
+            });
+            console.log(err);
+          }
         })
         .finally(() => {
           if (isMounted) {
@@ -62,19 +72,23 @@ export default function EventsRegistered() {
         </h1>
       </div>
 
-      {data.map((dataEventRegistered, index) => {
-        return (
-          <EventsRegisteredComp
-            key={index}
-            title={dataEventRegistered.eventId.eventName}
-            description={dataEventRegistered.eventId.eventDescription}
-            code={dataEventRegistered.code}
-            name={dataEventRegistered.userId.name}
-            email={dataEventRegistered.userId.email}
-            imagePath={dataEventRegistered.paymentFile}
-          />
-        );
-      })}
+      {data === undefined ? (
+        <NoDataFound />
+      ) : (
+        data.map((dataEventRegistered, index) => {
+          return (
+            <EventsRegisteredComp
+              key={index}
+              title={dataEventRegistered.eventId.eventName}
+              description={dataEventRegistered.eventId.eventDescription}
+              code={dataEventRegistered.code}
+              name={dataEventRegistered.userId.name}
+              email={dataEventRegistered.userId.email}
+              imagePath={dataEventRegistered.paymentFile}
+            />
+          );
+        })
+      )}
       <MakeEvent />
       <FooterComp />
     </div>
