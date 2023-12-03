@@ -82,13 +82,13 @@ export default function HeaderComp() {
           <Link href="" className="text-white py-10 px-5">
             Ticket
           </Link>
-          <Link
+          <button
             href=""
             className="text-white py-10 px-5"
             onClick={handleEventRegistered}
           >
             Event Registered
-          </Link>
+          </button>
           {/* <Link href="/about" className="text-white py-10 px-5 ">
             About
           </Link> */}
