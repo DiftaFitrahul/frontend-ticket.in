@@ -1,27 +1,49 @@
 "use client";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Image from "next/image";
 import DatePicker from "react-datepicker";
+import Cookies from "js-cookie";
 import "react-datepicker/dist/react-datepicker.css";
 import { MdEventAvailable, MdMyLocation } from "react-icons/md";
 import { PiTextTBold, PiMoneyFill } from "react-icons/pi";
 import { IoTicketOutline } from "react-icons/io5";
+import { format } from "date-fns";
+import { LoadingContext } from "@/context/LoadingContext";
+
 import { IoIosArrowUp, IoIosArrowDown, IoIosContact } from "react-icons/io";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Login() {
-  const [startDate, setStartDate] = useState(new Date());
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
+  const [startDate, setStartDate] = useState(null);
   const [isOpenCategory, setIsOpenCategory] = useState(false);
   const [lastPageEvent, setLastPageEvent] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
   const [category, setCategory] = useState("Choose category");
+
+  const [eventName, setEventName] = useState("");
+  const [eventDescription, setEventDescription] = useState("");
+  const [eventDate, setEventDate] = useState("");
+  const [eventPrice, setEventPrice] = useState("");
+  const [eventQuota, setEventQuota] = useState("");
   const [selectedFileName, setSelectedFileName] = useState("");
+  const [imageFile, setImageFile] = useState(null);
 
   const handleFileChange = (e) => {
     const fileName = e.target.files[0]?.name;
+    setImageFile(e.target.files[0]);
     setSelectedFileName(fileName);
   };
 
   const toggleCategory = () => {
     setIsOpenCategory(!isOpenCategory);
+  };
+
+  const handleDateChange = (date) => {
+    setStartDate(date);
+    const formattedDate = format(new Date(date), "dd MMMM yyyy HH:mm");
+    setEventDate(formattedDate.toString());
   };
 
   const handleCategory = (value) => {
@@ -31,6 +53,109 @@ export default function Login() {
 
   const handleLastPageEvent = () => {
     setLastPageEvent(!lastPageEvent);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!imageFile) {
+      toast.error("Anda belum mengupload Gambar Event!"),
+        {
+          zIndex: 9999,
+        };
+      return;
+    }
+    console.log(eventName);
+    console.log(eventDescription);
+    console.log(eventDate);
+    console.log(eventPrice);
+    console.log(eventQuota);
+
+    if (
+      eventName === "" ||
+      eventDescription === "" ||
+      eventDate === "" ||
+      eventPrice === "" ||
+      eventQuota === ""
+    ) {
+      toast.error("Anda belum mengisi semua field!"),
+        {
+          zIndex: 9999,
+        };
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+
+      axios
+        .post(
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/admin/event`,
+          {
+            eventName,
+            eventDescription,
+            eventDate,
+            eventPrice,
+            eventQuota,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${Cookies.get("Auth")}`,
+            },
+          }
+        )
+        .then((res) => {
+          const formData = new FormData();
+          formData.append("eventImage", imageFile);
+          console.log(imageFile);
+
+          axios
+            .post(
+              `${process.env.NEXT_PUBLIC_BACKEND_URL}/admin/event/image?eventId=${res.data.event._id}`,
+              formData,
+              {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                  Authorization: `Bearer ${Cookies.get("Auth")}`,
+                },
+              }
+            )
+            .then((res) => {
+              setIsLoading(false);
+              toast.success("Berhasil Create Event!"),
+                {
+                  zIndex: 9999,
+                };
+              setTimeout(() => {
+                window.location.href = "/";
+              }, 1000);
+            })
+            .catch((err) => {
+              setIsLoading(false);
+              console.log(err);
+              toast.error("Gagal Create Event!"),
+                {
+                  zIndex: 9999,
+                };
+            });
+        })
+        .catch((err) => {
+          setIsLoading(false);
+
+          toast.error("Gagal Create Event!"),
+            {
+              zIndex: 9999,
+            };
+        });
+
+      // Handle the response from the server
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+      toast.error("Gagal Create Event!"),
+        {
+          zIndex: 9999,
+        };
+    }
   };
 
   const listCategory = [
@@ -66,6 +191,8 @@ export default function Login() {
 
   const submitForm = (e) => {
     e.preventDefault();
+
+    handleSubmit(e);
   };
 
   return (
@@ -91,7 +218,7 @@ export default function Login() {
           </p>
 
           <form
-            onSubmit={submitForm}
+            onSubmit={lastPageEvent ? submitForm : () => {}}
             className="self-start sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] ml-[30px] min-[350px]:ml-[45px] min-[450px]:ml-[90px] min-[550px]:ml-[100px] sm:ml-0"
           >
             {lastPageEvent ? (
@@ -104,9 +231,11 @@ export default function Login() {
                     <PiMoneyFill className="text-black " size={22} />
                   </span>
                   <input
-                    type="text"
+                    type="number"
                     className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Fill with 0 if the event is free"
+                    value={eventPrice}
+                    onChange={(e) => setEventPrice(e.target.value)}
                   />
                 </div>
 
@@ -121,6 +250,8 @@ export default function Login() {
                     type="number"
                     className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter max amount ticket"
+                    value={eventQuota}
+                    onChange={(e) => setEventQuota(e.target.value)}
                   />
                 </div>
 
@@ -168,6 +299,8 @@ export default function Login() {
                     type="text"
                     className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event name"
+                    value={eventName}
+                    onChange={(e) => setEventName(e.target.value)}
                   />
                 </div>
 
@@ -182,6 +315,8 @@ export default function Login() {
                     type="text"
                     className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[250px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
                     placeholder="Enter your event description"
+                    value={eventDescription}
+                    onChange={(e) => setEventDescription(e.target.value)}
                   />
                 </div>
 
@@ -196,12 +331,13 @@ export default function Login() {
                 <div className="w-full xl:w-[calc(25vw-50px)] flex flex-col min-[550px]:flex-row justify-between  ">
                   <DatePicker
                     selected={startDate}
-                    onChange={(date) => setStartDate(date)}
+                    onChange={handleDateChange}
                     minDate={new Date()}
                     showIcon={true}
                     showTimeInput={true}
                     onKeyDown={(e) => {
                       e.preventDefault();
+                      setEventDate(e.target.value);
                     }}
                     dateFormat="yyyy-MM-dd HH:mm"
                     placeholderText="Choose a date"
@@ -259,6 +395,7 @@ export default function Login() {
             )}
             <div className="flex justify-start items-center sm:w-[calc(29vw-50px)] lg:w-[270px]  w-[180px] min-[300px]:w-[200px] min-[400px]:w-[270px]  ">
               <button
+                type="button"
                 onClick={handleLastPageEvent}
                 className="text-white w-[120px]  mt-[50px] bg-[#F5167E] py-3  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
               >
