@@ -17,9 +17,9 @@ export default function CardEvent({
         src={imagePath}
         alt="coba"
         width={1000} // Set a large number to allow for a responsive width
-        height={250}
+        height={300}
         objectFit="cover"
-        className="self-center  rounded-xl"
+        className="self-center  rounded-xl min-h-[250px] max-h-[250px]"
       />
       <div className="flex items-start justify-start  mt-4 mx-3 min-[330px]:mx-6">
         <div className="flex flex-col items-center mr-2 min-[330px]:mr-5 mt-4">
