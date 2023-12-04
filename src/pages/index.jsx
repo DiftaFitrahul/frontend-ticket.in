@@ -68,59 +68,8 @@ export default function Home() {
         {showAbout && <AboutUs setShowAbout={setShowAbout} />}
         <div className="flex flex-col justify-center items-center bg-neutral-100">
           <HeaderComp />
-          <div className="min-w-full xl:mt-[100px]">
-            {/* <Carousel>
-              {sildes.map((event, index) => (
-                <div className="min-w-full ">
-                  <div className="absolute w-full h-full z-[10]">
-                    <div className="text-black   flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center mx-[5%] sm:ml-10 py-20 ">
-                      <img
-                        src={event?.eventPhoto ?? "/home/event_image.png"}
-                        alt="coba"
-                        className=" w-[280px] h-[280px] min-[400px]:w-[350px] min-[400px]:h-[350px] sm:w-3/4 sm:w-[450px] sm:h-[450px] mr-0 sm:mr-10 rounded-2xl mt-20 shadow-2xl"
-                      />
-                      <div className="w-fit sm:w-[550px]  xl:mr-10 mt-5 xl:mt-20">
-                        <p className="text-[18px] font-bold text-white">
-                          {" "}
-                          Movie Party
-                        </p>
-                        <h1 className="text-[35px] sm:text-[50px] font-bold text-white leading-[50px] mb-3 w-full">
-                          {event?.eventName}
-                        </h1>
-                        <p className="text-[18px] font-light text-white">
-                          SHERINA (Sherina Munaf) dan SADAM (Derby Romero), dua
-                          teman kecil yang lama terpisah, bertemu kembali di
-                          Kalimantan untuk pelepasliaran orang utan.
-                        </p>
-                        <div className="flex flex-col sm:flex-row mt-3 gap-3 z-[999]">
-                          <button
-                            key={event?._id}
-                            onClick={() => handleCardEventClick(index)}
-                            className="bg-[#DF1875] h-[50px] px-5 text-white font-medium rounded-full text-[18px] z-[999]"
-                          >
-                            Get Ticket
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.9]"></div>
-                  <img
-                    src={event?.eventPhoto ?? "/home/event_image.png"}
-                    className="min-w-full h-[1000px] xl:h-[900px]"
-                  />
-                </div>
-              ))}
-            </Carousel> */}
-          </div>
-          {/* <div className="flex flex-col min-[1350px]:flex-row  justify-between w-4/6 mt-[100px] mb-[100px] justify-center items-center">
-            <div className="text-[#242565] text-[40px]">Upcoming Events</div>
-            <div className="flex flex-wrap mt-5 xl:mt-0  justify-center items-center h-[150px]">
-              <FilterButton title="Weekdays" />
-              <FilterButton title="Event Type" className="my-5 sm:my-0" />
-              <FilterButton title="Any Category" />
-            </div>
-          </div> */}
+          <Carousel listEventTop={sildes} />
+
           <div className="grid grid-cols-1 min-[800px]:grid-cols-2 xl:grid-cols-3 gap-7 mt-[100px]">
             {eventsArray.map((event, index) => (
               <button
