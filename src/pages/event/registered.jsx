@@ -43,7 +43,7 @@ export default function EventsRegistered() {
           }
         })
         .catch((err) => {
-          if (err.response.data.message === "No user events found!") {
+          if (err.response?.data?.message === "No user events found!") {
             if (isMounted) {
               setData(undefined);
               toast.error("Tidak Ada Data!", {
