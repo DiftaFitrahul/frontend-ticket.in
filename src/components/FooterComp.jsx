@@ -18,12 +18,18 @@ export default function FooterComp() {
             events that fuel their passions and enrich their lives.
           </p>
           <div className="flex items-center h-[40px] mt-5">
-            <img src="/Facebook.png" alt="facebook" className="w-10" />
-            <img src="/home/twitter-icon.png" alt="twitter" className="w-10" />
-            <img
+            <Image src="/Facebook.png" alt="facebook" width={40} height={40} />
+            <Image
+              src="/home/twitter-icon.png"
+              alt="twitter"
+              width={40}
+              height={40}
+            />
+            <Image
               src="/home/linkedin-icon.png"
               alt="linkedin"
-              className="w-10"
+              width={40}
+              height={40}
             />
           </div>
         </div>
