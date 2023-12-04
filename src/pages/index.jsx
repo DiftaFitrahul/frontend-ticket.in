@@ -45,7 +45,7 @@ export default function Home() {
 
   const handleCardEventClick = (index) => {
     setIsLoading(true);
-    const selectedEventData = sildes[index];
+    const selectedEventData = eventsArray[index];
     localStorage.setItem(
       "selectedEventData",
       JSON.stringify(selectedEventData)
