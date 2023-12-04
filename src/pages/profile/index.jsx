@@ -82,27 +82,35 @@ export default function Login() {
               className="p-0"
             />
           </div>
-          <br /><br /><br />
-          
-            <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[30px] text-black">
-              Profile
-            </h1>
-            <p className="sm:self-start  xl:pl-[120px] md:pl-[70px] sm:pl-[40px] px-20 mt-[25px] mb-1 font-normal text-[16px] text-black">
-              Edit Prifole for:<br></br> Username
-            </p>
-            <div className="">
-              <Image
-                src="/profile.jpg"
-                alt="Profile Picture"
-                width={150}
-                height={150}
-                className="rounded-full"
-              />
-            </div>
+          <br />
+          <br />
+          <br />
 
-            <div className="image-upload-container">
-              <button type="file" accept="image/*" class="mt-[30px] flex w-full justify-center rounded-[100px] bg-[#F5167E] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm">Upload</button>
-            </div>  
+          <h1 className="sm:self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] font-medium text-[30px] text-black">
+            Profile
+          </h1>
+          <p className="sm:self-start  xl:pl-[120px] md:pl-[70px] sm:pl-[40px] px-20 mt-[25px] mb-1 font-normal text-[16px] text-black">
+            Edit Prifole for:<br></br> Username
+          </p>
+          <div className="">
+            <Image
+              src="/profile.jpg"
+              alt="Profile Picture"
+              width={150}
+              height={150}
+              className="rounded-full"
+            />
+          </div>
+
+          <div className="image-upload-container">
+            <button
+              type="file"
+              accept="image/*"
+              class="mt-[30px] flex w-full justify-center rounded-[100px] bg-[#F5167E] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm"
+            >
+              Upload
+            </button>
+          </div>
 
           <form
             onSubmit={submitForm}
@@ -123,7 +131,6 @@ export default function Login() {
                     placeholder="Fill with 0 if the event is free"
                   />
                 </div>
-
 
                 <p className="text-grey-custom text-[13px] mt-[40px]">
                   Enter the max amount of ticket
@@ -172,37 +179,56 @@ export default function Login() {
               </div>
             ) : (
               <div>
-
-                <p className="text-grey-custom text-[13px] mt-[40px]">First Name</p>
+                <p className="text-grey-custom text-[13px] mt-[40px]">
+                  First Name
+                </p>
                 <div className="relative w-[200px]">
                   <span className="absolute inset-y-0 left-0 flex items-center ">
                     <Image
-                    src="/person_icon.png"
-                    alt="email"
-                    width={20}
-                    height={20}
+                      src="/person_icon.png"
+                      alt="email"
+                      width={20}
+                      height={20}
                     />
                   </span>
-                  <input type="text" className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue focus:outline-none text-placeholder-blue focus:placeholder-placeholder-blue" placeholder="Enter your first name"/>
+                  <input
+                    type="text"
+                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue focus:outline-none text-placeholder-blue focus:placeholder-placeholder-blue"
+                    placeholder="Enter your first name"
+                  />
                 </div>
 
-                <p className="text-grey-custom text-[13px] mt-[40px]">Last Name</p>
+                <p className="text-grey-custom text-[13px] mt-[40px]">
+                  Last Name
+                </p>
                 <div className="relative w-[200px]">
                   <span className="absolute inset-y-0 left-0 flex items-center ">
                     <Image
-                    src="/person_icon.png"
-                    alt="email"
-                    width={20}
-                    height={20}
+                      src="/person_icon.png"
+                      alt="email"
+                      width={20}
+                      height={20}
                     />
                   </span>
-                  <input type="text" className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue focus:outline-none text-placeholder-blue focus:placeholder-placeholder-blue" placeholder="Enter your last name"/>
+                  <input
+                    type="text"
+                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue focus:outline-none text-placeholder-blue focus:placeholder-placeholder-blue"
+                    placeholder="Enter your last name"
+                  />
                 </div>
 
-                <p className="text-grey-custom text-[13px] mt-[40px]">Phone Number</p>
+                <p className="text-grey-custom text-[13px] mt-[40px]">
+                  Phone Number
+                </p>
                 <div className="relative w-[200px]">
-                  <span className="absolute inset-y-0 left-0 flex items-center "><MdEventAvailable className="text-black " size={22} /></span>
-                  <input type="text" className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue focus:outline-none text-placeholder-blue focus:placeholder-placeholder-blue" placeholder="Enter your phone number"/>
+                  <span className="absolute inset-y-0 left-0 flex items-center ">
+                    <MdEventAvailable className="text-black " size={22} />
+                  </span>
+                  <input
+                    type="text"
+                    className="pl-7 pr-4 py-2 w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px] border-grey-custom border-b-2 focus:border-placeholder-blue focus:outline-none text-placeholder-blue focus:placeholder-placeholder-blue"
+                    placeholder="Enter your phone number"
+                  />
                 </div>
 
                 <div className="flex justify-between items-center w-full ">
@@ -228,8 +254,18 @@ export default function Login() {
               </div>
             )}
             <div className="flex justify-between items-center w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px]">
-              <button onClick={handleLastPageEvent} className="text-white w-[220px]  mt-[50px] bg-[#F5167E] py-3  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow">Male</button>
-              <button onClick={handleLastPageEvent} className="text-white w-[220px]  mt-[50px] bg-[#F5167E] py-3  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow">Female</button>
+              <button
+                onClick={handleLastPageEvent}
+                className="text-white w-[220px]  mt-[50px] bg-[#F5167E] py-3  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
+              >
+                Male
+              </button>
+              <button
+                onClick={handleLastPageEvent}
+                className="text-white w-[220px]  mt-[50px] bg-[#F5167E] py-3  rounded-[100px] hover:opacity-90 shadow-auth-button-shadow"
+              >
+                Female
+              </button>
             </div>
 
             <div className="flex justify-start items-center w-[calc(25vw-50px)] sm:min-w-[270px] min-w-[340px]">
@@ -252,11 +288,6 @@ export default function Login() {
             className="absolute top-3 right-5"
           />
 
-          <img
-            src="/auth_image.png"
-            alt="Picture of the author"
-            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[850px] lg:w-[650px]  xl:h-[650px] lg:h-[500px]"
-          />
           <h1 className="self-start text-primary-blue xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
             Your Event, Your Way!
           </h1>
