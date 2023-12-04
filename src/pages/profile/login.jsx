@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useDispatch } from 'react-redux';
-import { login } from '../../redux/authSlice';
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/authSlice";
 import { useContext } from "react";
 import { LoadingContext } from "@/context/LoadingContext";
 import { toast } from "react-toastify";
@@ -33,18 +33,20 @@ export default function Login() {
         Cookies.set("Auth", res.data.token, { expires: 1 });
         dispatch(login());
         setIsLoading(false);
-        toast.success("Login Berhasil!"), {
-          zIndex: 9999,
-        };
+        toast.success("Login Berhasil!"),
+          {
+            zIndex: 9999,
+          };
         setTimeout(() => {
           window.location.href = "/";
         }, 1000);
       })
       .catch((err) => {
         setIsLoading(false);
-        toast.error("Login Gagal!"), {
-          zIndex: 9999,
-        };
+        toast.error("Login Gagal!"),
+          {
+            zIndex: 9999,
+          };
       });
   }
 
