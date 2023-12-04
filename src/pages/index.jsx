@@ -69,7 +69,7 @@ export default function Home() {
         <div className="flex flex-col justify-center items-center bg-neutral-100">
           <HeaderComp />
           <div className="min-w-full xl:mt-[100px]">
-            <Carousel>
+            {/* <Carousel>
               {sildes.map((event, index) => (
                 <div className="min-w-full ">
                   <div className="absolute w-full h-full z-[10]">
@@ -100,17 +100,6 @@ export default function Home() {
                           >
                             Get Ticket
                           </button>
-                          {/* <button className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]">
-                          Learn More
-                        </button> */}
-                          {/* <button
-                          className="border border-white h-[50px] px-5 text-white font-medium rounded-full text-[18px]"
-                          onClick={() => {
-                            setShowAbout(true);
-                          }}
-                        >
-                          About Us
-                        </button> */}
                         </div>
                       </div>
                     </div>
@@ -122,7 +111,7 @@ export default function Home() {
                   />
                 </div>
               ))}
-            </Carousel>
+            </Carousel> */}
           </div>
           {/* <div className="flex flex-col min-[1350px]:flex-row  justify-between w-4/6 mt-[100px] mb-[100px] justify-center items-center">
             <div className="text-[#242565] text-[40px]">Upcoming Events</div>
