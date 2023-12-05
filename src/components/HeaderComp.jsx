@@ -54,7 +54,7 @@ export default function HeaderComp() {
             src={Logo}
             alt="Picture of the author"
             unoptimized
-            className="hidden sm:block w-[180px] mr-5"
+            className="hidden sm:block w-[100px] mr-5"
           />
         </Link>
 
@@ -79,6 +79,9 @@ export default function HeaderComp() {
         </button>
 
         <div className="flex flex-shrink-0 gap-5 items-center justify-center hidden xl:block">
+          <Link href="/" className="text-white py-10 px-5">
+            Home
+          </Link>
           <Link href="" className="text-white py-10 px-5">
             Ticket
           </Link>
@@ -87,6 +90,7 @@ export default function HeaderComp() {
             className="text-white py-10 px-5"
             onClick={handleEventRegistered}
           >
+
             Event Registered
           </button>
           {/* <Link href="/about" className="text-white py-10 px-5 ">
