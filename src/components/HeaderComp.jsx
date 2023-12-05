@@ -47,7 +47,7 @@ export default function HeaderComp() {
   };
 
   return (
-    <nav className="w-creen h-screen fixed left-0 z-[999]">
+    <nav className="w-creen h-screen fixed left-0 z-10">
       <div className="flex w-full bg-[#242565] flex-row items-center justify-between fixed top-0 px-2 sm:px-14 z-10 py-3 sm:py-[22px] min-[700px]:py-0">
         <Link href="/">
           <Image

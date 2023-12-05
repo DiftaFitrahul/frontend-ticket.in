@@ -9,12 +9,10 @@ import Cookies from "js-cookie";
 import { BsSearch } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
 import { SidebarContext } from "@/components/HeaderComp";
-import { useRouter } from "next/router";
 
 import { toast } from "react-toastify";
 
 const Sidebar = () => {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
   const { showSidebar, setShowSidebar } = useContext(SidebarContext);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -29,16 +27,6 @@ const Sidebar = () => {
       {
         zIndex: 9999,
       };
-  };
-
-  const handleEventRegistered = () => {
-    if (Cookies.get("Auth") === undefined) {
-      toast.error("Gagal Melihat Event! Anda harus Login terlebih dahulu!", {
-        zIndex: 9999,
-      });
-    } else {
-      router.push("/event/registered");
-    }
   };
 
   return (
@@ -62,13 +50,12 @@ const Sidebar = () => {
         </button>
       </div>
       <div className="flex flex-col w-full h-[170px] px-3">
-        <button
-          href=""
-          className="text-white hover:text-[#242565] pl-3 py-3  text-start h-full px-full w-full hover:bg-white rounded-xl font-semibold"
-          onClick={handleEventRegistered}
+        <Link
+          href="/event/registered"
+          className="text-white  hover:text-[#242565] pl-3 pt-4   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
         >
           Event Registered
-        </button>
+        </Link>
         <Link
           href=""
           className="text-white hover:text-[#242565] pl-3 pt-4   h-full px-full w-full hover:bg-white rounded-xl font-semibold"

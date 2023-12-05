@@ -424,20 +424,15 @@ export default function Login() {
             className="absolute top-3 right-5"
           />
 
-          <Image
+          <img
             src="/auth_image.png"
             alt="Picture of the author"
-            width={550}
-            height={550}
-            layout="responsive"
-            objectFit="cover"
-            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-32  lg:mt-[70px] xl:mt-[-20px] 2xl:mt-[-50px] mb-10  xl:mb-20 2xl:mb-0"
+            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[750px] lg:w-[650px]  xl:h-[550px] lg:h-[500px]"
           />
-
           <h1 className="self-start text-primary-blue xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
             Your Event, Your Way!
           </h1>
-          <p className="self-start text-primary-blue xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mb-[100px] pr-[20px]  xl:text-[20px] md:text-[15px] ">
+          <p className="self-start text-primary-blue xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mb-[100px] pr-[20px]  xl:text-[20px] md:text-[15px]">
             It's time to turn your vision into reality. Create your dream event
             from scratch and watch it come to life. Let's get started.
           </p>
