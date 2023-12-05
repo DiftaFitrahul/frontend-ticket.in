@@ -270,16 +270,11 @@ export default function Register() {
             className="absolute top-3 right-5"
           />
 
-          <Image
+          <img
             src="/auth_image.png"
             alt="Picture of the author"
-            width={650}
-            height={650}
-            layout="responsive"
-            objectFit="cover"
-            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px] mb-10  xl:mb-20 2xl:mb-0"
+            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[850px] lg:w-[650px]  xl:h-[650px] lg:h-[500px]"
           />
-
           <h1 className="self-start text-white xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
             Sign up to TICKET.IN
           </h1>

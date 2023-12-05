@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import MakeEvent from "@/components/event/MakeEvent";
@@ -57,13 +56,10 @@ export default function EventDetail() {
       <HeaderComp />
       <div className="flex flex-col w-full justify-center items-center">
         <div className="flex flex-col items-center  bg-white mt-[200px] w-[180px] min-[240px]:w-[240px] min-[310px]:w-[300px] min-[380px]:w-[350px] min-[550px]:w-[450px] sm:w-[630px] lg:w-7/12   mb-[50px] rounded-xl shadow-[0_25px_50px_-12px_rgba(56,57,157,0.3)]">
-          <Image
+          <img
             src={parsedEvent.eventPhoto}
             alt="Picture of the author"
-            width={800}
-            height={550}
-            layout="responsive"
-            className="min-[380px]:px-2 min-[550px]:px-7 py-10"
+            className="w-5/6 min-[380px]:px-2 min-[550px]:px-7 py-10"
           />
         </div>
         <div className="flex flex-col items-start w-full px-[40px] sm:px-[100px] lg:px-[200px]">

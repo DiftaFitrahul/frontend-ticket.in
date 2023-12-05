@@ -186,16 +186,11 @@ export default function Login() {
             className="absolute top-3 right-5"
           />
 
-          <div className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px] lg:mt-[70px] xl:mt-[0px] items-center mb-20  xl:mb-0 2xl:mb-20  2xl:w-[800px] xl:w-[650px] lg:w-[520px]  xl:h-[650px] lg:h-[500px] relative">
-            <Image
-              src="/auth_image.png"
-              alt="Picture of the author"
-              width={850}
-              height={650}
-              layout="responsive"
-              objectFit="cover"
-            />
-          </div>
+          <img
+            src="/auth_image.png"
+            alt="Picture of the author"
+            className="self-start xl:pl-[120px] md:pl-[70px] sm:pl-[40px] mt-[150px]  lg:mt-[70px] xl:mt-[0px]  items-center mb-20 xl:w-[850px] lg:w-[650px]  xl:h-[650px] lg:h-[500px]"
+          />
           <h1 className="self-start text-white xl:pl-[120px] md:pl-[70px] sm:pl-[40px]  font-semibold xl:text-[40px]  md:text-[30px]">
             Sign in to TICKET.IN
           </h1>

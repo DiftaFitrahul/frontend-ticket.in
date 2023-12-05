@@ -1,4 +1,3 @@
-import Image from "next/image";
 export default function CardEvent({
   title,
   subtitle,
@@ -12,14 +11,11 @@ export default function CardEvent({
   });
 
   return (
-    <div className="flex flex-col w-[240px] min-[370px]:w-[350px] md:w-[380px]  xl:w-[410px] h-[400px] shadow-xl  bg-white rounded-3xl ">
-      <Image
+    <div className="flex flex-col w-[240px] min-[370px]:w-[350px] md:w-[380px]  xl:w-[410px] h-[400px] shadow-xl  bg-white rounded-3xl">
+      <img
         src={imagePath}
         alt="coba"
-        width={1000} // Set a large number to allow for a responsive width
-        height={300}
-        objectFit="cover"
-        className="self-center  rounded-xl min-h-[250px] max-h-[250px]"
+        className="w-full h-[250px] object-fill"
       />
       <div className="flex items-start justify-start  mt-4 mx-3 min-[330px]:mx-6">
         <div className="flex flex-col items-center mr-2 min-[330px]:mr-5 mt-4">
