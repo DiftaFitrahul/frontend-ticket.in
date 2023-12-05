@@ -3,7 +3,7 @@ import Logo from "@/../public/logo.png";
 
 export default function FooterComp() {
   return (
-    <footer className="bg-[#242565] h-[830px] md:h-[550px] xl:h-[500px] w-full flex flex-col justify-between items-start px-14">
+    <footer className="bg-[#242565] h-[830px] md:h-[550px] xl:h-[500px] w-full flex flex-col justify-between items-start px-14 text-white">
       <div className="flex flex-col xl:flex-row w-full justify-between">
         <div className="flex flex-col w-full xl:w-1/3 ">
           <Image
@@ -70,7 +70,7 @@ export default function FooterComp() {
       <div className="flex flex-col  items-center w-full mb-5 ">
         <div className="bg-[#4C4D8B] h-[2px] w-full"></div>
         <p className="text-[14px] mt-5 opacity-70">
-          Copyright © 2023 Difta Fitrahul
+          Copyright © 2023 ticket.in
         </p>
       </div>
     </footer>
