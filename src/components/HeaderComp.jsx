@@ -94,7 +94,17 @@ export default function HeaderComp() {
           </Link> */}
           <Link href="" className="text-white py-10 px-5">
             Contact
-          </Link>
+           </Link>
+                  {isLoggedIn ? (
+                      <Link
+                          href="/profile"
+
+                          className="text-white py-10 px-5 "
+                      >
+                          Profile
+                      </Link>
+                  ):null}
+          
           {isLoggedIn ? (
             <Link
               href="/"
