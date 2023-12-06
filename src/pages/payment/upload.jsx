@@ -8,7 +8,6 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import Head from "next/head";
 
-// TODO: SEND PAYMENT DATA TO BACKEND
 export default function UploadPayment() {
   const [imagePath, setImagePath] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -89,7 +88,6 @@ export default function UploadPayment() {
           }
         });
 
-      // Handle the response from the server
     } catch (error) {
       setIsLoading(false);
       toast.error("Gagal Upload Bukti Pembayaran!"),

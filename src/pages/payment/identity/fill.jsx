@@ -96,7 +96,6 @@ export default function FillIdentityPayment() {
           </select>
           <button
             type="submit"
-            // onClick={() => alert("Payment Success")}
             className="mt-[80px] self-center bg-[#F5167E] py-4 w-[300px] rounded-full shadow-xl font-medium"
           >
             Create Events

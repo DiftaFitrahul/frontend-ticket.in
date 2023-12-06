@@ -145,8 +145,7 @@ export default function Login() {
               zIndex: 9999,
             };
         });
-
-      // Handle the response from the server
+        
     } catch (error) {
       setIsLoading(false);
       console.log(error);

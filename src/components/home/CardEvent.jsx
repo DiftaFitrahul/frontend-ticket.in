@@ -27,7 +27,7 @@ export default function CardEvent({
       <Image
         src={imagePath}
         alt="coba"
-        width={1000} // Set a large number to allow for a responsive width
+        width={1000} 
         height={300}
         unoptimized={true}
         objectFit="cover"

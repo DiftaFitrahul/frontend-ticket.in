@@ -56,7 +56,7 @@ export default function ProfilePage() {
         window.location.href = "/";
       }, 1000);
     }
-    
+
     if (
       name === "" ||
       countryCode === "" ||
@@ -152,9 +152,10 @@ export default function ProfilePage() {
                   <h1 className="text-4xl font-semibold mt-5"> Edit Profile</h1>
 
                   {/* <div className="text-lg font-light">
-                                        <p>Edit Profile for:</p>
-                                        <p>username@gmail.com</p>
-                                    </div> */}
+                        <p>Edit Profile for:</p>
+                        <p>username@gmail.com</p>
+                  </div> */}
+                  
                 </div>
               </div>
               <div className="hover:cursor-pointer text-start">

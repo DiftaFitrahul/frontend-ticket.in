@@ -117,7 +117,6 @@ export default function EventsRegistered() {
     getDataEventRegistered();
 
     return () => {
-      // Clean up to set isMounted to false when the component is unmounted
       isMounted = false;
     };
   }, []);

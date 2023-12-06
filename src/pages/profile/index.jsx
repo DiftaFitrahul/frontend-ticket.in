@@ -76,7 +76,6 @@ export default function ProfilePage() {
     getDataUser();
 
     return () => {
-      // Clean up to set isMounted to false when the component is unmounted
       isMounted = false;
     };
   }, []);
