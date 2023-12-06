@@ -35,10 +35,10 @@ export default function CardEvent({
       />
       <div className="flex items-start justify-start  mt-4 mx-3 min-[330px]:mx-6">
         <div className="flex flex-col items-center mr-2 min-[330px]:mr-5 mt-4">
-          <p className="text-[#3D37F1] text-center font-bold text-[10px] min-[330px]:text-[15px] mt-1">
+          <p className="text-[#3D37F1] text-center font-bold text-[10px] min-[550px]:text-[11px] sm:text-[15px] mt-1">
             {IDR.format(price)}
           </p>
-          <p className="text-black font-bold text-[10px] min-[330px]:text-[20px]">
+          <p className="text-black font-bold text-[10px] min-[550px]:text-[15px] sm:text-[20px]">
             {quota} Pcs
           </p>
         </div>
@@ -46,7 +46,7 @@ export default function CardEvent({
           <h1 className="text-black text-start font-bold text-[17px] md:text-[21px]">
             {trimmedTitle}
           </h1>
-          <p className="text-[#6A6A6A] text-start text-[10px] sm:text-[13px]">
+          <p className="text-[#6A6A6A] text-start text-[10px] min-[] sm:text-[13px]">
             {trimmedSubtitle}
           </p>
         </div>
