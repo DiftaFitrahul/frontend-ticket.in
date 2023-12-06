@@ -31,11 +31,8 @@ export default function Login() {
         password,
       })
       .then((res) => {
-        console.log("------------------------------------");
-        console.log(res);
-        console.log("------------------------------------");
         Cookies.set("Auth", res.data.token, { expires: 1 });
-        localStorage.setItem("dataUser", JSON.stringify(res.data));
+        localStorage.setItem("dataUser", JSON.stringify(res.data.role));
         dispatch(login());
         setIsLoading(false);
         toast.success("Login Berhasil!"),
