@@ -40,6 +40,7 @@ export default function HeaderComp() {
   const handleLogout = () => {
     dispatch(logout());
     Cookies.remove("Auth");
+    localStorage.removeItem("dataUser");
     toast.success("Logout Berhasil!"),
       {
         zIndex: 9999,
@@ -48,7 +49,7 @@ export default function HeaderComp() {
 
   return (
     <nav className="w-creen h-[70px] fixed left-0 z-[999]">
-          <div className="flex w-full h-[70px] bg-[#242565] flex-row items-center justify-between fixed top-0 px-2 sm:px-14 z-10 py-3 sm:py-[22px] min-[700px]:py-0">
+      <div className="flex w-full h-[70px] bg-[#242565] flex-row items-center justify-between fixed top-0 px-2 sm:px-14 z-10 py-3 sm:py-[22px] min-[700px]:py-0">
         <Link href="/">
           <Image
             src={Logo}
@@ -90,7 +91,6 @@ export default function HeaderComp() {
             className="text-white py-10 px-5"
             onClick={handleEventRegistered}
           >
-
             Event Registered
           </button>
           {/* <Link href="/about" className="text-white py-10 px-5 ">
@@ -98,17 +98,13 @@ export default function HeaderComp() {
           </Link> */}
           <Link href="" className="text-white py-10 px-5">
             Contact
-           </Link>
-                  {isLoggedIn ? (
-                      <Link
-                          href="/profile"
+          </Link>
+          {isLoggedIn ? (
+            <Link href="/profile" className="text-white py-10 px-5 ">
+              Profile
+            </Link>
+          ) : null}
 
-                          className="text-white py-10 px-5 "
-                      >
-                          Profile
-                      </Link>
-                  ):null}
-          
           {isLoggedIn ? (
             <Link
               href="/"

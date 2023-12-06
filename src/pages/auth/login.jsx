@@ -35,15 +35,16 @@ export default function Login() {
         console.log(res);
         console.log("------------------------------------");
         Cookies.set("Auth", res.data.token, { expires: 1 });
+        localStorage.setItem("dataUser", JSON.stringify(res.data));
         dispatch(login());
         setIsLoading(false);
         toast.success("Login Berhasil!"),
           {
             zIndex: 9999,
           };
-        // setTimeout(() => {
-        //   window.location.href = "/";
-        // }, 1000);
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
       })
       .catch((err) => {
         setIsLoading(false);

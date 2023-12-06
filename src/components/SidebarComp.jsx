@@ -25,6 +25,7 @@ const Sidebar = () => {
   const handleLogout = () => {
     dispatch(logout());
     Cookies.remove("Auth");
+    localStorage.removeItem("dataUser");
     toast.success("Logout Berhasil!"),
       {
         zIndex: 9999,
