@@ -217,17 +217,3 @@ export const listPhoneCode = [
   {"country":"Zimbabwe","code":"263","iso":"ZW"}
 ]
 
-export const listMonth = [
-  "January",
-  "Februari",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "Oktober",
-  "November",
-  "Desember",
-]

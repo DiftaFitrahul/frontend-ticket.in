@@ -106,7 +106,6 @@ export default function Login() {
         .then((res) => {
           const formData = new FormData();
           formData.append("eventImage", imageFile);
-          console.log(imageFile);
 
           axios
             .post(
@@ -157,37 +156,6 @@ export default function Login() {
         };
     }
   };
-
-  const listCategory = [
-    {
-      id: 1,
-      name: "Music",
-    },
-    {
-      id: 2,
-      name: "Sport",
-    },
-    {
-      id: 3,
-      name: "Education",
-    },
-    {
-      id: 4,
-      name: "Technology",
-    },
-    {
-      id: 5,
-      name: "Art",
-    },
-    {
-      id: 6,
-      name: "Business",
-    },
-    {
-      id: 7,
-      name: "Other",
-    },
-  ];
 
   const submitForm = (e) => {
     e.preventDefault();

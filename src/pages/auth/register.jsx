@@ -127,13 +127,13 @@ export default function Register() {
               Phone Number
             </p>
             <div className="relative w-[200px]">
-              <span className="absolute inset-y-0 left-0 flex items-center ">
+              <span className="absolute inset-y-0 left-0 flex items-center text-black text-[20px]">
                 <AiOutlinePhone />
               </span>
               <input
                 type="text"
                 className="pl-7 pr-4 py-2 w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px] border-grey-custom border-b-2 focus:border-placeholder-blue  focus:outline-none   text-placeholder-blue focus:placeholder-placeholder-blue"
-                placeholder="Enter your username"
+                placeholder="Enter your phone number"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
