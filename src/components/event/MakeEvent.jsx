@@ -38,7 +38,7 @@ export default function MakeEvent({}) {
         </p>
         <button
           onClick={handleCreateEvent}
-          className="bg-[#F5167E] py-4 px-5 rounded-full text-center shadow-lg font-medium"
+          className="text-white bg-[#F5167E] py-4 px-5 rounded-full text-center shadow-lg font-medium"
         >
           Create Events
         </button>
