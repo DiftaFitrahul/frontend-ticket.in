@@ -1,4 +1,4 @@
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import MakeEvent from "@/components/event/MakeEvent";
 import FooterComp from "@/components/FooterComp";
@@ -98,6 +98,17 @@ export default function UploadPayment() {
         };
     }
   };
+
+  useEffect(() => {
+    if(Cookies.get("Auth") === undefined) {
+      toast.error("Anda belum login!", {
+        zIndex: 9999,
+      });
+      setInterval(() => {
+        window.location.href = "/";
+      }, 1000);
+    }
+  }, []);
 
   const handleDownload = () => {
     if (imagePath) {

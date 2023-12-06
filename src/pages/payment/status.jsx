@@ -2,8 +2,22 @@ import MakeEvent from "@/components/event/MakeEvent";
 import FooterComp from "@/components/FooterComp";
 import HeaderComp from "@/components/HeaderComp";
 import Head from "next/head";
+import Cookies from "js-cookie";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 export default function PaymentStatus() {
+  useEffect(() => {
+    if(Cookies.get("Auth") === undefined) {
+      toast.error("Anda belum login!", {
+        zIndex: 9999,
+      });
+      setInterval(() => {
+        window.location.href = "/";
+      }, 1000);
+    }
+  }, []);
+
   return (
     <>
     <Head>

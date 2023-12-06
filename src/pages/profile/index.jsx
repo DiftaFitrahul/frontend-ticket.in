@@ -29,6 +29,17 @@ export default function ProfilePage() {
   let name = "difta";
 
   useEffect(() => {
+    if(Cookies.get("Auth") === undefined) {
+      toast.error("Anda belum login!", {
+        zIndex: 9999,
+      });
+      setInterval(() => {
+        window.location.href = "/";
+      }, 1000);
+    }
+
+    console.log(Cookies.get("Auth"));
+
     let isMounted = true;
 
     const getDataUser = () => {

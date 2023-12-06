@@ -1,5 +1,5 @@
 "use client";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import DatePicker from "react-datepicker";
 import Cookies from "js-cookie";
@@ -162,6 +162,18 @@ export default function Login() {
 
     handleSubmit(e);
   };
+
+  useEffect(() => {
+    if(Cookies.get("Auth") === undefined) {
+      toast.error("Anda belum login!", {
+        zIndex: 9999,
+      });
+      setInterval(() => {
+        window.location.href = "/";
+      }, 1000);
+    }
+  
+  }, []);
 
   return (
     <>

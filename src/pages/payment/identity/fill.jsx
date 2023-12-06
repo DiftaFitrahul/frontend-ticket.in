@@ -3,6 +3,9 @@ import HeaderComp from "@/components/HeaderComp";
 import FooterComp from "@/components/FooterComp";
 import MakeEvent from "@/components/event/MakeEvent";
 import Head from "next/head";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 export default function FillIdentityPayment() {
   const [selectedGender, setSelectedGender] = useState("Choose");
@@ -13,6 +16,18 @@ export default function FillIdentityPayment() {
   async function handleSubmit(e) {
     e.preventDefault();
   }
+  
+  useEffect(() => {
+    if(Cookies.get("Auth") === undefined) {
+      toast.error("Anda belum login!", {
+        zIndex: 9999,
+      });
+      setInterval(() => {
+        window.location.href = "/";
+      }, 1000);
+    }
+
+  }, []);
 
   return (
     <>

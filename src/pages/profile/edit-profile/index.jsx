@@ -48,6 +48,15 @@ export default function ProfilePage() {
   };
 
   useEffect(() => {
+    if(Cookies.get("Auth") === undefined) {
+      toast.error("Anda belum login!", {
+        zIndex: 9999,
+      });
+      setInterval(() => {
+        window.location.href = "/";
+      }, 1000);
+    }
+    
     if (
       name === "" ||
       countryCode === "" ||
