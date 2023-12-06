@@ -8,6 +8,7 @@ import { login } from "../../redux/authSlice";
 import { useContext } from "react";
 import { LoadingContext } from "@/context/LoadingContext";
 import { toast } from "react-toastify";
+import Head from "next/head";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -54,6 +55,12 @@ export default function Login() {
   }
 
   return (
+    <>
+    <Head>
+        <title>Login | ticket.in</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
+
     <main>
       <div className=" flex flex-row justify-center items-center h-[970px]  w-screen bg-neutral-100 p-5">
         <div className="flex flex-col justify-center items-center h-full  w-screen sm:w-1/2 relative bg-white    rounded-lg ml-[10px]">
@@ -209,5 +216,6 @@ export default function Login() {
         </div>
       </div>
     </main>
+    </>
   );
 }

@@ -6,6 +6,7 @@ import { AiOutlinePhone } from "react-icons/ai";
 import { useContext } from "react";
 import { LoadingContext } from "@/context/LoadingContext";
 import { toast } from "react-toastify";
+import Head from "next/head";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -55,6 +56,12 @@ export default function Register() {
   }
 
   return (
+    <>
+    <Head>
+        <title>Register | ticket.in</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
+    
     <main>
       <div className=" flex flex-row justify-center items-center h-[970px]  w-screen bg-neutral-100 p-5">
         <div className="flex flex-col justify-center items-center h-full  w-screen sm:w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px]">
@@ -289,5 +296,6 @@ export default function Register() {
         </div>
       </div>
     </main>
+    </>
   );
 }

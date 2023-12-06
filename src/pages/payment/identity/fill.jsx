@@ -2,6 +2,7 @@ import { useState } from "react";
 import HeaderComp from "@/components/HeaderComp";
 import FooterComp from "@/components/FooterComp";
 import MakeEvent from "@/components/event/MakeEvent";
+import Head from "next/head";
 
 export default function FillIdentityPayment() {
   const [selectedGender, setSelectedGender] = useState("Choose");
@@ -14,6 +15,12 @@ export default function FillIdentityPayment() {
   }
 
   return (
+    <>
+    <Head>
+        <title>Fill Identity | ticket.in</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
+
     <div className="flex flex-col justify-center items-center bg-neutral-100 ">
       <HeaderComp />
       <div className="flex flex-col items-start p-10 lg:p-20 bg-white mt-[200px] w-[calc(70vw)]  mb-[50px] rounded-xl shadow-[0_25px_50px_-12px_rgba(56,57,157,0.3)]">
@@ -84,5 +91,6 @@ export default function FillIdentityPayment() {
       <MakeEvent />
       <FooterComp />
     </div>
+    </>
   );
 }

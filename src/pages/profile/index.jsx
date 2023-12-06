@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { AiOutlineEdit } from "react-icons/ai";
 import HeaderComp from "@/components/HeaderComp";
 import Modal from "@/components/profile/Modal";
+import Head from "next/head";
 
 export default function ProfilePage() {
   const avatarField = useRef(null);
@@ -70,6 +71,12 @@ export default function ProfilePage() {
   }, []);
 
   return (
+    <>
+    <Head>
+        <title>Profile | ticket.in</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
+
     <main>
       <HeaderComp />
       <div className="relative mt-[70px] bg-white min-w-full min-h-screen h-full p-5">
@@ -148,5 +155,6 @@ export default function ProfilePage() {
         </div>
       </div>
     </main>
+    </>
   );
 }

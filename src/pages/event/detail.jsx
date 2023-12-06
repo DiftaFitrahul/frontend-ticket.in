@@ -7,6 +7,7 @@ import FooterComp from "@/components/FooterComp";
 import HeaderComp from "@/components/HeaderComp";
 import { BsCalendarWeek } from "react-icons/bs";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function EventDetail() {
   const eventSelected = localStorage.getItem("selectedEventData");
@@ -53,6 +54,12 @@ export default function EventDetail() {
   }, []);
 
   return (
+    <>
+    <Head>
+        <title>Event Detail | ticket.in</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
+
     <div className="flex flex-col justify-center items-center bg-neutral-100">
       <HeaderComp />
       <div className="flex flex-col w-full justify-center items-center">
@@ -157,5 +164,6 @@ export default function EventDetail() {
       <MakeEvent />
       <FooterComp />
     </div>
+    </>
   );
 }
