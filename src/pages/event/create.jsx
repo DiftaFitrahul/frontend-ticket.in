@@ -9,7 +9,7 @@ import { PiTextTBold, PiMoneyFill } from "react-icons/pi";
 import { IoTicketOutline } from "react-icons/io5";
 import { format } from "date-fns";
 import { LoadingContext } from "@/context/LoadingContext";
-
+import Head from "next/head";
 import { IoIosArrowUp, IoIosArrowDown, IoIosContact } from "react-icons/io";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -164,6 +164,12 @@ export default function Login() {
   };
 
   return (
+    <>
+    <Head>
+        <title>Create Event | ticket.in</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
+    
     <main>
       <div className=" flex flex-row justify-center items-center h-[970px]  w-screen bg-neutral-100 p-5">
         <div className="flex flex-col justify-center items-center  h-full  w-full sm:w-1/2 relative bg-white mt-20 mb-20 rounded-lg ml-[10px] ">
@@ -412,5 +418,6 @@ export default function Login() {
         </div>
       </div>
     </main>
+    </>
   );
 }

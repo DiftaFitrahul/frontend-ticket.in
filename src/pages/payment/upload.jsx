@@ -6,6 +6,7 @@ import HeaderComp from "@/components/HeaderComp";
 import { LoadingContext } from "@/context/LoadingContext";
 import Cookies from "js-cookie";
 import axios from "axios";
+import Head from "next/head";
 
 // TODO: SEND PAYMENT DATA TO BACKEND
 export default function UploadPayment() {
@@ -114,6 +115,12 @@ export default function UploadPayment() {
   };
 
   return (
+    <>
+    <Head>
+        <title>Purchase | ticket.in</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
+
     <div className="flex flex-col justify-center items-center bg-neutral-100">
       <HeaderComp />
       <div className="flex flex-col items-start p-10 lg:p-20 bg-white mt-[200px] w-[calc(70vw)]  mb-[50px] rounded-xl shadow-[0_25px_50px_-12px_rgba(56,57,157,0.3)]">
@@ -181,5 +188,6 @@ export default function UploadPayment() {
       <MakeEvent />
       <FooterComp />
     </div>
+    </>
   );
 }

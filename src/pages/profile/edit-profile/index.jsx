@@ -10,6 +10,7 @@ import { listPhoneCode, listMonth } from "@/constant/constant.js";
 import HeaderComp from "@/components/HeaderComp";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { data } from "autoprefixer";
+import Head from "next/head";
 
 export default function ProfilePage() {
   const { isLoading, setIsLoading } = useContext(LoadingContext);
@@ -122,6 +123,12 @@ export default function ProfilePage() {
   }
 
   return (
+    <>
+    <Head>
+        <title>Edit Profile | ticket.in</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
+
     <main>
       <HeaderComp />
       <div className="relative mt-[70px] bg-white min-w-full min-h-screen h-full p-5">
@@ -252,5 +259,6 @@ export default function ProfilePage() {
         </div>
       </div>
     </main>
+    </>
   );
 }

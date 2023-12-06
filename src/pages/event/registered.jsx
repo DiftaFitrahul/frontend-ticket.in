@@ -9,6 +9,7 @@ import { LoadingContext } from "@/context/LoadingContext";
 import { toast } from "react-toastify";
 import NoDataFound from "@/components/event/NoDataFound";
 import Carousel from "@/components/home/Carousel";
+import Head from "next/head";
 
 export default function EventsRegistered() {
   const [data, setData] = useState(undefined);
@@ -73,6 +74,12 @@ export default function EventsRegistered() {
   }, []);
 
   return (
+    <>
+    <Head>
+        <title>Event Registered | ticket.in</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
+
     <div className="flex flex-col justify-center items-center bg-neutral-100">
       <HeaderComp />
       <div className="mt-[160px]">
@@ -101,5 +108,6 @@ export default function EventsRegistered() {
       <MakeEvent />
       <FooterComp />
     </div>
+    </>
   );
 }
