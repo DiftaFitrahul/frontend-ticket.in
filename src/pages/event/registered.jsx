@@ -37,41 +37,81 @@ export default function EventsRegistered() {
 
     const getDataEventRegistered = () => {
       setIsLoading(true);
-      axios
-        .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/admin/events", {
-          headers: {
-            Authorization: "Bearer " + Cookies.get("Auth"),
-          },
-        })
-        .then((res) => {
-          if (isMounted) {
-            setData(res.data.userEvents);
-            toast.success("Sukses Mendapatkan Data!", {
-              zIndex: 9999,
-            });
-            console.log(res.data);
-          }
-        })
-        .catch((err) => {
-          if (err.response?.data?.message === "No user events found!") {
+      const dataUser = localStorage.getItem("dataUser");
+
+      if(dataUser == `"ADMIN"`) {
+        axios
+          .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/admin/events", {
+            headers: {
+              Authorization: "Bearer " + Cookies.get("Auth"),
+            },
+          })
+          .then((res) => {
             if (isMounted) {
-              setData(undefined);
-              toast.error("Tidak Ada Data!", {
+              setData(res.data.userEvents);
+              toast.success("Sukses Mendapatkan Data!", {
                 zIndex: 9999,
               });
+              console.log(res.data);
             }
-          } else {
-            toast.error("Gagal Mendapatkan Data!", {
-              zIndex: 9999,
-            });
-            console.log(err);
-          }
-        })
-        .finally(() => {
-          if (isMounted) {
-            setIsLoading(false);
-          }
-        });
+          })
+          .catch((err) => {
+            if (err.response?.data?.message === "No user events found!") {
+              if (isMounted) {
+                setData(undefined);
+                toast.error("Tidak Ada Data!", {
+                  zIndex: 9999,
+                });
+              }
+            } else {
+              toast.error("Gagal Mendapatkan Data!", {
+                zIndex: 9999,
+              });
+              console.log(err);
+            }
+          })
+          .finally(() => {
+            if (isMounted) {
+              setIsLoading(false);
+            }
+          });
+      } else {
+        axios
+          .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/user-events", {
+            headers: {
+              Authorization: "Bearer " + Cookies.get("Auth"),
+            },
+          })
+          .then((res) => {
+            if (isMounted) {
+              setData(res.data.userEvents);
+              toast.success("Sukses Mendapatkan Data!", {
+                zIndex: 9999,
+              });
+              console.log(res.data);
+            }
+          })
+          .catch((err) => {
+            if (err.response?.data?.message === "No user events found!") {
+              if (isMounted) {
+                setData(undefined);
+                toast.error("Tidak Ada Data!", {
+                  zIndex: 9999,
+                });
+              }
+            } else {
+              toast.error("Gagal Mendapatkan Data!", {
+                zIndex: 9999,
+              });
+              console.log(err);
+            }
+          })
+          .finally(() => {
+            if (isMounted) {
+              setIsLoading(false);
+            }
+          });
+      };
     };
 
     getDataEventRegistered();
