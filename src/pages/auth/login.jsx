@@ -19,6 +19,7 @@ export default function Login() {
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
+  console.log("------------------------------------");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -30,6 +31,9 @@ export default function Login() {
         password,
       })
       .then((res) => {
+        console.log("------------------------------------");
+        console.log(res);
+        console.log("------------------------------------");
         Cookies.set("Auth", res.data.token, { expires: 1 });
         dispatch(login());
         setIsLoading(false);
@@ -37,9 +41,9 @@ export default function Login() {
           {
             zIndex: 9999,
           };
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 1000);
+        // setTimeout(() => {
+        //   window.location.href = "/";
+        // }, 1000);
       })
       .catch((err) => {
         setIsLoading(false);
@@ -52,7 +56,7 @@ export default function Login() {
 
   return (
     <main>
-      <div className=" flex flex-row justify-center items-center h-[900px]  w-screen bg-neutral-100 p-5">
+      <div className=" flex flex-row justify-center items-center h-[970px]  w-screen bg-neutral-100 p-5">
         <div className="flex flex-col justify-center items-center h-full  w-screen sm:w-1/2 relative bg-white    rounded-lg ml-[10px]">
           <div className="block min-[640px]:hidden absolute top-5 left-5">
             <Image
