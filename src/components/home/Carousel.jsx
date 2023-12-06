@@ -41,7 +41,7 @@ export default function Carousel({ listEventTop = [] }) {
         style={{ backgroundImage: `url(${slides[currentIndex]?.eventPhoto})` }}
         className="w-full h-full   bg-center bg-cover duration-500 flex justify-center items-center  "
       >
-        <div className="absolute w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.9] "></div>
+        <div className="absolute w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.8] "></div>
         <div className="text-black   flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center mx-[5%] sm:ml-10 py-20 ">
           <Image
             src={slides[currentIndex]?.eventPhoto ?? "/home/event_image.png"}

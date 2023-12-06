@@ -83,9 +83,7 @@ export default function HeaderComp() {
           <Link href="/" className="text-white py-10 px-5">
             Home
           </Link>
-          <Link href="" className="text-white py-10 px-5">
-            Ticket
-          </Link>
+
           <button
             href=""
             className="text-white py-10 px-5"
@@ -96,9 +94,7 @@ export default function HeaderComp() {
           {/* <Link href="/about" className="text-white py-10 px-5 ">
             About
           </Link> */}
-          <Link href="" className="text-white py-10 px-5">
-            Contact
-          </Link>
+
           {isLoggedIn ? (
             <Link href="/profile" className="text-white py-10 px-5 ">
               Profile

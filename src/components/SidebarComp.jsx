@@ -63,6 +63,12 @@ const Sidebar = () => {
         </button>
       </div>
       <div className="flex flex-col w-full h-[170px] px-3">
+        <Link
+          href="/"
+          className="text-white hover:text-[#242565] pl-3 pt-4   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
+        >
+          Home
+        </Link>
         <button
           href=""
           className="text-white hover:text-[#242565] pl-3 py-3  text-start h-full px-full w-full hover:bg-white rounded-xl font-semibold"
@@ -70,12 +76,6 @@ const Sidebar = () => {
         >
           Event Registered
         </button>
-        <Link
-          href=""
-          className="text-white hover:text-[#242565] pl-3 pt-4   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
-        >
-          Ticket
-        </Link>
 
         {/* <Link
           href="/about"
@@ -84,12 +84,14 @@ const Sidebar = () => {
           About
         </Link> */}
 
-        <Link
-          href=""
-          className="text-white hover:text-[#242565] h-full pl-3 pt-4 px-full w-full font-semibold hover:bg-white rounded-xl font-semibold"
-        >
-          Contact
-        </Link>
+        {isLoggedIn ? (
+          <Link
+            href="/profile"
+            className="text-white hover:text-[#242565] pl-3 pt-4   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
+          >
+            Profile
+          </Link>
+        ) : null}
       </div>
       <div className="h-4/6 xl:h-3/4  flex flex-col">
         <div className="mt-auto mb-20 ml-4">
