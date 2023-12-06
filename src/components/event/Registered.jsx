@@ -16,6 +16,7 @@ export default function EventsRegisteredComp({
             alt="coba"
             width={1000} // Set a large number to allow for a responsive width
             height={230}
+            unoptimized={true}
             objectFit="cover"
             className="self-center"
           />

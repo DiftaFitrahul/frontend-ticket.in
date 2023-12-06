@@ -49,6 +49,7 @@ export default function Carousel({ listEventTop = [] }) {
             width={450}
             height={450}
             layout="responsive"
+            unoptimized={true}
             className=" mr-0 sm:mr-10 rounded-2xl mt-20 shadow-2xl z-[10] max-w-[620px]"
           />
           <div className="w-fit sm:w-[550px]  xl:mr-10 mt-5 xl:mt-20 z-[10]">
