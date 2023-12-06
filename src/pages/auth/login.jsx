@@ -44,6 +44,7 @@ export default function Login() {
         }, 1000);
       })
       .catch((err) => {
+        console.log(err);
         setIsLoading(false);
         toast.error("Login Gagal!"),
           {
