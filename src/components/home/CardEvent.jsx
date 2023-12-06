@@ -29,6 +29,7 @@ export default function CardEvent({
         alt="coba"
         width={1000} // Set a large number to allow for a responsive width
         height={300}
+        unoptimized={true}
         objectFit="cover"
         className="self-center  rounded-xl min-h-[250px] max-h-[250px]"
       />

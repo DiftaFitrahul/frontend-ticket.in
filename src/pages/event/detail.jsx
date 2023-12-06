@@ -61,6 +61,7 @@ export default function EventDetail() {
             src={parsedEvent.eventPhoto}
             alt="Picture of the author"
             width={800}
+            unoptimized={true}
             height={550}
             layout="responsive"
             className="min-[380px]:px-2 min-[550px]:px-7 py-10"
