@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { AiOutlineEdit } from "react-icons/ai";
 import HeaderComp from "@/components/HeaderComp";
 import Modal from "@/components/profile/Modal";
+import Head from "next/head";
 
 export default function ProfilePage() {
   const avatarField = useRef(null);
