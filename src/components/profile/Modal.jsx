@@ -26,7 +26,7 @@ export default function Modal({ isOpen, onClose }) {
       )
       .then((res) => {
         setIsLoading(false);
-        toast.success("Update Role Berhasil!"),
+        toast.success("Update Role Berhasil! Silahkan Login Ulang!"),
           {
             zIndex: 9999,
           };
@@ -37,6 +37,11 @@ export default function Modal({ isOpen, onClose }) {
         console.log(err);
         if (err?.response?.data?.message === "User is already an admin!") {
           toast.error("Role Kamu sudah Admin!"),
+            {
+              zIndex: 9999,
+            };
+        } else if (err?.response?.data?.message === "Password is incorrect!") {
+          toast.error("Password Salah!"),
             {
               zIndex: 9999,
             };
