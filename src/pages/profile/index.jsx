@@ -8,63 +8,24 @@ import { LoadingContext } from "@/context/LoadingContext";
 import { toast } from "react-toastify";
 import { AiOutlineEdit } from "react-icons/ai";
 import HeaderComp from "@/components/HeaderComp";
-import Head from "next/head";
+import Modal from "@/components/profile/Modal";
 
 export default function ProfilePage() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [countryCode, setCountryCode] = useState("");
-  const [phone, setPhone] = useState("");
-  const [day, setDay] = useState("");
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState("");
-  const [gender, setGender] = useState("");
-  const [avatarImg, setAvatarImg] = useState(null);
   const avatarField = useRef(null);
-  const [isSubmitEnable, setIsSubmitEnable] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const { isLoading, setIsLoading } = useContext(LoadingContext);
   const [data, setData] = useState(undefined);
 
   let name = "difta";
-
-  const handleChangeFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-  const handleChangeLastName = (e) => {
-    setLastName(e.target.value);
-  };
-  const handleChangeCountryCode = (e) => {
-    setCountryCode(e.target.value);
-  };
-
-  const handleChangePhone = (e) => {
-    setPhone(e.target.value);
-  };
-
-  const handleChangeDay = (e) => {
-    setDay(e.target.value);
-  };
-  const handleChangeMonth = (e) => {
-    setMonth(e.target.value);
-  };
-  const handleChangeYear = (e) => {
-    setYear(e.target.value);
-  };
-  const handleChangeGender = (e) => {
-    setGender(e.target.value);
-  };
-  const handleOpenFileDialog = (e) => {
-    avatarField.current.click();
-  };
-  const handleChangeAvatar = async (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    let file = await e.target.files[0];
-    if (file) {
-      const objectURL = URL.createObjectURL(file);
-      setAvatarImg(objectURL);
-    }
-  };
 
   useEffect(() => {
     let isMounted = true;
@@ -168,9 +129,18 @@ export default function ProfilePage() {
                     {data?.phoneNumber ?? "-"}
                   </p>
                 </div>
+                <div>
+                  <button
+                    onClick={openModal}
+                    className="text-white bg-[#F5167E] py-4 mt-[10px] lg:mt-[0px] min-[770px]:ml-[-10px] px-5 text-[13px] rounded-full text-center shadow-lg font-medium"
+                  >
+                    Request Admin
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+          <Modal isOpen={isModalOpen} onClose={closeModal} />
           <div className="hidden md:flex w-full md:w-2/4 pl-[50px] bg-[#000842] rounded-[15px] items-center justify-center aspect-square overflow-hidden">
             <Image
               src="@/../illustrator-1.svg"
