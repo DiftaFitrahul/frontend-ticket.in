@@ -10,6 +10,13 @@ export default function MakeEvent({}) {
       toast.error("Gagal! Anda harus Login terlebih dahulu!", {
         zIndex: 9999,
       });
+    } else if (JSON.parse(localStorage.getItem("dataUser")) !== "ADMIN") {
+      toast.error(
+        "Gagal! Anda tidak memiliki akses, Ajukan admin di Profile Page!",
+        {
+          zIndex: 9999,
+        }
+      );
     } else {
       router.push("/event/create");
     }
