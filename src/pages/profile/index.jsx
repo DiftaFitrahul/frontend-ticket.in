@@ -79,6 +79,7 @@ export default function ProfilePage() {
         .then((res) => {
           if (isMounted) {
             setData(res.data.user);
+            console.log(res.data.user);
             toast.success("Sukses Mendapatkan Data User!", {
               zIndex: 9999,
             });
@@ -118,7 +119,7 @@ export default function ProfilePage() {
                 <div className="w-[200px] mx-auto text-center">
                   <img
                     className="rounded-full object-cover w-[200px] h-[200px] object-center shadow-md mb-5"
-                    src={avatarImg ? avatarImg : "../../../avatar.png"}
+                    src={data?.profilePhoto ?? "../../../avatar.png"}
                     alt="Avatar Image"
                     width={200}
                     height={200}
