@@ -41,7 +41,7 @@ export default function Carousel({ listEventTop = [] }) {
         style={{ backgroundImage: `url(${slides[currentIndex]?.eventPhoto})` }}
         className="w-full h-full   bg-center bg-cover duration-500 flex justify-center items-center  "
       >
-        <div className="absolute w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.8] "></div>
+        <div className="absolute w-full h-full bg-gradient-to-br from-[#922455] to-[#C6B13F] opacity-[0.85] "></div>
         <div className="text-black   flex flex-col mt-10 xl:mt-0 xl:flex-row justify-center  items-center mx-[5%] sm:ml-10 py-20 ">
           <Image
             src={slides[currentIndex]?.eventPhoto ?? "/home/event_image.png"}
@@ -55,10 +55,11 @@ export default function Carousel({ listEventTop = [] }) {
           <div className="w-fit sm:w-[550px]  xl:mr-10 mt-5 xl:mt-20 z-[10]">
             <p className="text-[18px] font-bold text-white"> Movie Party</p>
             <h1 className="text-[35px] sm:text-[50px] font-bold text-white leading-[50px] mb-3 w-full">
-              {slides[currentIndex]?.eventName}
+              {slides[currentIndex]?.eventName ?? "Event Name"}
             </h1>
             <p className="text-[18px] font-light text-white">
-              {slides[currentIndex]?.eventDescription}
+              {slides[currentIndex]?.eventDescription ??
+                "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. saso em deluga"}
             </p>
             <div className="flex flex-col sm:flex-row mt-3 gap-3 z-[999]">
               <button

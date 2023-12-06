@@ -54,7 +54,14 @@ export default function Home() {
     router.push("/event/detail");
     setIsLoading(false);
   };
-  const sildes = [eventsArray[1], eventsArray[0], eventsArray[3]];
+  const sildes = [
+    eventsArray[1],
+    eventsArray[0],
+    eventsArray[3],
+    eventsArray[5],
+    eventsArray[7],
+    eventsArray[9],
+  ];
   console.log(sildes);
 
   return (

@@ -62,10 +62,14 @@ const Sidebar = () => {
           X
         </button>
       </div>
-      <div className="flex flex-col w-full h-[170px] px-3">
+      <div
+        className={`flex flex-col w-full ${
+          isLoggedIn ? "h-[170px]" : "h-[120px]"
+        } px-3`}
+      >
         <Link
           href="/"
-          className="text-white hover:text-[#242565] pl-3 pt-4   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
+          className="text-white  hover:text-[#242565] pl-3 pt-4   h-full px-full w-full hover:bg-white rounded-xl font-semibold"
         >
           Home
         </Link>
