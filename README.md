@@ -50,7 +50,3 @@ npm run dev
 ```bash
 http://localhost:3000/
 ```
-
-## Special Thanks 
-- Mr. Bimo Sunarfri Hantono as the Lecturer of the Course
-- [Ahmad Zaki Akmal](https://github.com/ahmadzaki2975) (from Group 1) for some help and assistance

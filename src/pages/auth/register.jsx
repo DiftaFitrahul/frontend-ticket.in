@@ -223,12 +223,13 @@ export default function Register() {
                 </span>
               </label> */}
 
-              <Link
+              {/* <Link
                 href=""
                 className="absolute inset-y-0 right-0 flex items-center "
               >
                 <p className="text-black text-[12px]">Forgot password ?</p>
               </Link>
+              */}
             </div>
             <div className="flex justify-center items-center w-[calc(60vw)] sm:w-[calc(25vw-50px)]  sm:min-w-[270px]">
               <button
