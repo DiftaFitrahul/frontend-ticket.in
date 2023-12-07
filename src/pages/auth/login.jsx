@@ -9,13 +9,23 @@ import { useContext } from "react";
 import { LoadingContext } from "@/context/LoadingContext";
 import { toast } from "react-toastify";
 import Head from "next/head";
+import ForgotPasswordModal from "@/components/auth/ForgotPasswordModal";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { isLoading, setIsLoading } = useContext(LoadingContext);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const togglePassword = () => {
     setShowPassword(!showPassword);
@@ -146,7 +156,12 @@ export default function Login() {
                 href=""
                 className="absolute inset-y-0 right-0 flex items-center "
               >
-                <p className="text-black text-[12px]">Forgot password ?</p>
+                <button 
+                  className="text-black text-[12px]"
+                  onClick={openModal}
+                >
+                  Forgot password ?
+                </button>
               </Link>
             </div>
             <div className="flex justify-center items-center w-[calc(60vw)] sm:w-[calc(25vw-50px)] sm:min-w-[270px] ">
@@ -186,6 +201,7 @@ export default function Login() {
             </div>
           </div> */}
         </div>
+
         <div className="flex-col justify-center items-center h-full w-1/2 relative bg-dark-blue rounded-lg mr-[10px] ml-[10px] hidden min-[640px]:block ">
           <Image
             src="/logo.png"
@@ -215,6 +231,9 @@ export default function Login() {
           </p>
         </div>
       </div>
+
+      <ForgotPasswordModal isOpen={isModalOpen} onClose={closeModal} />
+
     </main>
     </>
   );

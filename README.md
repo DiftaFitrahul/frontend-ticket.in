@@ -1,40 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<strong><h1 align="center">Ticket.In 🎫</h1></strong><br>
 
-## Getting Started
+Tiket.in adalah sebuah platform tiket daring yang dirancang untuk memberikan pengalaman yang mudah dan efisien 
+dalam membeli dan mengelola tiket. tiket.in menyediakan dua akses utama: satu untuk pengguna yang ingin membeli tiket, dan satu untuk admin yang bertanggung jawab mengelola tiket dan acara.
 
-First, run the development server:
+## Members 🦰
+* Anisa Bintang Maharani (21/478671/TK/52746)
+* Aufa Nasywa Rahman (21/475255/TK/52454)
+* Daru Okta Buana (21/475397/TK/52480)
+* Difta Fitrahul Qihaj (21/480096/TK/52975) <br>
 
+## Resources 📗
+| Content | Link |
+| --- | --- |
+| FrontEnd Deployed | [https://ticketin.vertech.id/](https://ticketin.vertech.id/) |
+| FrontEnd Deployed (Backup) | [https://frontend-ticket-in-1344.vercel.app/](https://frontend-ticket-in-1344.vercel.app/) |
+| BackEnd Deployed | [https://backend-tiket-in.vercel.app](https://backend-tiket-in.vercel.app) |
+| BackEnd Github | [https://github.com/aufarhmn/backend-tiket.in](https://github.com/aufarhmn/backend-tiket.in) |
+| Postman API | [Backend API Dokumentation](https://www.postman.com/aufarhmn/workspace/tiket-in/collection/24138340-4086676b-711e-4de4-a817-42f1d31bb838?action=share&creator=24138340) |
+| Figma | [Figma Ticket.In](https://www.figma.com/file/er08vyAtQ0sa2jUPql4tzw/Website-Event-Ticketing-(Community)?type=design&node-id=304%3A3&mode=design&t=VYVMMGikEEyarKRk-1) |
+| Slide PPT | [PPT Ticket.in](https://www.canva.com/design/DAFznwImXbU/CZBHuyrEJPlXawNl3lcoPQ/edit?utm_content=DAFznwImXbU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) |
+| Video | |
+
+## Accounts for Login 🔒
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+ADMIN
+email: aufa.nas2003@mail.ugm.ac.id
+password: passbaru
+
+USER
+email: galleryofaufa@gmail.com
+password: akunuser
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Run Project Locally (Ticket.In) 🌐
+   1. Clone this repository
+```bash
+https://github.com/DiftaFitrahul/frontend-ticket.in.git
+```
+   2. Go to Ticket.in directory
+   3. Install NPM package
+```bash
+npm install
+```
+   4. Run Program
+```bash
+npm run dev
+```
+   5. Open Ticket.In Web App
+```bash
+http://localhost:3000/
+```
