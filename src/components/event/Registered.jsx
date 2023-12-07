@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 export default function EventsRegisteredComp({
   title,
   description,
@@ -25,19 +26,17 @@ export default function EventsRegisteredComp({
           <h1 className="text-black font-bold text-[16px] min-[280px]:text-[20px] sm:text-[26px]">
             {title}
           </h1>
-          <div className="flex flex-row ">
-            <div className="flex flex-col">
-              <p className="text-[18px] sm:text-[23px] lg:text-[30px] text-blue-text font-normal ml-2">
-                Code: {code}
-              </p>
-            </div>
-          </div>
-          <p className="text-[#6A6A6A] mr-20 lg:mr-0">{description}</p>
-          <p className="text-black font-semibold text-[11px] sm:text-[15px] mt-5">
+          <p className="text-black text-[11px] sm:text-[15px]">
             Buyer Name: {name}
           </p>
-          <p className="text-[#3D37F1] text-center font-bold text-[11px] sm:text-[15px] ">
+          <p className="text-black text-[11px] sm:text-[15px]">
             Email: {email}
+          </p>
+          <p className="text-black text-[11px] sm:text-[15px]">
+            Code: {code}
+          </p>
+          <p className="text-black text-[11px] sm:text-[15px]">
+            Status: {description}
           </p>
         </div>
         <div></div>

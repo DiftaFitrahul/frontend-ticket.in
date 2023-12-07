@@ -71,12 +71,15 @@ export default function UploadPayment() {
               zIndex: 9999,
             };
           console.log(res.data);
+          setInterval(() => {
+            window.location.href = "/";
+          }, 1000);
         })
         .catch((err) => {
           setIsLoading(false);
 
           if (err.response.data.message === "File too large") {
-            toast.error("Bukti pembayaran sudah diupload!"),
+            toast.error("Ukuran file terlalu besar!"),
               {
                 zIndex: 9999,
               };

@@ -144,7 +144,7 @@ export default function EventsRegistered() {
               <EventsRegisteredComp
                 key={index}
                 title={dataEventRegistered.eventId.eventName}
-                description={dataEventRegistered.eventId.eventDescription}
+                description={dataEventRegistered.status}
                 code={dataEventRegistered.code}
                 name={dataEventRegistered.userId.name}
                 email={dataEventRegistered.userId.email}
