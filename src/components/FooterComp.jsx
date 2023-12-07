@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Logo from "@/../public/logo.png";
+import Link from "next/link";
 
 export default function FooterComp() {
   return (
@@ -38,14 +39,14 @@ export default function FooterComp() {
           <div className="flex flex-col items-start mt-8">
             <p className="text-[18px] font-bold mb-4">Ticket.In</p>
 
-            <button className="font-light font-[14px] mt-1">About Us</button>
-            <button className="font-light font-[14px] mt-1">Contact Us</button>
-            <button className="font-light font-[14px] mt-1">Help Center</button>
-            <button className="font-light font-[14px] mt-1">
+            <Link href="/about-us" className="font-light font-[14px] mt-1">About Us</Link>
+            <Link href="/contact-us" className="font-light font-[14px] mt-1">Contact Us</Link>
+            <Link href="#" className="font-light font-[14px] mt-1">Help Center</Link>
+            <Link href="#" className="font-light font-[14px] mt-1">
               How it Works
-            </button>
-            <button className="font-light font-[14px] mt-1">Privacy</button>
-            <button className="font-light font-[14px] mt-1">Terms</button>
+            </Link>
+            <Link href="#" className="font-light font-[14px] mt-1">Privacy</Link>
+            <Link href="#" className="font-light font-[14px] mt-1">Terms</Link>
           </div>
 
           <div className="sm:flex flex-col w-[400px] hidden sm:w-[430px]  items-start mt-8">
