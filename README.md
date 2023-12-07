@@ -1,6 +1,7 @@
 <p align="center">
-  <strong><span style="font-size:larger;">Ticket.In</span></strong>
+  <strong><span style="font-size:25px;">Your Text Here</span></strong>
 </p>
+
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
