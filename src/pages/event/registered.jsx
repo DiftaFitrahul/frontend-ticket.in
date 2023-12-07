@@ -24,7 +24,7 @@ export default function EventsRegistered() {
   ];
 
   useEffect(() => {
-    if(Cookies.get("Auth") === undefined) {
+    if (Cookies.get("Auth") === undefined) {
       toast.error("Anda belum login!", {
         zIndex: 9999,
       });
@@ -32,14 +32,14 @@ export default function EventsRegistered() {
         window.location.href = "/";
       }, 1000);
     }
-  
+
     let isMounted = true;
 
     const getDataEventRegistered = () => {
       setIsLoading(true);
       const dataUser = localStorage.getItem("dataUser");
 
-      if(dataUser == `"ADMIN"`) {
+      if (dataUser == `"ADMIN"`) {
         axios
           .get(process.env.NEXT_PUBLIC_BACKEND_URL + "/admin/events", {
             headers: {
@@ -111,7 +111,7 @@ export default function EventsRegistered() {
               setIsLoading(false);
             }
           });
-      };
+      }
     };
 
     getDataEventRegistered();
@@ -123,39 +123,39 @@ export default function EventsRegistered() {
 
   return (
     <>
-    <Head>
+      <Head>
         <title>Event Registered | ticket.in</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
+      </Head>
 
-    <div className="flex flex-col justify-center items-center bg-neutral-100">
-      <HeaderComp />
-      <div className="mt-[160px]">
-        <h1 className="text-black text-center font-bold text-[36px]">
-          Event Registered
-        </h1>
+      <div className="flex flex-col justify-center items-center bg-neutral-100">
+        <HeaderComp />
+        <div className="mt-[160px]">
+          <h1 className="text-black text-center font-bold text-[36px]">
+            Event Registered
+          </h1>
+        </div>
+
+        {data === undefined ? (
+          <NoDataFound />
+        ) : (
+          data.map((dataEventRegistered, index) => {
+            return (
+              <EventsRegisteredComp
+                key={index}
+                title={dataEventRegistered.eventId.eventName}
+                description={dataEventRegistered.eventId.eventDescription}
+                code={dataEventRegistered.code}
+                name={dataEventRegistered.userId.name}
+                email={dataEventRegistered.userId.email}
+                imagePath={dataEventRegistered.paymentFile}
+              />
+            );
+          })
+        )}
+        <MakeEvent />
+        <FooterComp />
       </div>
-
-      {data === undefined ? (
-        <NoDataFound />
-      ) : (
-        data.map((dataEventRegistered, index) => {
-          return (
-            <EventsRegisteredComp
-              key={index}
-              title={dataEventRegistered.eventId.eventName}
-              description={dataEventRegistered.eventId.eventDescription}
-              code={dataEventRegistered.code}
-              name={dataEventRegistered.userId.name}
-              email={dataEventRegistered.userId.email}
-              imagePath={dataEventRegistered.paymentFile}
-            />
-          );
-        })
-      )}
-      <MakeEvent />
-      <FooterComp />
-    </div>
     </>
   );
 }
