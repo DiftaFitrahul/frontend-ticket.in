@@ -44,7 +44,7 @@ export default function Carousel({ listEventTop = [] }) {
       : slides[currentIndex]?.eventDescription;
 
   return (
-    <div className="max-w-full h-[900px] w-full m-auto  relative group mt-[50px]">
+    <div className="max-w-full min-h-screen h-[900px] w-full m-auto  relative group mt-[50px]">
       <div
         style={{ backgroundImage: `url(${slides[currentIndex]?.eventPhoto})` }}
         className="w-full h-full   bg-center bg-cover duration-500 flex justify-center items-center  "
