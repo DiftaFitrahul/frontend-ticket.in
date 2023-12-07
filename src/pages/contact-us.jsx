@@ -36,8 +36,20 @@ export default function ContactUs() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!isEmailValid || !isNameValid || !isMessageValid || !email || !name || !message) {
-      toast.error("Please fill in the form correctly");
+    if(!email || !name || !message) {
+      toast.error("Please fill all fields");
+      return;
+    }
+    if(!isEmailValid) {
+      toast.error("Invalid Email");
+      return;
+    }
+    if(!isNameValid) {
+      toast.error("Invalid Name");
+      return;
+    }
+    if(!isMessageValid) {
+      toast.error("Invalid Message");
       return;
     }
     axios
