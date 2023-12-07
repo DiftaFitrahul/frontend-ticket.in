@@ -12,7 +12,8 @@ dalam membeli dan mengelola tiket. tiket.in menyediakan dua akses utama: satu un
 ## Resources 📗
 | Content | Link |
 | --- | --- |
-| FrontEnd Deployed | 1. [https://ticketin.vertech.id/](https://ticketin.vertech.id/) 2. [https://frontend-ticket-in-1344.vercel.app/](https://frontend-ticket-in-1344.vercel.app/) |
+| FrontEnd Deployed | [https://ticketin.vertech.id/](https://ticketin.vertech.id/) |
+| FrontEnd Deployed (Backup) | [https://frontend-ticket-in-1344.vercel.app/](https://frontend-ticket-in-1344.vercel.app/) |
 | BackEnd Deployed | [https://backend-tiket-in.vercel.app](https://backend-tiket-in.vercel.app) |
 | BackEnd Github | [https://github.com/aufarhmn/backend-tiket.in](https://github.com/aufarhmn/backend-tiket.in) |
 | Postman API | [Backend API Dokumentation](https://www.postman.com/aufarhmn/workspace/tiket-in/collection/24138340-4086676b-711e-4de4-a817-42f1d31bb838?action=share&creator=24138340) |
@@ -47,4 +48,5 @@ npm run dev
 ```
    5. Open Ticket.In Web App
 ```bash
-
+http://localhost:3000/
+```
