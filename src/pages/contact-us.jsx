@@ -106,7 +106,7 @@ export default function ContactUs() {
                 (isMessageValid ? "" : "!border-red-500")
               }
               onChange={(e) => {
-                setEmail(e.target.value);
+                setMessage(e.target.value);
                 setIsMessageValid(validateMessage(e.target.value));
               }}
             />
