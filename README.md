@@ -19,7 +19,7 @@ dalam membeli dan mengelola tiket. tiket.in menyediakan dua akses utama: satu un
 | Postman API | [Backend API Dokumentation](https://www.postman.com/aufarhmn/workspace/tiket-in/collection/24138340-4086676b-711e-4de4-a817-42f1d31bb838?action=share&creator=24138340) |
 | Figma | [Figma Ticket.In](https://www.figma.com/file/er08vyAtQ0sa2jUPql4tzw/Website-Event-Ticketing-(Community)?type=design&node-id=304%3A3&mode=design&t=VYVMMGikEEyarKRk-1) |
 | Slide PPT | [PPT Ticket.in](https://www.canva.com/design/DAFznwImXbU/CZBHuyrEJPlXawNl3lcoPQ/edit?utm_content=DAFznwImXbU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) |
-| Video | |
+| Video | [Youtube Video](https://youtu.be/zofWNYYstts?si=wmX5I8gVmvmzAy1s) |
 
 ## Accounts for Login 🔒
 ```bash
