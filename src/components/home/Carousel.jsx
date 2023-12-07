@@ -34,6 +34,14 @@ export default function Carousel({ listEventTop = [] }) {
     console.log(selectedEventData);
     router.push("/event/detail");
   };
+  const maxLengthDescription = 400;
+  const trimmedDescription =
+    slides[currentIndex]?.eventDescription.length > maxLengthDescription
+      ? `${slides[currentIndex]?.eventDescription.slice(
+          0,
+          maxLengthDescription
+        )}...`
+      : slides[currentIndex]?.eventDescription;
 
   return (
     <div className="max-w-full h-[900px] w-full m-auto  relative group mt-[50px]">
@@ -58,7 +66,7 @@ export default function Carousel({ listEventTop = [] }) {
               {slides[currentIndex]?.eventName ?? "Event Name"}
             </h1>
             <p className="text-[18px] font-light text-white">
-              {slides[currentIndex]?.eventDescription ??
+              {trimmedDescription ??
                 "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. saso em deluga"}
             </p>
             <div className="flex flex-col sm:flex-row mt-3 gap-3 z-[999]">
