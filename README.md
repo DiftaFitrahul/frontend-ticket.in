@@ -32,7 +32,7 @@ email: galleryofaufa@gmail.com
 password: akunuser
 ```
 
-## Run Project (Ticket.In) 🌐
+## Run Project Locally (Ticket.In) 🌐
    1. Clone this repository
 ```bash
 https://github.com/DiftaFitrahul/frontend-ticket.in.git
