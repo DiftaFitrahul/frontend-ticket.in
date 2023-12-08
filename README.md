@@ -1,4 +1,4 @@
-<h1 align="center">![Logo](/public/logo.png)</h1>
+![Logo](/public/logo.png)
 <strong><h1 align="center">Ticket.In 🎫</h1></strong><br>
 
 Tiket.in adalah sebuah platform tiket daring yang dirancang untuk memberikan pengalaman yang mudah dan efisien 
