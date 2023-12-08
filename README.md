@@ -1,6 +1,5 @@
-![Logo](/public/logo.png)
 <strong><h1 align="center">Ticket.In 🎫</h1></strong><br>
-
+![Logo](/public/logo.png)
 Tiket.in adalah sebuah platform tiket daring yang dirancang untuk memberikan pengalaman yang mudah dan efisien 
 dalam membeli dan mengelola tiket. tiket.in menyediakan dua akses utama: satu untuk pengguna yang ingin membeli tiket, dan satu untuk admin yang bertanggung jawab mengelola tiket dan acara.
 
@@ -21,6 +20,13 @@ dalam membeli dan mengelola tiket. tiket.in menyediakan dua akses utama: satu un
 | Figma | [Figma Ticket.In](https://www.figma.com/file/er08vyAtQ0sa2jUPql4tzw/Website-Event-Ticketing-(Community)?type=design&node-id=304%3A3&mode=design&t=VYVMMGikEEyarKRk-1) |
 | Slide PPT | [PPT Ticket.in](https://www.canva.com/design/DAFznwImXbU/CZBHuyrEJPlXawNl3lcoPQ/edit?utm_content=DAFznwImXbU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) |
 | Video | [Youtube Video](https://youtu.be/zofWNYYstts?si=wmX5I8gVmvmzAy1s) |
+
+## Tech Stack
+- Nextjs
+- Tailwind
+- Expressjs
+- Mongodb
+- Nodejs
 
 ## Accounts for Login 🔒
 ```bash
